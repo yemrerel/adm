@@ -1,0 +1,285 @@
+
+
+<%- include('hastaIzlemHeader'); -%>
+<div class="row" style="margin-top:1%;height: 40%;">   
+   <div class="col-md-6">
+        <div class="row" style="margin-top:1%;">   
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><b>D.Yöntemi:</b></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><%= DogumYontemi%></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><b>Doğum Ağırlığı:</b></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><%=dogum.Agirlik%></div></div>
+            
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><b>APGAR1 :</b></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><%=dogum.Agirlik%></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><b>APGAR5 :</b></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><%=dogum.Agirlik%></div></div>
+        </div>
+        <div class="row" style="">          
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><b>Anne Adı:</b></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><%=anneAdSoyad%></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><b>Anne Yaşı:</b></div></div>
+              <div class="col-md-3" style=""><div style="margin: auto;color: #325179;"><%=anneYasi%></div></div>
+        </div>
+        <div class="row" style="">          
+         
+         </div>
+     
+            <div class="row" style="height: 60%;margin-top: 1%;">
+                                        <div class="col-md-6">                          
+                                             <div class="container asiBtn"  style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 95%;border-radius: 20px;margin: 0;">
+                                                   <div class="row">
+                                                             <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;border-top-left-radius: 20px;border-top-right-radius: 20px;color: #325179;font-family: Avenir Next;"><b>AŞI BİLGİLERİ</b></div>                                               
+                                                   </div>
+                                                   <div class="row">
+                                                                <div class="col-md-12"> 
+                                                                        <div class="row" style="margin-top:1%;"> <div style="color: #325179;margin: auto;"><b>SON AŞI İSMİ:</b></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;">Örnek</div></div>
+                                                                        <div class="row" style="margin-top:1%;"> <div style="color: #325179;margin: auto;"><b>SON AŞI TARİHİ:</b></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;">Örnek</div></div>
+                                                               </div>                                                                                                                                                                       
+                                                    </div>
+
+                                             </div> 
+                                        </div>
+                                        <div class="col-md-6">                          
+                                             <div class="container beslenmeBtn"  style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 95%;border-radius: 20px;margin: 0;">
+                                                   <div class="row">
+                                                              <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;border-top-left-radius: 20px;border-top-right-radius: 20px;color: #325179;font-family: Avenir Next;"><b>BESLENME BİLGİLERİ</b></div>                                               
+                                                   </div>
+                                                   <div class="row">                                                         
+                                                                <div class="col-md-12"> 
+                                                                        <div class="row" style="margin-top:1%;"> <div style="color: #325179;margin: auto;"><b>Sütten Kesildiği Ay:</b></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;"><%= beslenme.SuttenKesilmeAy %></div></div>
+                                                                        <div class="row" style="margin-top:1%;"> <div style="color: #325179;margin: auto;"><b>Ek Gıda Başlama Ayı:</b></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;"><%= beslenme.EkGidaBasAy %></div></div>
+                                                                         <div class="row" style="margin-top:1%;"> <div style="color: #325179;margin: auto;"><b>Anne Sütü Aldığı Ay:</b></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;"><%= beslenme.AnneSutuAy %></div></div>
+                                                               </div>                                                                                                                                                                            
+                                                    </div>
+                                             </div> 
+                                        </div>
+           </div> 
+  </div>
+  <div class="col-md-6">
+            <div class="row" style="height: 100%;">
+                                        <div class="col-md-12">   
+                                               <%- include('bebekGrafikler'); -%>
+                                        </div>                                                               
+             </div>
+  </div>
+</div>
+
+
+   <div class="container" style="height: 23%;">                          
+
+     <div class="row"style="margin-top:1%;height: 80%;background-color:white;border-radius: 15px;border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
+          <div id="ay1" class="" style="width: 7.692%;">  
+                  <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==1) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 1:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                        <%if (iz[i].izlemSirasi==2) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 2:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                        <%if (iz[i].izlemSirasi==3) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 3:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                  <%} %>
+          </div>
+          <div id="ay2" class="" style="width: 7.692%;">  
+                         <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==4) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 4:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                       
+                  <%} %>
+          </div>
+           <div id="ay3" class="" style="width: 7.692%;">  
+                         <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==5) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 5:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                       
+                  <%} %>
+          </div>
+           <div id="ay4" class="" style="width: 7.692%;">  
+                         <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==6) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 6:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                       
+                  <%} %>
+          </div>
+            <div id="ay5" class="" style="width: 7.692%;">  
+                         <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==7) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 7:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                       
+                  <%} %>
+          </div>
+           <div id="ay6" class="" style="width: 7.692%;">  </div>
+            <div id="ay7" class="" style="width: 7.692%;">  
+                         <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==8) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 8:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                       
+                  <%} %>
+          </div>
+          <div id="ay8" class="" style="width: 7.692%;">  </div>
+          <div id="ay9" class="" style="width: 7.692%;">  
+                         <% for(var i=0; i < iz.length ; i++) {%>
+                        <%if (iz[i].izlemSirasi==9) { %>
+                              <div  class="row"style="background-color: blue;color: white;padding: 1%;margin: auto; width: 92%;margin-top:2%;font-size: 0.7rem;">  
+                                    İzlem 9:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                              </div>
+                        <% } %>
+                       
+                  <%} %>
+          </div>
+
+    </div>
+    <div class="row"style="background-color:blue;border-radius: 15px;border-top-left-radius: 0;border-top-right-radius: 0;">
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                1.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                2.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                3.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                4.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                5.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                6.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                7.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                8.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                9.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                10.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                11.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                12.AY
+                </div>
+                <div style="width: 7.692%;text-align: center;color: white;font-size: 0.8rem;">  
+                      13.AY
+                </div>
+                
+     </div>
+  </div>
+
+
+
+
+    <div class="row"style="margin-top:1%;">
+            <div class="col-md-8">                          
+            </div>
+            <div class="col-md-4">                          
+                    <button id="yeniIzlemBtn" type="button" class="btn btn-primary" style="width: 280px;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Yeni İzlem</button>
+            </div>
+    </div>
+
+<form id="yeniIzlemForm" action="/izlemler/Bebekcocukizlem/YeniIzlem" method="get" style="display: none;"></form>
+</form>
+<form id="asiForm" action="/izlemler/asi" method="get" style="display: none;"></form>
+</form>
+
+
+<script src="/public/js/bebekizlem.js"></script>
+
+
+<script>
+$( ".beslenmeBtn").click(function() {
+  $('#beslenmeModal').modal('show');
+});
+
+$( ".asiBtn").click(function() {
+      $('#asiForm').submit()
+});
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal" id="beslenmeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+        <div class="modal-dialog modal-lg">
+        
+          <!-- Modal content-->
+          <div class="modal-content" style="background-color:#f1f3f3;">
+            <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+               <div style="color: white;    font-size: x-large;">Beslenme Bilgileri</div> 
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+           
+            <div class="container" style="margin-top: 3%;">   
+                      <div class="row" style="margin-top: 1%;">    
+                                                 <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                              <span class="input-group-text " id="inputGroup-sizing-default">Sütten Kesilme Ayı</span>
+                                                        </div>
+                                                         <input class="form-control" name="SuttenKesilmeAy" value=" <%= beslenme.SuttenKesilmeAy %>" type="text" aria-label="Default" aria-describedby="">
+                                                 </div>
+                     </div>
+                      <div class="row" style="margin-top: 1%;">    
+                                                 <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                              <span class="input-group-text " id="inputGroup-sizing-default">Ek Gıda Başlangıç Ayı</span>
+                                                        </div>
+                                                         <input class="form-control" name="EkGidaBasAy" value=" <%= beslenme.EkGidaBasAy %>" type="text" aria-label="Default" aria-describedby="">
+                                                 </div>
+                     </div>
+                      <div class="row" style="margin-top: 1%;">    
+                                                 <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                              <span class="input-group-text " id="inputGroup-sizing-default">Anne Sütü Başlama Ayı</span>
+                                                        </div>
+                                                         <input class="form-control" name="AnneSutuAy"value=" <%= beslenme.AnneSutuAy %>" type="text" aria-label="Default" aria-describedby="">
+                                                 </div>
+                     </div>
+        
+        
+            </div>
+            <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                      <button id="t" type="button" class="" data-toggle="modal" data-target="#sevketModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;">İptal</button>
+                                      <button id="secSablonBtn" type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;"data-dismiss="modal">Seç</button>
+            </div>
+          </div>
+          
+        </div>
+        </div>
+        </div>
+ 

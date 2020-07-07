@@ -1,0 +1,199 @@
+
+
+<div class="row" style="margin-top:1%; height: 16%;">
+     <div style="height: 100%; padding: 1rem;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;width: 12%;margin: auto;">
+               <div class="row" style="height: 30%;"> <img src="/public/img/boy.svg" style="margin: auto;height: 100%;"></div>
+               <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;text-align: center;">Hemoglobin</div></div>
+               <div class="row" style="margin: auto;"><input id="hemoglobin" name="hemoglobin" class="bki form-control" type="number" placeholder="Hemoglobin"></div>
+
+   </div>
+ 
+   <div style="height: 100%;padding: 1rem;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;width: 12%;margin: auto;">
+               <div class="row" style="height: 30%;"> <img src="/public/img/nabız.svg" style="margin: auto;height: 100%;"></div>
+               <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;text-align: center;">Nabız</div></div>
+               <div class="row" style="margin: auto;"><input name="Nabiz" class="form-control" type="number" placeholder="Nabız"></div>
+
+   </div>
+    <div style="height: 100%;padding: 1rem;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;;width: 12%;margin: auto;">
+               <div class="row" style="height: 30%;"> <img src="/public/img/ates.svg" style="margin: auto;height: 100%;"></div>
+               <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;text-align: center;"> Ateş</div></div>
+               <div class="row" style="margin: auto;"><input id="ates" name="ates" class="form-control" type="number" placeholder="Ağırlık(gr)"></div>
+
+   </div>
+   <div class="row" style="height: 100%;padding: 1rem;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;width: 22%;margin: auto;">
+             <div class="col-md-5">
+                      <div class="row" style="height: 80%;"> <img src="/public/img/tansiyon.svg" style="margin: auto;height: 100%;"> </div> 
+                      <div class="row" style="margin: auto;"><div style="color: #325179;text-align: left;margin: auto;">Tansiyon</div></div>
+
+           </div>
+             <div class="col-md-7"> 
+                                  <input name="tanS" class="form-control" type="number" placeholder="S" style="">
+                                  <input name="tanD" class="form-control" type="number" placeholder="D" style="margin-top: 1%;">
+
+             </div>
+   </div>
+     <div style="height: 100%;width: 40%;margin: auto;">                       
+                                      <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+                                        <div class="row testlerheaderDiv">
+                                          <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;">Komplikasyon Tanıları   <input id="taniAra" class=""  type="text"  aria-label="Default" aria-describedby="" style="box-shadow: 6px 7px 6px grey;    border-radius: 1rem;"> </div>                                               
+                                        </div>
+
+                                    </div>
+                                    <div class="container" id="testlerTable" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:80%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+                                          <% komplikasyonlar.forEach(function(element) { %>
+                                             <div class="row gdtROW">
+                                               <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                                                         <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                                               </div> 
+                                               <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+                                             </div>
+                                           <%}); %>
+                                       
+                                   </div>                                   
+                        <script>
+                              $(document).on('click', ".gdtROW", function(){
+                                   //Your code
+                                   
+                                   if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+                                        $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+                                        var kod= $(this).children(".cbx").children().attr("name");
+                                        var isim= $(this).children(".isim").html();
+                                        
+                                        secilenTanılar.push({kod:kod});
+                                   }
+                                   else{
+                                        $(this).children(".cbx").children().css('background-color','red')
+                                        var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+                                        secilenTanılar.forEach(element => {
+                                             if(element.kod==kod){
+                                                  secilenTanılar = jQuery.grep(secilenTanılar, function(value) {
+                                                       return value != element;
+                                                  });
+                                   
+                                             }
+                                        });
+                                   }
+                              });
+                                  
+                         </script>
+    </div>
+
+</div>
+
+<div class="row" style="margin-top: 1%">
+     <div class="col-md-6">
+               <div class="row" style="margin-top: 1%;">
+                    <div class="input-group input-group-sm col-md-12">
+                                  <div class="input-group-prepend">
+                                       <span class="input-group-text " id="inputGroup-sizing-default">Kaçıncı Lohusa İzlem</span>
+                                  </div>
+                                              <select name="kacinciLohusa" class="browser-default custom-select">
+                                                               <% kacinciLohusa.forEach(function(element) { %>
+                                                                <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                                <%}); %>
+                                                </select>
+                    </div>
+               </div>
+               <div class="row" style="margin-top: 1%;">
+                    <div class="input-group input-group-sm col-md-12">
+                                       <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Uterus Involüsyon	</span>
+                                       </div>
+                                                   <select name="UterusInvolusyon" class="browser-default custom-select">
+                                                                    <% UterusInvolusyon.forEach(function(element) { %>
+                                                                     <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                                     <%}); %>
+                                                     </select>
+                         </div>
+               </div>
+               <div class="row" style="margin-top: 1%;">
+                    <div class="input-group input-group-sm col-md-12">
+                                       <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">D Vitamini Lojistiği</span>
+                                       </div>
+                                                   <select name="DVitamini" class="browser-default custom-select">
+                                                                    <% DVitamini.forEach(function(element) { %>
+                                                                     <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                                     <%}); %>
+                                                     </select>
+                         </div>
+               </div>
+     </div>
+     <div class="col-md-6">
+          <div class="row" style="margin-top: 1%;">
+               <div class="input-group input-group-sm col-md-12">
+                            <div class="input-group-prepend">
+                                 <span class="input-group-text " id="inputGroup-sizing-default">Postpartum Depresyon</span>
+                            </div>
+                                        <select name="PostpartumDepresyon" class="browser-default custom-select">
+                                                         <% PostpartumDepresyon.forEach(function(element) { %>
+                                                          <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                          <%}); %>
+                                          </select>
+              </div>
+          </div>
+          <div class="row" style="margin-top: 1%;">
+               <div class="input-group input-group-sm col-md-12">
+                            <div class="input-group-prepend">
+                                 <span class="input-group-text " id="inputGroup-sizing-default">Konjenital Anomali</span>
+                            </div>
+                                        <select name="KonjenitalAnomali" class="browser-default custom-select">
+                                                         <% KonjenitalAnomali.forEach(function(element) { %>
+                                                          <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                          <%}); %>
+                                          </select>
+              </div>
+          </div>
+          <div class="row" style="margin-top: 1%;">
+               <div class="input-group input-group-sm col-md-12">
+                                  <div class="input-group-prepend">
+                                       <span class="input-group-text " id="inputGroup-sizing-default">Demir Lojistiği ve Desteği</span>
+                                  </div>
+                                              <select name="DemirDestek" class="browser-default custom-select">
+                                                               <% DemirDestek.forEach(function(element) { %>
+                                                                <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                                <%}); %>
+                                                </select>
+                    </div>
+          </div>
+     </div>
+</div>
+<div class="row" style="margin-top: 1%;">
+     <div class="input-group input-group-sm col-md-6">
+          <div class="input-group-prepend">
+                <span class="input-group-text " id="inputGroup-sizing-default">Gebelik Sonlanma Tarihi</span>
+          </div>
+          <input class="form-control" id="gebSonTar" name="gebSonTar" type="date" aria-label="Default"  >
+     </div>
+</div>
+
+
+<script>
+
+ $("#taniAra").on("keyup", function () {
+        var value =this.value.toLocaleUpperCase('tr-TR')
+        this.value = this.value.toLocaleUpperCase('tr-TR')
+            $( ".gdtROW" ).remove();
+            $.get( "/tanFilter", { value:value} )
+                .done(function( tanılar ) {
+                            $.each(tanılar, function (index, value) {
+                                color="red"
+                                var found_names = $.grep(secilenTanılar, function(v) {
+                                    return v.kod === value.KODU;
+                                });
+                                if (found_names.length==1){color="green"}
+                              var html= '<div class="row gdtROW">';
+                                   html+= '<div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">'
+                                            html+= '<div class="tik" style="background-color:'+color+';height: 20px;width: 20px;margin-left: 46%;" name='+value.KODU+'"></div>'; 
+                                  html+= '</div>  ';  
+                                   html+= '<div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;">'+value.ADI+'</div> ';
+                              html+= '</div>';
+                                                        
+                                                  
+                              $( "#testlerTable" ).append(html);          
+                            });  
+            });
+
+    });
+
+</script>

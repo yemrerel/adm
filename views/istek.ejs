@@ -1,0 +1,89 @@
+<style>
+body {
+    background-color:#f1f1f1;
+}
+
+div.center{
+    margin-left:400px;
+}
+
+</style>
+
+<div class="container" style="height: 80%;margin-top: 1%;">
+	<div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-12 row" style="padding:0px;margin-bottom:10px;">
+                            
+                            <div class="col-md-2">
+                                <img src="http://dinus.org/img/fakultas/FIK/cs/cs.svg">
+                               
+                            </div>
+                            <div class="col-md-10">
+                                <hr>
+                                <p style="padding-left:55px;font-size:1.3em;color: #325179;"><strong>İstek Kutusu</strong></p>
+                                
+                            </div>
+                            
+                            
+                        </div>
+
+                            <table class="table">
+                
+                                <tr>
+                                    <td>
+                                        <input id="subject" class="form-control" type="text" placeholder="Konu">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <textarea id="msgTxt" class="form-control" rows="10" placeholder="Mesaj"></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="sendBtn" class="btn btn-danger btn-sm" style="width: 100%;"><i class="fa fa-envelope-o" style="padding-right: 5px;"></i> Gönder</button>
+                                    </td>
+                                </tr>
+                            </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="col-md-2"></div>
+
+	</div>
+</div>
+
+
+
+<script>
+
+$( "#sendBtn").click(function() {
+    mail=$( "#msgTxt").val()
+    subject=$( "#subject").val()
+    $.ajax({
+            url: '/mail',
+            method: 'post',
+            data: { mail:mail,subject:subject },
+            dataType:'json'
+            }).done(function(res) {
+                if(res){
+                    alert('Mesajınız Gönderildi.')
+                }
+                else  alert('Mesajınız Gönderilemedi.')
+               
+              
+    });
+   
+});
+
+
+
+
+</script>

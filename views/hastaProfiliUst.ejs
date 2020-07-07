@@ -1,0 +1,909 @@
+<style>
+  .image-circle{
+      border-radius: 50%;
+      height: 80px;
+      border: 2px solid #FFF;
+      margin: auto;
+      margin-top: -12%;
+  }
+  
+
+</style>
+<div class="row" style="height: 2%;" ></div>
+
+<div class="row" style="height: 3%;" >
+                             <div class="col-md-3" style="background-color: white;border-radius: 15px;color: #325179;font-family: Avenir Next;text-align: center;-webkit-box-shadow: 46px 0px 38px -17px rgba(0,0,0,0.49);-moz-box-shadow: 46px 0px 38px -17px rgba(0,0,0,0.49);box-shadow: 46px 0px 38px -17px rgba(0,0,0,0.49);border-bottom-left-radius: 0px;border-bottom-right-radius: 0px;">
+                                            <div style="color: #325179;font-family: Avenir Next;font-size: larger;text-align:center;"><b> <%=hasta.Ad+" "+hasta.Soyad %></b></div>
+                             </div>
+                             <div class="col-md-3">
+                                            <div style="text-align:center;color: #325179;font-family: Avenir Next;"><%=hasta.age%></div>
+                             </div>
+                             <div class="col-md-3">
+                                            <div style="text-align:left;color: #325179;font-family: Avenir Next;"> <%=hasta.Cinsiyet==1?"Erkek":"Kadın" %>  </div>
+                             </div>
+ </div>
+                    <div class="row" style="height: 12%;border-radius: 15px;background-color: white;width: 98%;text-align: center;box-shadow: 6px 7px 6px grey;border-top-left-radius: 0px;">
+                         
+                                      <div class="col-md-10">
+                                               <div class="row"style="height: 100%;" >
+                                                         <div class="col-md-2" style="padding: 14px;margin-bottom: auto;margin-top: auto;">
+                                                                   <div class="row"style="height: 60%;"> <img src="/public/img/<%=HASTA_OZGEÇMİŞ.SigaraKullanimi==1?"smoke":"noSmoke"%>.svg" id="sigaraImg" class="sigaraBtn" style="margin: auto;height:80%;width: 80%;"><div class="sigaraBtn" id="sigaraDurum" style="margin: auto;color: #325179;"><%=HASTA_OZGEÇMİŞ.SigaraKullanimi==1?"Kullanıyor":"Kullanmıyor" %></div></div>
+                                                         </div>
+                                                         <div class="col-md-2" style="padding: 14px;margin-bottom: auto;margin-top: auto;">
+                                                                   <div class="row"style="height: 60%;"> <img src="/public/img/<%=HASTA_OZGEÇMİŞ.AlkolKullanimi==1?"alkol":"noAlkol"%>.svg" id="alkolImg" class="alkolBtn" style="margin: auto;height:80%;width: 80%;"><div class="alkolBtn" id="alkolDurum" style="margin: auto;color: #325179;"><%=HASTA_OZGEÇMİŞ.AlkolKullanimi==1?"Kullanıyor":"Kullanmıyor" %></div></div>
+
+                                                         </div>
+                                                         <div class="col-md-2" style="padding: 14px;margin-bottom: auto;margin-top: auto;">
+                                                                   <div class="row"style="height: 60%;"> <img src="/public/img/<%=HASTA_OZGEÇMİŞ.MaddeKullanimi==1?"drug":"noDrug"%>.svg" id="drugImg" class="drugBtn" style="margin: auto;height:80%;width: 80%;"><div class="drugBtn" id="drugDurum" style="margin: auto;color: #325179;"><%=HASTA_OZGEÇMİŞ.MaddeKullanimi==1?"Kullanıyor":"Kullanmıyor" %></div></div>
+                                                         </div>
+                                                         <div class="col-md-2" data-toggle="modal" data-target="#adresModal" style="background-color: #e6f5fb;">
+                                                                   <div class="row" style="height: 60%;"> <img src="/public/img/adres.svg" style="margin: auto;height:80%;width: 80%;"></div>
+                                                                   <div class="row"style=""><div style="margin: auto;color: #325179;">Adres</div></div>
+                                                         </div>
+                                                          <div class="col-md-2"  data-toggle="modal" data-target="#aileModal"style="background-color: #d3ecf4;">
+                                                                   <div class="row"style="height: 60%;"> <img src="/public/img/aileGrupları.svg" style="margin: auto;height:80%;width: 80%;"></div>
+                                                                   <div class="row"style=""><div style="margin: auto;color: #325179;">Aile Bilgileri</div></div>
+                                                         </div>
+                                                          <div class="col-md-2" data-toggle="modal" data-target="#hastaGruplarModal" style="background-color: #c5dfec;">
+                                                                   <div class="row"style="height: 60%;"> <img src="/public/img/hastaGrupları.svg" style="margin: auto;height:80%;width: 80%;"></div>
+                                                                   <div class="row"style=""><div style="margin: auto;color: #325179;">Hasta Grupları</div></div>
+                                                         </div>
+
+                                               </div>
+                                      </div>
+                                        <div class="col-md-2">
+
+                                                   <div class="row"style="height: 62%;"> <img src="/public/img/defaultProfilePic.svg" class="image-circle"></div>
+                                                    <div class="row" > <div data-toggle="modal" data-target="#dahaFazlaModal"  style="margin: auto;color: #325179;">Daha Fazla<img src="/public/img/dahaFazla.svg" class="" style="width: 10px;margin-left: 5px;"></div>     </div>                                 
+                                      </div>
+                          
+                    </div>
+
+
+
+<!-- Modal -->
+<div class="modal" id="hastaGruplarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+ 
+   <!-- Modal content-->
+       <div class="modal-content" style="background-color:#f1f3f3;">
+            <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                <div style="color: white;    font-size: x-large;">Hasta Grupları</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                                              <div class="container" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                                        <div class="row testlerheaderDiv">
+                                                          <div class="col-md-12" style="background-color: #adb5bd;text-align: center;padding: 4px;border-bottom: solid;">Hastanın Bulunduğu Gruplar</div>                                               
+                                                        </div>
+        
+                                              </div>
+                                               <div class="container" id="secilenHgler" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:180px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;margin-bottom: 10px;">
+               
+                                                    <% hasta_hastaGrupları.forEach(function(element) { %>
+                                                    <div id="<%= element.KODU %>" class="row hhgRow">
+                                                             <div class="col-md-12 isim" style="background-color: white;padding: 4px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                                    </div>
+                                                    <%}); %>
+                                               </div>  
+                                                 <div class="container" style="margin-top: 1%;width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                                        <div class="row testlerheaderDiv">
+                                                          <div class="col-md-12" style="background-color: #adb5bd;text-align: center;padding: 4px;border-bottom: solid;">Hasta Grupları</div>                                               
+                                                        </div>
+        
+                                              </div>
+                                               <div class="container" id="hgTable" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:180px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">
+               
+                                                <% hastaGrupları.forEach(function(element) { %>
+                                                  <div class="row hgRow">
+                                                        <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 4px;border-bottom: solid;">
+                                                                   <% color="red";%>  
+                                                                    <%hasta_hastaGrupları.forEach(function(hk) {
+                                                                            if(hk.grupId==element.grupId){color="green" ;}                                                                
+                                                                   });%>
+                                                                   <div class="tik" style="background-color:<%=color %>;height: 25px;width: 25px;margin-left: 46%;" name="<%= element.grupId %>"></div>
+                                                        </div> 
+                                                        <div class="col-md-9 isim" style="background-color: white;padding: 4px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                                  </div>
+                                                  <%}); %>
+                                               </div>  
+                                               <div class="row" style="margin-top: 1%;">
+                                                        <div class="input-group col-md-10 ">
+                                                            <div class="input-group-prepend">
+                                                                  <span class="input-group-text " id="inputGroup-sizing-default">Gurup Adı</span>
+                                                            </div>
+                                                            <input id="yeniGrupAdi" class="form-control" name="yeniGrupAdı" type="text" aria-label="Default" aria-describedby="">
+                                                        </div>
+                                                        <button id="yeniGrupBtn" type="button"  style="background-color: #325179;color: white;margin-left: auto;margin-right: auto;">Yeni Grup Ekle</button>
+
+                                               </div>
+                                               <div class="row" style="margin-top: 1%;">
+                                                       <button id="kaydetHGBtn" data-dismiss="modal" type="button" class="btn btn-primary" style="width: 25%; background-color: #325179;  color: white;border-radius: 8px;margin-left: auto;margin-right: auto;">Kaydet</button>                                   
+                                               </div>
+                  
+            </div>
+       </div>
+   </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="dahaFazla" role="dialog">
+<div class="modal-dialog modal-lg">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+    <h4 class=""><%=hasta.Ad+" "+hasta.Soyad %></h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+    <div class="row"> <div class="row col-md-6"><div class="col-md-6">Hasta Türü</div>   <div class="col-md-6"><b>Kesin Kayıtlı</b></div></div><div class="row col-md-6">   </div>     </div>
+    <div class="row"> <div class="row col-md-6"><div class="col-md-6">Anne Adı</div>   <div class="col-md-6"><b>Sevinç</b></div></div><div class="row col-md-6"> <div class="col-md-6">Baba Adı</div>   <div class="col-md-6"><b>Burak</b></div>       </div></div>
+    <div class="row"> <div class="row col-md-6"><div class="col-md-6">Doğum tarihi</div>   <div class="col-md-6"><b>2018-09-07</b></div></div><div class="row col-md-6"> <div class="col-md-6">Doğum Tarihi(Beyan) </div>   <div class="col-md-6"><b>2018-09-07</b></div>       </div></div>
+    <div class="row"> <div class="row col-md-6"><div class="col-md-6">Doğum Yeri</div>   <div class="col-md-6"><b>İzmir</b></div></div><div class="row col-md-6"> <div class="col-md-6">Uyruk </div>   <div class="col-md-6"><b>   </b></div>       </div></div>
+    <div class="row"> <div class="row col-md-6"><div class="col-md-6">Medeni Hali </div>   <div class="col-md-6"><b>Bekar</b></div></div><div class="row col-md-6"> <div class="col-md-6">    </div>   <div class="col-md-6"><b>    </b></div>       </div></div>
+
+
+
+
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="bg-success" data-dismiss="modal">Close</button>
+    </div>
+  </div>
+  
+</div>
+</div>
+
+
+
+
+<script>
+
+
+  $('.izlemlerROW').click(function() { 
+        $('.izlemlerROW').css('background-color','');
+        $(this).css('background-color','aqua');
+        izlemId=$(this).attr('id').substring(5)
+        izlemBilgi='izlemBilgileri'+izlemId
+        $('.izlemBilgileriROW').hide()
+        $('#'+izlemBilgi).show(); 
+  });
+  
+  
+  
+  secilenHgler=[]
+  
+  <% hasta_hastaGrupları.forEach(function(e) { %>
+    secilenHgler.push({ADI:'<%=e.ADI%>',grupId:<%=e.grupId%>});
+  <%}); %>
+  
+  
+  $('#kaydetHGBtn').click(function() { 
+    $.ajax({
+              url: '/hastaGruplari',
+              method: 'get',
+              data: { secilenHgler: secilenHgler,tc:<%=hasta.Id%> }
+              }).done(function(res) {
+                 
+      });
+  });
+  $('#yeniGrupBtn').click(function() { 
+      yeniAd=$('#yeniGrupAdi').val()
+      $.ajax({
+              url: '/addgroup',
+              method: 'get',
+              data: {yeniAd:yeniAd}
+              }).done(function(res) {
+                if(res.result){
+                      html='<div class="row hgRow"> <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 4px;border-bottom: solid;">'
+                      html+='<div class="tik" style="background-color:red;height: 25px;width: 25px;margin-left: 46%;" name="'+res.Id+'"></div>'
+                      html+=' </div>  <div class="col-md-9 isim" style="background-color: white;padding: 4px;text-align: center;border-bottom: solid;">'+$('#yeniGrupAdi').val()+'</div> </div>'
+                      $("#hgTable").append(html);
+                }
+                
+                
+        });
+  });
+  $('#editProfile').click(function() { 
+    $('.uneditableBody').css('display','none')
+    $('.editableBody').css('display','')
+  });
+  $(document).on('click', "#kaydetDF", function(){
+    $('#dfForm').append('<input type="hidden" name="hastaTc" value="<%=hasta.Id%>" />');
+  
+   
+    $.ajax({
+              url: '/kaydetDF',
+              type: 'post',
+              data: $('#dfForm').serialize()
+              }).done(function(res) {
+                $('.uneditableBody').css('display','')
+                $('.editableBody').css('display','none')  
+      });
+      
+  });
+  
+  
+    $(document).on('click', ".hgRow", function(){
+  
+                if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+                    $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+                    var grupId= $(this).children(".cbx").children().attr("name");
+                    var ADI= $(this).children(".isim").html();
+                    
+                    html=' <div id="'+grupId+'" class="row hhgRow">'
+                   html+='<div class="col-md-12 isim" style="background-color: white;padding: 4px;text-align: center;border-bottom: solid;">'+ADI+'</div>     </div>'
+  
+                    $("#secilenHgler").append(html);
+                    secilenHgler.push({ADI:ADI,grupId:grupId});
+  
+                }
+                else{
+                    $(this).children(".cbx").children().css('background-color','red')
+                    var grupId= $(this).children(".cbx").children().attr("name").split("?")[0];
+                    $('#'+grupId).remove()
+                    secilenHgler.forEach(element => {
+                        if(element.grupId==grupId){
+                          secilenHgler = jQuery.grep(secilenHgler, function(value) {
+                                return value != element;
+                              });
+            
+                        }
+                    });
+                }
+  });
+  
+  
+  
+  
+  
+    
+    </script>
+  
+  
+
+<!-- Modal -->
+<div class="modal" id="sigaraModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+ 
+   <!-- Modal content-->
+       <div class="modal-content" style="background-color:#f1f3f3;">
+            <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                <div style="color: white;    font-size: x-large;">Sigara Kullanım Bilgisi</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                   <div class="container" style="margin-top: 1%;">
+                    
+                          <div class="row">
+                                <div class="col-md-3" style="margin: auto;">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                      <input type="checkbox" class="custom-control-input" name="sigDurum" id="sigDurum" value="1" <%=HASTA_OZGEÇMİŞ.SigaraKullanimi==1?"checked":"" %> >
+                                                    <label class="custom-control-label" for="sigDurum">Kullanıyor</label>
+                                            </div>
+                                </div>
+                                <div class="col-md-9">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                  <span class="input-group-text " id="inputGroup-sizing-default">Günlük Kullanım Miktarı</span>
+                                            </div>
+                                            <input id="sigAdet" class="form-control" name="sigaraAdet" type="number" aria-label="Default" aria-describedby="" value="<%=HASTA_OZGEÇMİŞ.SigaraAdedi%>" >
+                                        </div>
+                                </div>
+                         </div>
+                         <div class="row" style="margin-top:2%;">                                                     
+                              <div class="col-md-12">
+                                                             <div class="custom-control custom-checkbox custom-control-inline" style="margin:auto;">
+                                                                    <input type="checkbox" class="custom-control-input" name="sbGonder" id="sbGonder1" value="1">
+                                                                    <label class="custom-control-label" for="sbGonder1">Sağlık Bakanlığına da Gönder</label>
+                                                            </div>
+                              </div>                                      
+                        </div>          
+                         <div class="row" style="margin-top:2%;">                                                     
+                              <div class="col-md-12">
+                                          <button id="sigaraKaydetBtn" type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                              </div>                                      
+                        </div>                   
+                      
+                  </div>
+            </div>
+       </div>
+   </div>
+</div>
+
+<script>
+
+  $( ".sigaraBtn" ).click(function() {
+     $( "#sigaraModal" ).modal('toggle')
+  });
+  $( "#sigaraKaydetBtn" ).click(function() {
+    sigDurum=0,sigAdet=0,sbGonder=0
+    if($("#sigDurum").is(":checked")) sigDurum=1            
+    sigAdet=$("#sigAdet").val()
+    if($("#sbGonder1").is(":checked")) sbGonder=1            
+
+             $.ajax({
+                type: "post",
+                url: '/hasta/sigaraGuncelle',
+                data:{sigDurum:sigDurum,sigAdet:sigAdet,sbGonder:sbGonder},
+                success: function(data)
+                {
+                    if(data) {
+                          alert('Durum güncellenmiştir.')
+                          if(sigDurum==0){
+                             $('#sigaraImg').attr("src", "/public/img/noSmoke.svg");
+                             $('#sigaraDurum').html('Kullanmıyor')
+                          }
+                          else{
+                             $('#sigaraImg').attr("src", "/public/img/smoke.svg");
+                             $('#sigaraDurum').html('Kullanıyor')
+                          }                      
+                          $( "#sigaraModal" ).modal('toggle')      
+                    }                       
+                }
+            });
+  });
+
+
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal" id="alkolModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+ 
+   <!-- Modal content-->
+       <div class="modal-content" style="background-color:#f1f3f3;">
+            <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                <div style="color: white;    font-size: x-large;">Alkol Kullanım Bilgisi</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                   <div class="container" style="margin-top: 1%;">
+                    
+                          <div class="row">
+                                <div class="col-md-3" style="margin: auto;">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                      <input type="checkbox" class="custom-control-input" name="alDurum" id="alDurum" value="1" <%=HASTA_OZGEÇMİŞ.AlkolKullanimi==1?"checked":"" %> >
+                                                    <label class="custom-control-label" for="alDurum">Kullanıyor</label>
+                                            </div>
+                                </div>
+                               
+                         </div>
+                         <div class="row" style="margin-top:2%;">                                                     
+                              <div class="col-md-12">
+                                                             <div class="custom-control custom-checkbox custom-control-inline" style="margin:auto;">
+                                                                    <input type="checkbox" class="custom-control-input" name="sbGonder" id="sbGonder2" value="1">
+                                                                    <label class="custom-control-label" for="sbGonder2">Sağlık Bakanlığına da Gönder</label>
+                                                            </div>
+                              </div>                                      
+                        </div>          
+                         <div class="row" style="margin-top:2%;">                                                     
+                              <div class="col-md-12">
+                                          <button id="alkolKaydetBtn" type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                              </div>                                      
+                        </div>                   
+                      
+                  </div>
+            </div>
+       </div>
+   </div>
+</div>
+
+<script>
+
+  $( ".alkolBtn" ).click(function() {
+     $( "#alkolModal" ).modal('toggle')
+  });
+  $( "#alkolKaydetBtn" ).click(function() {
+    alDurum=0,sbGonder=0
+    if($("#alDurum").is(":checked")) alDurum=1            
+    
+    if($("#sbGonder2").is(":checked")) sbGonder=1            
+
+             $.ajax({
+                type: "post",
+                url: '/hasta/alkolGuncelle',
+                data:{alDurum:alDurum,sbGonder:sbGonder},
+                success: function(data)
+                {
+                    if(data) {
+                          alert('Durum güncellenmiştir.')
+                          if(sigDurum==0){
+                             $('#alkolImg').attr("src", "/public/img/noAlkol.svg");
+                             $('#alkolDurum').html('Kullanmıyor')
+                          }
+                          else{
+                             $('#alkolImg').attr("src", "/public/img/alkol.svg");
+                             $('#alkolDurum').html('Kullanıyor')
+                          }                      
+                          $( "#alkolModal" ).modal('toggle')      
+                    }                       
+                }
+            });
+  });
+
+
+</script>
+
+
+
+<!-- Modal -->
+<div class="modal" id="maddeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+ 
+   <!-- Modal content-->
+       <div class="modal-content" style="background-color:#f1f3f3;">
+            <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                <div style="color: white;    font-size: x-large;">Madde Kullanım Bilgisi</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                   <div class="container" style="margin-top: 1%;">
+                    
+                          <div class="row">
+                                <div class="col-md-3" style="margin: auto;">
+                                            <div class="custom-control custom-checkbox custom-control-inline">
+                                                      <input type="checkbox" class="custom-control-input" name="madDurum" id="madDurum" value="1" <%=HASTA_OZGEÇMİŞ.MaddeKullanimi==1?"checked":"" %> >
+                                                    <label class="custom-control-label" for="madDurum">Kullanıyor</label>
+                                            </div>
+                                </div>
+                               
+                         </div>
+                         <div class="row" style="margin-top:2%;">                                                     
+                              <div class="col-md-12">
+                                                             <div class="custom-control custom-checkbox custom-control-inline" style="margin:auto;">
+                                                                    <input type="checkbox" class="custom-control-input" name="sbGonder" id="sbGonder3" value="1">
+                                                                    <label class="custom-control-label" for="sbGonder3">Sağlık Bakanlığına da Gönder</label>
+                                                            </div>
+                              </div>                                      
+                        </div>          
+                         <div class="row" style="margin-top:2%;">                                                     
+                              <div class="col-md-12">
+                                          <button id="maddeKaydetBtn" type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                              </div>                                      
+                        </div>                   
+                      
+                  </div>
+            </div>
+       </div>
+   </div>
+</div>
+
+<script>
+
+  $( ".drugBtn" ).click(function() {
+     $( "#maddeModal" ).modal('toggle')
+  });
+  $( "#maddeKaydetBtn" ).click(function() {
+    madDurum=0,sbGonder=0
+    if($("#madDurum").is(":checked")) madDurum=1            
+    
+    if($("#sbGonder3").is(":checked")) sbGonder=1            
+
+             $.ajax({
+                type: "post",
+                url: '/hasta/maddeGuncelle',
+                data:{madDurum:madDurum,sbGonder:sbGonder},
+                success: function(data)
+                {
+                    if(data) {
+                          alert('Durum güncellenmiştir.')
+                          if(sigDurum==0){
+                             $('#drugImg').attr("src", "/public/img/noDrug.svg");
+                             $('#drugDurum').html('Kullanmıyor')
+                          }
+                          else{
+                             $('#drugImg').attr("src", "/public/img/drug.svg");
+                             $('#drugDurum').html('Kullanıyor')
+                          }                      
+                          $( "#maddeModal" ).modal('toggle')      
+                    }                       
+                }
+            });
+  });
+
+
+
+  $('#editProfile').click(function() { 
+  $('.uneditableBody').css('display','none')
+  $('.editableBody').css('display','')
+});
+$(document).on('click', "#kaydetDF", function(){
+  $('#dfForm').append('<input type="hidden" name="hastaTc" value="<%=hasta.Id%>" />');
+
+ 
+  $.ajax({
+            url: '/kaydetDF',
+            type: 'post',
+            data: $('#dfForm').serialize()
+            }).done(function(res) {
+              $('.uneditableBody').css('display','')
+              $('.editableBody').css('display','none')  
+    });
+    
+});
+
+
+
+</script>
+
+
+
+  <!-- Modal -->
+  <div class="modal" id="dahaFazlaModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+  
+    <!-- Modal content-->
+        <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                <div style="color: white;    font-size: x-large;">Daha Fazla</div> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <div class="modal-body uneditableBody"  >
+                                           <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Hasta Türü:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=DF.kayıtTürü%></div></div>
+                                                                         
+                                          </div>
+                                          <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Anne Adı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.AnneAd%></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Baba Adı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.BabaAd%></div></div>
+                                          </div>
+                                          <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Doğum Tarihi:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=DF.dogumTar%></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Doğum Tarihi(Beyan)</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=DF.beyanDogumTar%></div></div>
+                                          </div>
+                                          <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Medeni Hali:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=DF.MedeniHal%></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Evlenme Yaşı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.evlenmeYasi%></div></div>                                                              
+                                          </div>
+                                         <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Sosyal Güvencesi:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=DF.SosyalGuvence%></div></div>   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Kan Grubu:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=DF.kanGrubu%></div></div>                                                                                                                                   
+                                          </div>
+                                           <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Eş Ad Soyad:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.EsAdSoyad%></div></div>   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Eş Kan Grubu:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.EsKanGrubu%></div></div>                                                                                                                                   
+                                          </div>
+                                           <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Eş Yaş:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.EsYas%></div></div>   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Eş Telefon:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.EsTelefon%></div></div>                                                                                                                                   
+                                          </div>
+                                           <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>İlk Gebelik Yaşı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.ilkgebelikYasi%></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Çocuk Sayısı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.cocukSayisi%></div></div>                                                              
+                                          </div>
+                                            <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Canlı Doğum Sayısı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.CanliDogum%></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Ölü Doğum Sayısı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.OluDogum%></div></div>                                                              
+                                          </div>
+                                            <div class="row" style="margin-top:2%;">   
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Düşük Sayısı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.dusukSayisi%></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Toplam Gebelik Sayısı:</b></div></div>
+                                                                          <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=hasta.gebelikSayisi%></div></div>                                                              
+                                          </div>
+                                          <div class="container"> <div class="row" style="margin-top:2%;"><div class="col-md-12" ><u id="editProfile">Hasta Bilgilerini Değiştir </u></div> </div></div>
+
+                </div>
+                <form id="dfForm">
+                 <div class="modal-body editableBody" style="display: none;"  >
+                                          <div class="row">    
+                                                      <div class="col-md-6">
+                                                                <div class="input-group ">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Anne Adı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="anneAd" type="text" aria-label="Default" aria-describedby="" value="<%=hasta.AnneAd%>">
+                                                                </div>
+                                                        </div>   
+
+                                                        <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Baba Adı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="babaAd" type="text" aria-label="Default" value="<%=hasta.BabaAd%>" aria-describedby="">
+                                                                </div>
+                                                        </div>        
+                                                                                 
+                                                       
+                                          </div>
+                                        <div class="row" style="margin-top: 1%;">    
+                                                      <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Doğum Tarihi</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="dogumTar" type="date" aria-label="Default" aria-describedby="" value="<%=DF.dogumTar%>">
+                                                                </div>
+                                                        </div>   
+                                                        <div class="col-md-6">
+                                                                <div class="input-group ">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Doğum Tarihi(Beyan)</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="dogumTarBeyan" type="date" aria-label="Default" aria-describedby="" value="<%=DF.beyanDogumTar%>">
+                                                                </div>
+                                                        </div>                                                                 
+                                          </div>
+                                          <div class="row" style="margin-top:1%;">
+                                                <div class="col-md-6">
+                                                      <div class="input-group ">
+                                                          <div class="input-group-prepend">
+                                                                <span class="input-group-text " id="inputGroup-sizing-default">Medeni Hali</span>
+                                                          </div>
+                                                          <select name="medeniHal" class="browser-default custom-select"required>
+                                                                 <% DF.skrsMedenihal.forEach(function(e) { if(e.KODU==DF.medenihal){ %>
+                                                                  <option selected value="<%= e.KODU  %>"> <%= e.ADI  %></option>
+                                                                  <%} else{ %>
+                                                                  <option value="<%= e.KODU  %>"> <%= e.ADI  %></option>
+                                                                 <%}}); %>
+                                                          </select>
+                                                      </div>
+                                                </div>
+                                                  <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Evlenme Yaşı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="canliDogumSayisi" type="number" aria-label="Default" value="<%=hasta.evlenmeYasi%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                          </div>
+                                          <div class="row" style="margin-top:1%;">
+                                                <div class="col-md-6">
+                                                      <div class="input-group ">
+                                                          <div class="input-group-prepend">
+                                                                <span class="input-group-text " id="inputGroup-sizing-default">Kan Grubu</span>
+                                                          </div>
+                                                          <select name="kanGrubu" class="browser-default custom-select"required>
+                                                                 <% DF.skrsKanGrubu.forEach(function(e) { if(0==hasta.KanGurubu){ %>
+                                                                  <option selected value="0">Belirtilmedi</option>
+                                                                  <%} else{ %>
+                                                                  <option value="<%= e.KODU  %>"> <%= e.ADI  %></option>
+                                                                 <%}}); %>
+                                                          </select>
+                                                      </div>
+                                                </div>
+                                                  <div class="col-md-6">
+                                                      <div class="input-group ">
+                                                          <div class="input-group-prepend">
+                                                                <span class="input-group-text " id="inputGroup-sizing-default">Sosyal Güvence</span>
+                                                          </div>
+                                                          <select name="sosyalGuvence" class="browser-default custom-select"required>
+                                                                 <% DF.skrsSosyalGuvence.forEach(function(e) { if(e.KODU==hasta.SosyalGuvence){ %>
+                                                                  <option selected value="<%= e.KODU  %>"> <%= e.ADI  %></option>
+                                                                  <%} else{ %>
+                                                                  <option value="<%= e.KODU  %>"> <%= e.ADI  %></option>
+                                                                 <%}}); %>
+                                                          </select>
+                                                      </div>
+                                                </div>
+                                          </div>
+                                        <div class="row" style="margin-top:1%;">
+                                               <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">İlk Gebelik Yaşı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="ilkGebelikYasi" type="number" aria-label="Default" value="<%=DF.ilkgebelikYasi%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                                  <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Çocuk Sayısı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="cocukSayisi" type="number" aria-label="Default" value="<%=hasta.cocukSayisi%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                          </div>
+                                          <div class="row" style="margin-top:1%;">
+                                               <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Canlı Doğum Sayısı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="canliDogum" type="number" aria-label="Default" value="<%=hasta.CanliDogum%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                                  <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Ölü Doğum Sayısı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="oluDogum" type="number" aria-label="Default" value="<%=hasta.OluDogum%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                          </div>
+                                         <div class="row" style="margin-top:1%;">
+                                               <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Düşük Sayısı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="dusukSayisi" type="number" aria-label="Default" value="<%=hasta.dusukSayisi%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                                  <div class="col-md-6">
+                                                                <div class="input-group">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Toplam Gebelik Sayısı</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="gebelikSayisi" type="number" aria-label="Default" value="<%=hasta.gebelikSayisi%>" aria-describedby="">
+                                                                </div>
+                                                </div>    
+                                          </div>
+                                                                 
+                                          <div class="container"> <div class="row" style="margin-top:2%;">
+                                              <div class="col-md-12"  style="text-align: center;">
+                                                  <button id="kaydetDF" type="button" class="" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 5px;padding: 5px;">Kaydet</button>
+                                              </div> 
+                                         </div>
+                                        </form>    
+                                </div>
+
+                </div>
+               
+        </div>
+    </div>
+  </div>
+
+
+      
+  <!-- Modal -->
+  <div class="modal" id="adresModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  
+    <div class="modal-dialog modal-lg">
+   
+     <!-- Modal content-->
+         <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                  <div style="color: white;    font-size: x-large;">Adres Bilgileri</div> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+      
+                     <div class="container" style="margin-top: 1%;">
+                     
+                       <div class="">
+                               <div style="border-radius: 20px; padding: 14px;background-color: #D3ECF4;width: 100%;text-align: left;box-shadow: 6px 7px 6px grey;">
+                                            <div class="row" style="margin-top:2%;">   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>İl:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.il%></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>İlçe:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.ilce%></div></div>
+                                           </div>
+                                           <div class="row" style="margin-top:2%;">   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Mahalle:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.mahalle%></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Köy:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.koy%></div></div>
+                                           </div>
+                                      
+                                           <div class="row" style="margin-top:2%;">   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Dış Kapı No:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.disKapi%></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>İç Kapı No:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.icKapi%></div></div>                                                              
+                                           </div>
+                                             <div class="row" style="margin-top:2%;">   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Açık Adres</b></div></div>
+                                                                           <div class="col-md-9" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.acikAdres%></div></div>
+                                                                                                                               
+                                           </div>
+                                            <div class="row" style="margin-top:2%;">  <div class="col-md-12" style=""><div style="margin: auto;color: ##3251D4;font-size: inherit;"><b>Telefonlar</b></div></div></div>
+                                           <div class="row" style="margin-top:2%;">   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Ev Telefon:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.evtel%></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Cep Telefon:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.ceptel%></div></div>                                                              
+                                           </div>
+                                             <div class="row" style="margin-top:2%;">   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>İş Telefon:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.istel%></div></div>   
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><b>Mail:</b></div></div>
+                                                                           <div class="col-md-3" style=""><div style="margin: auto;color: #325179;font-size: inherit;"><%=ai.mail%></div></div>                                                                                                                                           
+                                           </div>
+                                 </div>
+                               </div>
+                             
+                         
+                     </div>
+                 </div>
+           </div>
+         </div>
+       </div>
+
+ 
+<!-- Modal -->
+<div class="modal" id="aileModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div class="modal-dialog modal-lg">
+
+  <!-- Modal content-->
+      <div class="modal-content" style="background-color:#f1f3f3;">
+           <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+               <div style="color: white;    font-size: x-large;">Aile Bilgileri</div> 
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+           </div>
+           <div class="modal-body">
+   
+                  <div class="container" style="margin-top: 1%;">
+                               <div class="row" style="border-radius: 15px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;border-top-left-radius: 0px;height: 600px;width:99%;overflow: auto;padding-bottom: 15px;">
+                                 <% aileBilgileri.forEach(function(e) { %>
+     
+                                     <div class="container akrabaRow" style="background-color: #E6F5FB;text-align: center;height: 200px;border-radius: 20px;width: 96%;    margin-top: 5%;">
+                                                                               <div class="row" style="margin-top:2%;">   
+                                                                                       <div class="col-md-5" style="">
+                                                                                             <div class="row" style="margin-top:2%;">   
+                                                                                                       <img src="/public/img/defaultProfilePic.svg" class="" style="    margin: auto;height: 130px;">
+                                                                                             </div>
+                                                                                               <div class="row" style="margin-top:5%;">   
+                                                                                                               <div style="margin: auto;color: #325179;font-size: 18px;"><b>TC NO:</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.yTc %></div>                                                                                   
+                                                                                               </div>
+                                                                                     
+                                                                                       </div>
+                                                                                       <div class="col-md-7" style="">
+                                                                                               <div class="row" style="margin-top:1%;">   
+                                                                                                               <div style="color: #325179;font-size: 18px;"><b>Ad</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.yAd %></div>                                                                                   
+                                                                                               </div>
+                                                                                               <div class="row" style="margin-top:1%;">   
+                                                                                                               <div style="color: #325179;font-size: 18px;"><b>Soyad</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.ySoyad %></div>                                                                                   
+                                                                                               </div>
+                                                                                               <div class="row" style="margin-top:1%;">   
+                                                                                                               <div style="color: #325179;font-size: 18px;"><b>Doğum Tarihi</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.yDogumTarihi %></div>                                                                                   
+                                                                                               </div>
+                                                                                              
+                                                                                                <div class="row" style="margin-top:1%;">   
+                                                                                                               <div style="color: #325179;font-size: 18px;"><b>İl</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.yil %></div>                                                                                   
+                                                                                               </div>
+                                                                                                <div class="row" style="margin-top:1%;">   
+                                                                                                               <div style="color: #325179;font-size: 18px;"><b>İlçe</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.yilce %></div>                                                                                   
+                                                                                               </div>
+                                                                                                <div class="row" style="margin-top:1%;">   
+                                                                                                               <div style="color: #325179;font-size: 18px;"><b>Akrabalık Derecesi</b></div> <div style="margin: auto;color: #325179;font-size: 18px;"><%= e.yakinlik %></div>                                                                                   
+                                                                                               </div>
+                                                                                       </div>                                                                   
+                                                                               </div>                             
+                                       </div>
+                                       <%}); %>          
+                                         
+                             </div>
+                  
+                  </div>
+           </div>
+      </div>
+  </div>
+</div>
+
+

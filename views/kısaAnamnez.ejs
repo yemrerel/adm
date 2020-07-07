@@ -1,0 +1,763 @@
+
+
+
+<%- include('hastaHeader'); -%>
+
+ <form id="kisaAnamnezForm">
+
+
+
+
+<div class="row">
+         <div class="col-md-6">
+                    <div class="row">
+
+                              <div class="" style="background-color: white;border-radius: 10px;padding: 11px;margin-bottom: -43px;height: 80px;color: #325179;font-family: Avenir Next;box-shadow: 6px 7px 6px grey;width: 140px;text-align: center;">Şikayet</div>                            
+
+                    </div>
+                    <div class="row">
+                            <div style="border-radius: 20px; padding: 14px;background-color: white;width: 98%;text-align: center;box-shadow: 6px 7px 6px grey;">
+                                <textarea name="sikayet" class="kutu" rows="3" placeholder="Örnek.." required=""></textarea>
+                            </div>
+                    </div>
+         </div>  
+        <div class="col-md-6">
+                    <div class="row">
+
+                              <div class="" style="background-color: white;border-radius: 10px;padding: 11px;margin-bottom: -43px;height: 80px;color: #325179;font-family: Avenir Next;box-shadow: 6px 7px 6px grey;width: 140px;text-align: center;">Hikaye ve Fizik Muayene</div>                            
+
+                    </div>
+                    <div class="row">
+                            <div style="border-radius: 20px; padding: 14px;background-color: white;width: 100%;text-align: center;box-shadow: 6px 7px 6px grey;">
+                                <textarea name="hikaye"class="kutu" rows="3" placeholder="Örnek.." required=""></textarea>
+                            </div>
+                    </div>
+         </div>                           
+</div>
+<div class="row" style="margin-top:1%;">
+    <div class="col-md-4" style="">
+             <div class=" has-search" style="width: 100%;" >
+                                        <span class="fa fa-search form-control-feedback"></span>
+                                        <input id="taniAra" class="form-control"  type="text" placeholder="Tanı Ara" aria-label="Default" aria-describedby="" style="font-size:1.5rem;box-shadow: 6px 7px 6px grey;    border-radius: 1rem;">
+             </div>     
+    </div>  
+    <div class="col-md-2" style="margin: auto;">
+        <button id="ilacRaporBtn" type="button" class="btn btn-lg btn-block " style="background-color: #325179;color: white;">İlaç Raporları</button>
+             
+     </div>
+    <div class="col-md-2" style="margin: auto;">
+                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                             <input type="checkbox" class="custom-control-input" name="kontrol" id="kontrol" value="kontrol">
+                                             <label class="custom-control-label" for="kontrol">Kontole Gelecek</label>
+                                    </div>  
+     </div>
+     <div class="col-md-4" style="margin: auto;">
+                                   <div id="kTar" class="input-group"style="margin: auto;display:none" >
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text " id="inputGroup-sizing-default">Kontrol Tarihi</span>
+                                                                  </div>
+                                                                  <input  class=" form-control" type="date" name="kontrolTarihi" aria-label="Default" aria-describedby="" required="">
+                                   </div>
+     </div>
+</div>  
+
+<div class="row" style="height: 35%;margin-top: 1%;">
+         <div class="col-md-6" style="">
+                                     
+                             <div class="container" id=""style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;border-bottom-left-radius: 0;border-bottom-right-radius: 0;border-top-left-radius: 20px;border-top-right-radius: 20px;overflow-y: auto;overflow-x: hidden;">
+                                     <div class="row headerDiv">
+                                             <div class="col-md-2" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;">
+                                           </div> 
+                                           <div class="col-md-4" style="background-color: white;text-align: center;padding: 10px;border-right: solid;border-bottom: solid;">
+                                             ICD Kodu
+                                           </div>  
+                                            <div class="col-md-6" style="background-color: white;border-top-right-radius: 15px;padding: 10px;text-align: center;border-bottom: solid;">
+                                             İsim
+                                           </div>
+                                     </div>
+                            </div>
+                            <div class="container" id="taniTable"style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 80%;border-radius: 20px;overflow-y: overlay;overflow-x: hidden;border-top-left-radius: 0;border-top-right-radius: 0;">
+                                   
+                                         <% ICDLER.forEach(function(ICD) { %>
+                                    
+                                      <div class="row taniRow">
+                                             <div class="col-md-2 cbx" style="background-color: white;text-align: right;padding: 10px;border-bottom: solid;">
+                                                    <div class="tik" style="background-color: red;height: 25px;width: 25px;margin-left: 46%;" name="<%= ICD.KODU+"?"+ICD.ADI %>"></div>
+                                           </div> 
+                                           <div class="col-md-4 kod" style="background-color: white;text-align: center;padding: 10px;border-right: solid;border-bottom: solid;"> <%= ICD.KODU %></div>  
+                                            <div class="col-md-6 isim" style="background-color: white;padding: 10px;text-align: center;border-bottom: solid;"><%= ICD.ADI  %></div>
+                                     </div>
+                                         <%}); %>
+                            </div>
+                                 
+         </div>  
+       <div class="col-md-6">
+                   
+                    
+                            <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; border-radius: 20px;border-bottom-right-radius: 0;">
+                                     <div class="row" id="secilenHeader">
+                                             <div class="col-md-4" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;border-right: solid;border-top-left-radius: 20px;">
+                                              ICD Kodu
+                                           </div> 
+                                           <div class="col-md-4" style="background-color: white;text-align: center;padding: 10px;border-right: solid;border-bottom: solid;">
+                                            Tanı Türü
+                                           </div>  
+                                            <div class="col-md-4" style="background-color: white;border-top-right-radius: 15px;padding: 10px;text-align: center;border-bottom: solid;">
+                                             İsim
+                                           </div>
+                                     </div>
+                                                 
+                            </div>
+                            <div class="container" id="secilenTanilarTable" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 80%; border-radius: 20px; overflow-y: overlay; border-top-left-radius: 0;border-top-right-radius: 0;">
+                                    
+                                                 
+                            </div>
+                                 
+         </div>         
+</div>
+
+<div class="row" style="margin-top:2%;">
+            <div class="col-md-4">
+                              <button id="sevkBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Sevket</button>
+            </div>
+            <div class="col-md-4">
+                              <button id="receteBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Reçete</button>
+          </div>
+            <div class="col-md-4">
+                        <button id="mynBitirBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Muayeneyi Bitir</button>
+           </div>                                      
+</div>
+
+
+
+
+
+
+
+
+<!-- Modal -->
+<div class="modal" id="sevketModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<div class="modal-dialog modal-lg">
+
+  <!-- Modal content-->
+  <div class="modal-content" style="background-color:#f1f3f3;">
+    <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+       <div style="color: white;    font-size: x-large;">Sevk Bilgileri</div> 
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+   
+    <div class="container" style="margin-top: 3%;">
+         <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Sevk Nedeni</div>
+                        <div class="col-md-6" style="">     
+                                  <select class="browser-default custom-select">
+                                         <% sevkNedeni.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                         <%}); %>
+                                  </select>
+
+                        </div>        
+          </div>
+          <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Sevk Edilen Klinik</div>
+                        <div class="col-md-6" style="">     
+                                  <select class="browser-default custom-select">
+                                    <% klinikler.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                <%}); %>                          
+                                 </select>
+                        </div>        
+          </div>
+         <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Sevk Vasıtası</div>
+                        <div class="col-md-6" style="">     
+                                      <label class="radio-inline">
+                                            <input type="radio" value="1" name="sevkVasitasi" checked>Ambulans
+                                      </label>
+                                      <label class="radio-inline" style="margin-left: 10%;">
+                                            <input type="radio" value="0" name="sevkVasitasi">Kendi İmkanlarıyla
+                                      </label>
+                        </div>          
+          </div>
+          <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Refakatçi Durumu</div>
+                        <div class="col-md-6" style="">     
+                                      <label class="radio-inline">
+                                            <input type="radio" value="1" name="refakatci" checked>Var
+                                      </label>
+                                      <label class="radio-inline" style="margin-left: 10%;">
+                                            <input type="radio" value="0"name="refakatci">Yok
+                                      </label>
+                        </div>        
+          </div>
+          <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Sevk Edileceği İl</div>
+                        <div class="col-md-6" style="">     
+                                  <select id="iller" class="browser-default custom-select">
+                                                 <% iller.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>
+                                  </select>
+                        </div>        
+          </div>
+       
+
+
+
+          <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Sevk Edileceği İlçe</div>
+                        <div class="col-md-6" style="">     
+                                  <select id="ilceler"class="browser-default custom-select">
+                                                
+                                  </select>
+
+                        </div>        
+          </div>
+          <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-4" style="">Açıklama</div>
+                        <div class="col-md-6" style="">     
+                                 <div style="border-radius: 20px; padding: 14px;background-color: white;width: 98%;text-align: center;box-shadow: 6px 7px 6px grey;">
+                                <textarea class="kutu" rows="5" placeholder="Örnek.." required=""></textarea>
+                            </div>
+
+                        </div>        
+          </div>
+
+
+    </div>
+    <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                              <button id="temizleSevketModal" type="button" class="" data-toggle="modal" data-target="#sevketModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;">Temizle</button>
+                              <button type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;"data-dismiss="modal">Kaydet</button>
+    </div>
+  </div>
+  
+</div>
+</div>
+</div>
+
+
+</form>
+
+<form id="tanilariKaydetForm" action="/hasta//kisaAnamnez/TaniKaydet" method="post"></form>
+</form>
+
+<form id="hastaProfili" action="/hasta/hastaProfili" method="post"></form>
+
+
+
+<script>
+
+raporlar=[]
+
+
+$( "#ilacRaporBtn").click(function() {
+      $.ajax({
+            url: '/ilacRaporlariniGetir',
+            method: 'post',
+            data:{tc:<%= hasta.Id%>}
+            }).done(function(res) {
+                    if(res!=null){
+                        $("#RaporTable").empty()
+                        etkinMaddeler=[]
+                        for (let index = 0; index < res.length; index++) {//eraporEtkinMaddeListesi
+                            const e = res[index];
+                            console.log(e)
+                            html= `<div class="row"> 
+                                        <div class="col-md-12">
+                                                 <div class="row"> 
+                                                        <div class="col-md-6" style="background-color: white;text-align: center;padding: 2px;font-size: smaller;"> 
+                                                                    <u style="color: #325179;font-weight: bold;">Rapor Takip No:</u>`+e.raporTakipNo+`
+                                                        </div>
+                                                        <div class="col-md-6" style="background-color: white;text-align: center;padding: 2px;font-size: smaller;"> 
+                                                                    <u style="color: #325179;font-weight: bold;">Rapor Tarihi:</u>`+e.raporTarihi+`
+                                                        </div>
+                                                  </div>`
+                                                   if(e.eraporEtkinMaddeListesi.length==undefined){//array değil tek eleman
+                                                             etkinMaddeler.push(e.eraporEtkinMaddeListesi)
+                                                    }
+                                                    else{
+                                                        for (let i = 0; i < e.eraporEtkinMaddeListesi.length; i++) {
+                                                            etkinMaddeler.push(e.eraporEtkinMaddeListesi[i])
+                                                        }
+                                                    }
+                                                    for (let k = 0; k < etkinMaddeler.length; k++) {
+                                                        html+=`<div class="row">
+                                                                    <div class="col-md-4" style="font-size: smaller;background-color: white;text-align: center;padding: 2px;">
+                                                                        <u style="color: #325179;font-weight: bold;">Etkin Madde Kodu:</u> `+etkinMaddeler[k].etkinMaddeKodu+`
+                                                                    </div>
+                                                                    <div class="col-md-4" style="font-size: smaller;background-color: white;text-align: center;padding: 2px;">
+                                                                                <u style="color: #325179;font-weight: bold;">Etkin Madde Adı:</u> `+etkinMaddeler[k].etkinMaddeDVO.adi+` 
+                                                                   </div>
+                                                                   <div class="col-md-4" style="font-size: smaller;background-color: white;text-align: center;padding: 2px;">
+                                                                                <u style="color: #325179;font-weight: bold;">Etkin Madde Adı:</u> `+etkinMaddeler[k].etkinMaddeDVO.formu+` 
+                                                                   </div>
+                                                                </div> `                                                   
+                                                    }
+
+                                           html+=` <div class="row" style="border-bottom: solid;"> 
+                                                       <div class="col-md-12" style="font-size: smaller;background-color: white;text-align: center;padding: 2px;">
+                                                            <u style="color: #325179;font-weight: bold;">Rapor Açıklaması:</u>`+e.eraporAciklamaListesi.aciklama+` 
+                                                        </div>                              
+                                            </div></div>`
+                                    $("#RaporTable").append(html);
+                        }            
+
+                        $('#raporIlacModal').modal('show');
+                    }
+                   
+            });   
+});
+
+
+
+$(document).ready(function(){
+    $("#kontrol").change(function() {
+            if($("#kontrol").prop('checked') == true){
+                $("#kTar").show();
+            }
+            else{
+
+                $("#kTar").hide();
+            }
+    });
+ 
+$( "#sevkBtn").click(function() {
+        if(secilenTanılar.length!=0){
+            $('#sevketModal').modal('show'); 
+        }
+        else{
+            alert('Lütfen önce tanı seçiniz.')
+        }
+});
+
+$( "#temizleSevketModal").click(function() {
+
+   
+    $("#sevketModal")
+    .find("input,textarea,select")
+    .val('')
+    .end()
+    .find("input[type=checkbox], input[type=radio]")
+    .prop("checked", "")
+    .end();
+});
+
+var secilenTanılar=[];
+
+$( "#receteBtn").click(function() {
+    if(secilenTanılar.length!=0){
+             $('#kisaAnamnezForm').attr('action', '/hasta/kisaAnamnez/recete');
+             $('#kisaAnamnezForm').attr('method', 'post');
+             secilenTanılar.forEach(element => {
+                    var string=element.kod+"?"+element.taniTuru+"?"+element.isim;
+                    var input = $("<input>").attr("type", "hidden").attr("name", "tanilar").val(string);
+                    $('#kisaAnamnezForm').append(input);
+             });
+             $('#kisaAnamnezForm').submit(); 
+    }
+    else{
+            alert('Lütfen önce tanı seçiniz.')
+    }
+});
+
+$( "#mynBitirBtn").click(function() {
+
+    var input = $("<input>").attr("type", "hidden").attr("name", "secilenTanilar").val(JSON.stringify(secilenTanılar));
+    $('#tanilariKaydetForm').append(input);
+    var input = $("<input>").attr("type", "hidden").attr("name", "MESLEKI_MARUZIYET").val(JSON.stringify(MESLEKI_MARUZIYET));
+    $('#tanilariKaydetForm').append(input);
+    var input = $("<input>").attr("type", "hidden").attr("name", "BULASICI_HASTALIK_BILDIRIM").val(JSON.stringify(BULASICI_HASTALIK_BILDIRIM));
+    $('#tanilariKaydetForm').append(input);
+    var input = $("<input>").attr("type", "hidden").attr("name", "hastaId").val((<%=hasta.Id%>));
+    $('#tanilariKaydetForm').append(input);
+
+    $.ajax({
+        url: '/hasta/kisaAnamnez/TaniKaydet',
+        method: 'post',
+        data: $("#tanilariKaydetForm").serialize()
+        }).done(function(res) {
+            if(res!=null){
+                alert('Muayene Kaydedilmiştir.')
+                var input = $("<input>").attr("type", "hidden").attr("name", "isim").val(<%=hasta.Id%>);
+                            $('#hastaProfili').append(input); 
+                            $("#hastaProfili").submit();      
+            }
+    });
+});
+MESLEKI_MARUZIYET=[]
+BULASICI_HASTALIK_BILDIRIM={}
+
+$( "#maruzGonderBtn").click(function() {
+    MeslekiMaruziyetDurumu=$( "#MeslekiMaruziyetDurumu").val()
+    maruzMeslek=$( "#maruzMeslek").val()
+    MESLEKI_MARUZIYET.push({maruziyetKod:maruziyetKod,MeslekiMaruziyetDurumu:MeslekiMaruziyetDurumu,maruzMeslek:maruzMeslek})
+});
+$( "#bulasiciGonderBtn").click(function() {
+    vakaTipi=$( "#vakaTipi").val()
+    taniTur=$( "#taniTur").val()
+    klnikTarih=$( "#klnikTarih").val()
+    BULASICI_HASTALIK_BILDIRIM={bulacisiKod:bulacisiKod,vakaTipi:vakaTipi,taniTur:taniTur,klnikTarih:klnikTarih}
+});
+
+maruziyetKod=0
+bulacisiKod=0
+$(document).on('click', ".taniRow", function(){
+    //Your code
+
+    if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+        $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+        var kod= $(this).children(".cbx").children().attr("name").split("?")[0];;
+        var isim= $(this).children(".cbx").children().attr("name").split("?")[1];;
+
+       var html= '<div  class="row secilenTanilarTable ">';
+       html+= '<div class="col-md-4 kod" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;">'+kod+'</div>'; 
+       html+= '<div class="col-md-4 tür" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;">'+tanıTürü+'</div>';  
+       html+= '<div class="col-md-4 isim" style="background-color: white;padding: 10px;text-align: center;border-bottom: solid;">'+isim+'</div> </div>';
+      
+        $("#secilenTanilarTable").append(html);
+        var t={kod:kod,taniTuru:tanıTürü,isim:isim};
+        secilenTanılar.push(t);
+        //mesleki maruziyet ve bulaşıcı hastalık kontrol
+        $.ajax({
+            type: "POST",
+            url: '/taniKontrol',
+            data: {kod:kod},
+            success: function(data)
+            {
+                 console.log(data.result)  // 0 gelirse normal 1 gelirse maruziyet 2 gelirse bulaşıcı       
+                 if(data.result==1){
+                    maruziyetKod=kod
+                    $( "#maruziyetModal" ).modal('toggle')
+                 }     
+                 if(data.result==2){
+                    bulacisiKod=kod
+                    $( "#bulasiciModal" ).modal('toggle')
+                 }               
+            }
+        });
+
+        
+    }
+    else{
+        $(this).children(".cbx").children().css('background-color','red')
+        var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+        var str=":contains("+kod+")" ;
+        $(".secilenTanilarTable").remove(str);
+        secilenTanılar.forEach(element => {
+            if(element.kod==kod){
+                secilenTanılar = jQuery.grep(secilenTanılar, function(value) {
+                    return value != element;
+                  });
+
+            }
+        });
+
+    }
+});
+    $("#taniAra").on("keyup", function () {
+        var value =this.value.toLocaleUpperCase('tr-TR')
+        this.value = this.value.toLocaleUpperCase('tr-TR')
+            // $.ajax({
+            //     url: '/tanFilter',
+            //     method: 'get',
+            //     data: { value: value }
+            //     }).done(function(tanılar) {
+                    
+            //        $( ".taniRow" ).remove();
+
+                  
+            //         $.each(tanılar, function (index, value) {
+            //             var html= '<div class="row taniRow">';
+            //             html+= '<div class="col-md-2 cbx" style="background-color: white;text-align: right;padding: 10px;border-bottom: solid;">'; 
+            //             html+= '<div class="tik" style="background-color: red;height: 25px;width: 25px;margin-left: 46%;" name="'+value.KODU+'?'+value.ADI+'"></div></div> ';  
+            //             html+= ' <div class="col-md-4 kod" style="background-color: white;text-align: center;padding: 10px;border-right: solid;border-bottom: solid;">'+value.KODU+'</div>  ';
+            //             html+= '<div class="col-md-6 isim" style="background-color: white;padding: 10px;text-align: center;border-bottom: solid;">'+value.ADI+'</div> </div>';
+
+            //            // $( "#taniTable" ).append(html);      
+            //            $( ".headerDiv" ).after(html);                 
+                       
+            //         });  
+                                                     
+            // });
+            $( ".taniRow" ).remove();
+            $.get( "/tanFilter", { value:value} )
+                .done(function( tanılar ) {
+                  
+                            $.each(tanılar, function (index, value) {
+                                color="red"
+                                var found_names = $.grep(secilenTanılar, function(v) {
+                                    return v.kod === value.KODU;
+                                });
+                                if (found_names.length==1){color="green"}
+                              var html= '<div class="row taniRow">';
+                              html+= '<div class="col-md-2 cbx" style="background-color: white;text-align: right;padding: 10px;border-bottom: solid;">'; 
+                              html+= '<div class="tik" style="background-color:'+color+';height: 25px;width: 25px;margin-left: 46%;" name="'+value.KODU+'?'+value.ADI+'"></div></div> ';  
+                              html+= ' <div class="col-md-4 kod" style="background-color: white;text-align: center;padding: 10px;border-right: solid;border-bottom: solid;">'+value.KODU+'</div>  ';
+                              html+= '<div class="col-md-6 isim" style="background-color: white;padding: 10px;text-align: center;border-bottom: solid;">'+value.ADI+'</div> </div>';
+      
+                              $( "#taniTable" ).append(html);          
+                            });  
+            });
+
+    });
+
+ 
+
+var tanıTürü="Ön Tanı";
+$( "#anaTanı").click(function() {
+    if($(this).hasClass("selected")){
+    }
+    else{
+        $(".tanıTür").css("background-color","#b5d8e5");
+        $(".tanıTür").removeClass("selected");
+        $(this).css("background-color","white");
+        $(this).addClass("selected");
+        tanıTürü=$(this).text();
+    }
+});
+$( "#ekTanı").click(function() {
+    if($(this).hasClass("selected")){
+       
+    }
+    else{
+        $(".tanıTür").css("background-color","#b5d8e5");
+        $(".tanıTür").removeClass("selected");
+        $(this).css("background-color","white");
+        $(this).addClass("selected");
+        tanıTürü=$(this).text();
+
+    }
+});
+$( "#ayırıcıTanı").click(function() {
+    if($(this).hasClass("selected")){
+    
+    }
+    else{
+        $(".tanıTür").css("background-color","#b5d8e5");
+        $(".tanıTür").removeClass("selected");
+        $(this).css("background-color","white");
+        $(this).addClass("selected");
+        tanıTürü=$(this).text();
+
+    }
+});
+$( "#onTanı").click(function() {
+    if($(this).hasClass("selected")){
+      
+    }
+    else{
+        $(".tanıTür").css("background-color","#b5d8e5");
+        $(".tanıTür").removeClass("selected");
+        $(this).css("background-color","white");
+        $(this).addClass("selected");
+        tanıTürü=$(this).text();
+
+    }
+});
+
+
+
+
+
+$("#datepicker").change(function() {
+    if($(this).prop('checked')) {
+        $(this).datepicker();
+
+    } else {
+        $(this).datepicker("hide");
+    }
+});
+
+
+
+
+//_-----------------il seçince ilçeler gelsin
+
+
+$('#iller').on('change', function() {
+    var ilkodu= this.value;
+    $('#mySelect')
+    .find('option')
+    .remove()
+    $.ajax({
+        url: '/ilceleriGetir',
+        method: 'get',
+        data: { ilkodu: ilkodu }
+        }).done(function(res) {
+            var ilceArray=res.ilceler;
+            for (var i = 0; i <= ilceArray.length; i++) {
+                $('#ilceler').append('<option value="' + ilceArray[i].KODU + '">' + ilceArray[i].ADI + '</option>');
+            }
+    });
+ 
+});
+
+});
+
+$(document).ready( function() {
+    var now = new Date();
+    var month = (now.getMonth() + 1);               
+    var day = now.getDate();
+    if (month < 10) 
+        month = "0" + month;
+    if (day < 10) 
+        day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    $('#klnikTarih').val(today);
+});
+</script>
+
+
+
+
+<!-- Modal -->
+<div class="modal" id="raporIlacModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="background-color:#f1f3f3;">
+        <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+           <div style="color: white;    font-size: x-large;">İlaç Raporları</div> 
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+       
+        <div class="container" style="margin-top: 3%;">
+            
+          <div class="row" style="height: 35%;">
+  
+            <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                      <div class="row">
+                        <div class="col-md-12" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;font-weight: bold;color:#325179"><u>Raporlar</u></div>                                               
+                      </div>
+  
+            </div>
+             <div class="container" id="RaporTable" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:70%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">                
+                   
+             </div>  
+         </div>
+         
+    
+    
+        </div>
+        <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                  <button id="t" type="button" class="" data-toggle="modal" data-target="#sevketModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;">İptal</button>
+                                  <button id="secSablonBtn" type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;"data-dismiss="modal">Seç</button>
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    </div>
+  
+    
+
+
+    <!-- Modal -->
+<div class="modal" id="maruziyetModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="background-color:#f1f3f3;">
+        <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+           <div style="color: white;    font-size: x-large;">Mesleki Maruziyet</div> 
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+                      <div class="row">
+                            <div class="input-group input-group-sm  col-md-12">
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Meslek</span>
+                                    </div>
+                                    <select id="maruzMeslek"  name="KonjenitalAnomali" class="browser-default custom-select" required>
+                                        <option selected value="-1">Belirtilmedi</option>
+                                                        <% Meslekler.forEach(function(element) { %>
+                                                        <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                        <%}); %>
+                                    </select>
+                            </div>
+                     </div>
+                     <div class="row" style="margin-top: 1%;">
+                        <div class="input-group input-group-sm  col-md-12">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Mesleki Maruziyet Durumu</span>
+                                </div>
+                                <select id="MeslekiMaruziyetDurumu" name="KonjenitalAnomali" class="browser-default custom-select" required>
+                                                    <% MeslekiMaruziyetDurumu.forEach(function(element) { %>
+                                                    <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                    <%}); %>
+                                </select>
+                        </div>
+                    </div>
+        </div>
+        <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                  <button type="button" class="" data-toggle="modal"  data-dismiss="modal" data-target="#sevketModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;">İptal</button>
+                                  <button id="maruzGonderBtn" type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;"data-dismiss="modal">Gönder</button>
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    </div>
+
+
+        <!-- Modal -->
+<div class="modal" id="bulasiciModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content" style="background-color:#f1f3f3;">
+        <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+           <div style="color: white;    font-size: x-large;">Bulaşıcı Hastalık</div> 
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+                      <div class="row">
+                            <div class="input-group input-group-sm  col-md-12">
+                                    <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Vaka Tipi</span>
+                                    </div>
+                                    <select id="vakaTipi"  name="KonjenitalAnomali" class="browser-default custom-select" required>
+                                                        <% VakaTipi.forEach(function(element) { %>
+                                                        <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                        <%}); %>
+                                    </select>
+                            </div>
+                     </div>
+                     <div class="row" style="margin-top: 1%;">
+                        <div class="input-group input-group-sm  col-md-12">
+                                <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Tanı Türü</span>
+                                </div>
+                                <select id="taniTur" name="KonjenitalAnomali" class="browser-default custom-select" required>
+                                                    <% TaniTuru.forEach(function(element) { %>
+                                                    <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                    <%}); %>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="row"style="margin: auto;margin-top:1%">
+                            <div class="input-group input-group-sm ">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Klinik Belirtilerin Başladığı Tarih</span>
+                                    </div>
+                                    <input id="klnikTarih" class="form-control" name="klnikTarih" type="date"  aria-label="Default">
+                            </div>
+                    </div>
+        </div>
+        <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                  <button type="button" class="" data-toggle="modal"  data-dismiss="modal" data-target="#sevketModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;">İptal</button>
+                                  <button id="bulasiciGonderBtn" type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 12px;padding: 8px;"data-dismiss="modal">Gönder</button>
+        </div>
+      </div>
+      
+    </div>
+    </div>
+    </div>
+
+    

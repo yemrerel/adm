@@ -1,0 +1,194 @@
+
+
+<%- include('hastaEsHeader'); -%>
+
+    <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-3" style="margin: auto;">Başvuru Türü</div>
+                        <div class="col-md-3" style="">     
+                                  <select class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% BasvuruTuru.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>                          
+                                  </select>
+                        </div>       
+                        <div class="col-md-3" style="margin: auto;">Esas Hastalık Grubu</div>
+                        <div class="col-md-3" style="">     
+                                  <select class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                                 
+                                  </select>
+                        </div>        
+    </div>
+    <div class="row" style="margin-top:1%;height: 40%;">
+        <div class="col-md-6" style="">
+                    <div class="row" style="">
+                          <div class="col-md-6" style="">
+                                Ağrı
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s1E" name="s1" value="1">
+                                                  <label class="custom-control-label" for="s1E">Var</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s1H" name="s1" value="97">
+                                                  <label class="custom-control-label" for="s1H">Yok</label>
+                                    </div>
+                         </div>
+                    </div>
+                    <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Bası Değerlendirmesi
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s2E" name="s2" value="1">
+                                                  <label class="custom-control-label" for="s2E">Var</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="S2H" name="s2" value="97">
+                                                  <label class="custom-control-label" for="S2H">Yok</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                     <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Beslenme
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s3E" name="s3" value="1">
+                                                  <label class="custom-control-label" for="s3E">Yeterli</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s3H" name="s3" value="97">
+                                                  <label class="custom-control-label" for="s3H">Yetersiz</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                     <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Aydınlatma
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s4E" name="s4" value="1">
+                                                  <label class="custom-control-label" for="s4E">Yeterli</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s4H" name="s4" value="97">
+                                                  <label class="custom-control-label" for="s4H">Yetersiz</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                      <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Güvenlik
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input"  name="guvenlik" value="1">
+                                                  <label class="custom-control-label" for="guvenlik">Yeterli</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input"  name="guvenlik" value="97">
+                                                  <label class="custom-control-label" for="guvenlik">Yetersiz</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                      <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Ev Hijyeni
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s4E" name="s4" value="1">
+                                                  <label class="custom-control-label" for="s4E">Yeterli</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s4H" name="s4" value="97">
+                                                  <label class="custom-control-label" for="s4H">Yetersiz</label>
+                                    </div>
+                    
+                         </div>
+                    </div>        
+                    <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-6" style="">Bakım ve Destek İhtiyacı</div>
+                        <div class="col-md-6" style="">     
+                                  <select class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% BakimDestekihtiyaci.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>                          
+                                  </select>
+                        </div>        
+                    </div>
+                     <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-6" style="">Kişisel Bakım</div>
+                        <div class="col-md-6" style="">     
+                                  <select  class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% KisiselBakim.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>                          
+                                  </select>
+                        </div>        
+                    </div>
+                     <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-6" style="">Konut Tipi</div>
+                        <div class="col-md-6" style="">     
+                                  <select  class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% KonutTipi.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>                          
+                                  </select>
+                        </div>        
+                    </div>
+                    <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-6" style="">Hela Tipi</div>
+                        <div class="col-md-6" style="">     
+                                  <select  class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% HelaTipi.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>                          
+                                  </select>
+                        </div>        
+                    </div>
+        </div>
+        <div class="col-md-6" style="">
+                                <div class="" style="height: 10%;">
+                                          <div class="" style="height: 100%;background-color: white;border-radius: 10px;padding: 11px;margin-bottom: -43px;color: #325179;font-family: Avenir Next;box-shadow: 6px 7px 6px grey;width: 140px;text-align: center;border-bottom-left-radius: 0;border-bottom-right-radius: 0;">Açıklama</div>                            
+                              </div>
+                               <div class="height:20%;">
+                                         <div style="height: 90%;border-radius: 20px; padding: 14px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;border-top-left-radius: 0;">
+                                               <textarea style="height:90%;" class="kutu" rows="3" placeholder="Örnek.." required=""></textarea>
+                                         </div>
+                               </div>
+                               <div class="row" style="margin-top: 3%;">
+                                          <div id="SBGönder" style="color: #325179;margin: auto;">İzlemi Sağlık Bakanlığına Gönder</div>
+                                                 <button id="silBtn" type="button" class="btn btn-primary" style="width: 25%;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Sil</button>
+                                                 <button id="Kaydetbtn" type="button" class="btn btn-primary" style="width: 25%;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Kaydet</button>
+                               </div>
+                    </div>
+        </div>
+    </div>
+
+
+
+
+
+         
+
+ 
+ <script src="http://code.jquery.com/jquery-2.1.3.js"></script>
+
+ <script src="/public/js/jquery-ui.js"></script>
+
+<script src="/public/js/otizm.js"></script>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                 <wsse:Username><%=username %></wsse:Username>
+                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+             </wsse:UsernameToken>
+            </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <SYSSendMessage>
+            <input>
+            &lt;SYSMessage&gt;
+                    &lt;messageGuid value="918e32b3-04eb-4444-b721-e979fcee8c60" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8"  code="219" value="Evde Saglik Hizmeti Ilk Izlem Veri Seti" /&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                        &lt;EVDE_SAGLIK_HIZMETI_ILK_IZLEM&gt;
+                            &lt;AGRI version="1" codeSystemGuid="a87d1c7a-36f1-4950-87a3-0cc1b61c1265" code="<%=AGRI.KODU %>" value="<%=AGRI.ADI %>" /&gt;
+                                &lt;AYDINLATMA version="1" codeSystemGuid="cd2deead-3154-424b-88de-85b38ff63958" code="<%=AYDINLATMA.KODU %>" value="<%=AYDINLATMA.ADI %>" /&gt;
+                                &lt;BAKIM_VE_DESTEK_IHTIYACI version="1" codeSystemGuid="9b5502a4-93a7-4594-88e6-3eeaf0c302c1" code="<%=BAKIM_VE_DESTEK_IHTIYACI.KODU %>" value="<%=BAKIM_VE_DESTEK_IHTIYACI.ADI %>" /&gt;
+                                &lt;BASI_DEGERLENDIRMESI version="1" codeSystemGuid="26f3177d-b761-4e29-bbbc-b4fac7df3322" code="<%=BASI_DEGERLENDIRMESI.KODU %>" value="<%=BASI_DEGERLENDIRMESI.ADI %>" /&gt;
+                                &lt;BASVURU_TURU version="1" codeSystemGuid="8f04bf30-3501-4080-91df-458e20917be2" code="<%=BASVURU_TURU.KODU %>" value="<%=BASVURU_TURU.ADI %>" /&gt;
+                                &lt;BESLENME version="1" codeSystemGuid="6a220e1d-3865-4cab-b98f-b7933d9aa1ba" code="<%=BESLENME.KODU %>" value="<%=BESLENME.ADI %>" /&gt;
+                            <%if(BIR_SONRAKI_HIZMET_IHTIYACI!=undefined){ %>
+                                &lt;BIR_SONRAKI_HIZMET_IHTIYACI version="1" codeSystemGuid="1ac7dc71-e09d-4ddd-bea5-179735d35246" code="<%=BIR_SONRAKI_HIZMET_IHTIYACI.KODU %>" value="<%=BIR_SONRAKI_HIZMET_IHTIYACI.ADI %>" /&gt;
+                            <% }%>
+                            &lt;EVDE_SAGLIK_HIZMETINE_ESAS_HASTALIK_GRUBU version="1" codeSystemGuid="c3eaabad-8c4c-56ee-e043-14031b0a5530" code="<%=EVDE_SAGLIK_HIZMETINE_ESAS_HASTALIK_GRUBU.KODU %>" value="<%=EVDE_SAGLIK_HIZMETINE_ESAS_HASTALIK_GRUBU.ADI %>" /&gt;
+                                &lt;EV_HIJYENI version="1" codeSystemGuid="d26c2f94-5506-4d1e-a138-27e920f61008" code="<%=EV_HIJYENI.KODU %>" value="<%=EV_HIJYENI.ADI %>" /&gt;
+                                &lt;GUVENLIK version="1" codeSystemGuid="a043c0be-cd98-422c-8ca6-6c3b4872d1c9" code="<%=GUVENLIK.KODU %>" value="<%=GUVENLIK.ADI %>" /&gt;
+                                &lt;ISINMA version="1" codeSystemGuid="28a8a3fc-bea3-4da0-bcd6-d9537d379093" code="<%=ISINMA.KODU %>" value="<%=ISINMA.ADI %>" /&gt;
+                                &lt;KISISEL_BAKIM version="1" codeSystemGuid="922fd54a-443f-4b47-9e82-53f9d7f96a0d" code="<%=KISISEL_BAKIM.KODU %>" value="<%=KISISEL_BAKIM.ADI %>" /&gt;
+                                &lt;KISISEL_HIJYEN version="1" codeSystemGuid="b5366d27-e84c-49c7-ad1f-66ef7636969a" code="<%=KISISEL_HIJYEN.KODU %>" value="<%=KISISEL_HIJYEN.ADI %>" /&gt;
+                                &lt;KONUT_TIPI version="1" codeSystemGuid="9462baa3-789f-4d54-9475-8d7cd186b408" code="<%=KONUT_TIPI.KODU %>" value="<%=KONUT_TIPI.ADI %>" /&gt;
+                                &lt;KULLANILAN_HELA_TIPI version="1" codeSystemGuid="52d09f03-7eff-47aa-898f-f197e7597904" code="<%=KULLANILAN_HELA_TIPI.KODU %>" value="<%=KULLANILAN_HELA_TIPI.ADI %>" /&gt;
+                                &lt;YATAGA_BAGIMLILIK version="1" codeSystemGuid="7c011fa6-7896-409b-8fc7-9b4f501cc9db" code="<%=YATAGA_BAGIMLILIK.KODU %>" value="<%=YATAGA_BAGIMLILIK.ADI %>" /&gt;
+                           
+                                &lt;KULLANDIGI_YARDIMCI_ARACLAR_BILGISI&gt;
+                                &lt;KULLANDIGI_YARDIMCI_ARACLAR version="1" codeSystemGuid="1435482c-1a3f-4f2d-b692-77c06f3827cd" code="<%=KULLANDIGI_YARDIMCI_ARACLAR.KODU %>" value="<%=KULLANDIGI_YARDIMCI_ARACLAR.ADI %>" /&gt;
+                                    &lt;/KULLANDIGI_YARDIMCI_ARACLAR_BILGISI&gt;
+                        
+                            &lt;PSIKOLOJIK_DURUM_DEGERLENDIRMESI_BILGISI&gt;
+                                    <% for(var i=0; i < PSIKOLOJIK_DURUM_DEGERLENDIRMESI_count; i++) {%>
+                                        &lt;PSIKOLOJIK_DURUM_DEGERLENDIRMESI version="1" codeSystemGuid="8ed2e8ce-b1fe-49f6-91ac-8f3340deac9d" code="<%=PSIKOLOJIK_DURUM_DEGERLENDIRMESI.KODU %>" value="<%=PSIKOLOJIK_DURUM_DEGERLENDIRMESI.ADI %>" /&gt;
+                                <% }%>
+                                &lt;/PSIKOLOJIK_DURUM_DEGERLENDIRMESI_BILGISI&gt;
+                            <%if(VERILEN_EGITIMLER_BILGISI!=undefined){ %>
+                                &lt;VERILEN_EGITIMLER_BILGISI&gt;
+                                    <% for(var i=0; i < VERILEN_EGITIMLER_count; i++) {%>
+                                        &lt;VERILEN_EGITIMLER version="1" codeSystemGuid="79aaa967-1886-4d9d-a5d8-cdde552d94ad" code="<%=VERILEN_EGITIMLER.KODU %>" value="<%=VERILEN_EGITIMLER.ADI %>" /&gt;
+                                <% }%>
+                                &lt;/VERILEN_EGITIMLER_BILGISI&gt;
+                            <% }%>
+                            &lt;/EVDE_SAGLIK_HIZMETI_ILK_IZLEM&gt;
+                        &lt;HASTA_TAKIP_BILGISI&gt;
+                            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;
+                        &lt;/recordData&gt;
+                    &lt;/SYSMessage&gt;
+            </input>
+        </SYSSendMessage>
+    </soap:Body>
+</s:Envelope>

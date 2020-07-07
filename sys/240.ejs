@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                 <wsse:Username><%=username %></wsse:Username>
+                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+             </wsse:UsernameToken>
+            </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <SYSSendMessage>
+            <input>
+            &lt;SYSMessage&gt;
+                    &lt;messageGuid value="918e32b3-04eb-4444-b721-e979fcee8c60" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="240" value="Obezite Izlem Veri Seti"/&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                        &lt;OBEZITE_IZLEM&gt;
+                                <%if(BEL_CEVRESI!=undefined){ %>
+                                    &lt;BEL_CEVRESI value="<%=BEL_CEVRESI %>" /&gt;
+                            <% }%>
+                            &lt;DIYET_TEDAVISI_TIBBI_BESLENME_TEDAVISI version="1" codeSystemGuid="8c0e3f06-e381-4415-9446-a6251d655f91" code="<%=DIYET_TEDAVISI_TIBBI_BESLENME_TEDAVISI.KODU" value="<%=DIYET_TEDAVISI_TIBBI_BESLENME_TEDAVISI.ADI %>" /&gt;
+                                &lt;ILK_TANI_TARIHI value="<%=ILK_TANI_TARIHI %>" /&gt;
+                                    <%if(KALCA_CEVRESI!=undefined){ %>
+                                        &lt;KALCA_CEVRESI value="<%=KALCA_CEVRESI %>" /&gt;
+                            <% }%>
+                            <%if(MORBID_OBEZ_HASTA_LENFATIK_ODEM_VARLIGI!=undefined){ %>
+                                &lt;MORBID_OBEZ_HASTA_LENFATIK_ODEM_VARLIGI version="1" codeSystemGuid="7516d5d8-7ed7-4bbc-88f6-cd26d7925c16" code="<%=MORBID_OBEZ_HASTA_LENFATIK_ODEM_VARLIGI.KODU %>" value="<%=MORBID_OBEZ_HASTA_LENFATIK_ODEM_VARLIGI.ADI %>" /&gt;
+                            <% }%>
+                            &lt;OBEZITE_ILAC_TEDAVISI version="1" codeSystemGuid="e263f61b-bacb-482e-b048-f6eb89a6b3ba" code="<%=OBEZITE_ILAC_TEDAVISI.KODU %>" value="<%=OBEZITE_ILAC_TEDAVISI.ADI %>" /&gt;
+                                &lt;PSIKOLOJIK_TEDAVI version="1" codeSystemGuid="e6e4e0ab-4f88-4e28-99cd-dd0dadcfbf3f" code="<%=PSIKOLOJIK_TEDAVI.KODU %>" value="<%=PSIKOLOJIK_TEDAVI.ADI %>" /&gt;
+                                <%if(BIRLIKTE_GORULEN_EK_HASTALIK_BILGISI!=undefined){ %>
+                                    &lt;BIRLIKTE_GORULEN_EK_HASTALIK_BILGISI&gt;
+                                    <% for(var i=0; i < BIRLIKTE_GORULEN_EK_HASTALIKLAR_count; i++) {%>
+                                        &lt;BIRLIKTE_GORULEN_EK_HASTALIKLAR version="1" codeSystemGuid="c3eaabad-8c4c-56ee-e043-14031b0a5530" code="<%=BIRLIKTE_GORULEN_EK_HASTALIKLAR.KODU %>" value="<%=BIRLIKTE_GORULEN_EK_HASTALIKLAR.ADI %>" /&gt;
+                                    <% }%>
+                                    &lt;/BIRLIKTE_GORULEN_EK_HASTALIK_BILGISI&gt;
+                            <% }%>
+                            &lt;EGZERSIZ_BILGISI&gt;
+                                &lt;EGZERSIZ version="1" codeSystemGuid="f61204f8-08d4-4aae-9032-893f58319183" code="<%=EGZERSIZ.KODU %>" value="<%=EGZERSIZ.ADI %>" /&gt;
+                                    &lt;/EGZERSIZ_BILGISI&gt;
+                            <%if(BOY_KILO_BILGILERI!=undefined){ %>
+                                &lt;BOY_KILO_BILGILERI&gt;
+                                &lt;BOY value="<%=BOY %>" /&gt;
+                                    &lt;KILO value="<%=KILO %>" /&gt;
+                                    &lt;/BOY_KILO_BILGILERI&gt;
+                            <% }%>
+                            &lt;/OBEZITE_IZLEM&gt;
+                        &lt;HASTA_TAKIP_BILGISI&gt;
+                            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;
+                        &lt;/recordData&gt;
+                    &lt;/SYSMessage&gt;
+            </input>
+        </SYSSendMessage>
+    </soap:Body>
+</s:Envelope>

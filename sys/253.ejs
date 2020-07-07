@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                 <wsse:Username><%=username %></wsse:Username>
+                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+             </wsse:UsernameToken>
+            </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <SYSSendMessage>
+            <input>
+            &lt;SYSMessage&gt;
+                    &lt;messageGuid value="918e32b3-04eb-4444-b721-e979fcee8c60" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="253" value="Rapor Kayıt"/&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                        &lt;RAPOR_KAYIT_BILGILERI&gt;
+                            &lt;ISLEM_REFERANS_NUMARASI value="<%=ISLEM_REFERANS_NUMARASI %>" /&gt;
+                           
+                                &lt;RAPOR_DETAY_BILGISI&gt;
+                                &lt;RAPOR_TARIHI value="<%=RAPOR_TARIHI %>" /&gt;
+                                    &lt;RAPOR_NUMARASI value="<%=RAPOR_NUMARASI %>" /&gt;
+                                    &lt;RAPOR_TURU version="1" codeSystemGuid="3fb672ac-0675-44ef-9f91-86856dc79370" code="<%=RAPOR_TURU.KODU %>" value="<%=RAPOR_TURU.ADI %>" /&gt;
+                                    &lt;RAPOR_BASLANGIC_TARIHI value="<%=RAPOR_BASLANGIC_TARIHI %>" /&gt;
+                                    &lt;RAPOR_BITIS_TARIHI value="<%=RAPOR_BITIS_TARIHI %>" /&gt;
+                                    &lt;RAPOR_HEKIM_BILGISI&gt;
+                                    &lt;HEKIM_KIMLIK_NUMARASI value="<%=HEKIM_KIMLIK_NUMARASI %>" /&gt;
+                                        &lt;/RAPOR_HEKIM_BILGISI&gt;
+                              
+                                &lt;SURUCU_RAPOR_BILGISI&gt;
+                                    &lt;DOGUM_TARIHI value="<%=DOGUM_TARIHI %>" /&gt;
+                                        &lt;BABA_ADI value="<%=BABA_ADI %>" /&gt;
+                                        &lt;ANNE_ADI value="<%=ANNE_ADI %>" /&gt;
+                                        &lt;KAN_GRUBU version="1" codeSystemGuid="a3d6e943-5d85-4c75-ac72-709115974fb7" code="<%=KAN_GRUBU.KODU %>" value="<%=KAN_GRUBU.ADI %>" /&gt;
+                                        &lt;RAPOR_MUAYENE_SONUCU version="1" codeSystemGuid="59f0df45-3c03-4e40-b005-a151fd1d5411" code="<%=RAPOR_MUAYENE_SONUCU.KODU %>" value="<%=RAPOR_MUAYENE_SONUCU.ADI %>" /&gt;
+                                        &lt;KISIT_KODU version="1" codeSystemGuid="47b24d22-2a4b-4092-aa0c-d7216f729100" code="<%=KISIT_KODU.KODU %>" value="<%=KISIT_KODU.ADI %>" /&gt;
+                                        &lt;/SURUCU_RAPOR_BILGISI&gt;
+                               
+                                &lt;/RAPOR_DETAY_BILGISI&gt;
+                            &lt;/RAPOR_KAYIT_BILGILERI&gt;
+                        &lt;HASTA_TAKIP_BILGISI&gt;
+                            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;
+                        &lt;/recordData&gt;
+                    &lt;/SYSMessage&gt;
+            </input>
+        </SYSSendMessage>
+    </soap:Body>
+</s:Envelope>

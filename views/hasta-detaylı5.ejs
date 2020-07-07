@@ -1,0 +1,270 @@
+<%- include('hastaHeader'); -%>
+
+
+<style>
+@brand-attention: #f68a24;
+@brand-danger: #cb2027;
+@brand-info: #5bc0de;
+@brand-primary: #1581e2;
+@brand-success: #669900;
+@brand-warning: #ffcc33;
+
+// just for demo purposes
+.progress-bar { cursor: pointer; margin-bottom: 10px; user-select: none; }
+
+.progress-bar {
+  border-radius: 4px;
+  box-shadow: inset 0 0.5em 0.5em rgba(0,0,0,0.05);
+  height: 20px;
+  margin: 10px;
+  overflow: hidden;
+  position: relative;
+  transform: translateZ(0);
+  width: 100%;
+  height: 12%;
+}
+
+.progress-bar--attention { background-color: @brand-attention; }
+.progress-bar--danger { background-color: @brand-danger; }
+.progress-bar--info { background-color: @brand-info; }
+.progress-bar--primary { background-color: @brand-primary; }
+.progress-bar--success { background-color: @brand-success; }
+.progress-bar--warning { background-color: @brand-warning; }
+
+.progress-bar--success-to-danger {
+  @list: @brand-success, @brand-warning 75%, @brand-danger;
+  background-image: svg-gradient(to right, @list);
+}
+
+.progress-bar__bar {
+  background-color: #ececec;
+  box-shadow: inset 0 0.5em 0.5em rgba(0,0,0,0.05);
+  bottom: 0;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: all 500ms ease-out;
+}
+
+
+</style>
+
+
+<div class="container">
+    <div class="row">
+              <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/boy.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;"> Boy(cm)</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input id="boy" class="bki form-control" type="text" placeholder="Boy"></div>
+
+            </div>
+             <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/agirlik.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;"> Ağırlık(gr)</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input id="kilo"class="form-control bki" type="text" placeholder="Ağırlık(gr)"></div>
+
+            </div>
+             <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/BMI.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;"> BMI</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input id="bkiSonuc" class="form-control" type="text" placeholder="BMI"></div>
+
+            </div>
+            <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/ates.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;">Ateş</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input class="form-control" type="text" placeholder="Ateş"></div>
+
+            </div>
+           <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/nabız.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;">Nabız</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input class="form-control" type="text" placeholder="Nabız"></div>
+
+            </div>
+             <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/kansekeri.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;">Kan Şekeri</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input class="form-control" type="text" placeholder="Kan Şekeri"></div>
+
+            </div>
+            <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 240px;width: 12%;margin: auto;">
+                        <div class="row"> <img src="/public/img/solunum.svg" style="margin: auto;height: 120px;"></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;">Solunum</div></div>
+                        <div class="row" style="margin: auto;margin-top:8px;"><input class="form-control" type="text" placeholder="Solunum"></div>
+
+            </div>
+
+
+        
+    </div>
+     <div class="row" style="margin-top:5%;">
+                <div class="col-md-3">
+                             <div class="row">
+                                    <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 185px;margin: auto;width:85%;">
+                                                <div class="row">
+                                                            <div class="col-md-5"> <img src="/public/img/arteryel.svg" style="margin: auto;height: 120px;">  </div>
+                                                            <div class="col-md-7"> 
+                                                                            <div class="form-check" style="margin-left: 25px;margin-top:15%">
+                                                                                    <input type="checkbox" class="form-check-input" id="Periferal" name="Periferal">
+                                                                                    <label class="form-check-label" for="Periferal">Periferal</label>
+                                                                            </div>
+                                                                               <div class="form-check" style="margin-left: 25px;margin-top:20%">
+                                                                                    <input type="checkbox" class="form-check-input" id="Apikal" name="Apikal">
+                                                                                    <label class="form-check-label" for="Apikal">Apikal</label>
+                                                                            </div>
+                                                            </div>
+
+                                                </div>
+                                                <div class="row" style="margin: auto;margin-top:8px;"><div style="color: #325179;font-size: larger;text-align: center;margin-left: 20px;">Arteryel</div></div>
+                                     </div>
+                             </div>
+                             <div class="row" style="margin-top:5%;">
+                                    <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 185px;margin: auto; width:85%;">
+                                                <div class="row">
+                                                            <div class="col-md-5"> <img src="/public/img/tansiyon.svg" style="margin: auto;height: 120px;">  </div>
+                                                            <div class="col-md-7"> 
+                                                                                   <input class="form-control" type="text" placeholder="S" style="">
+                                                                                   <input class="form-control" type="text" placeholder="D" style="margin-top: 20px;">
+
+                                                            </div>
+
+                                                </div>
+                                                <div class="row" style="margin: auto;margin-top:8px;"><div style="color: #325179;font-size: larger;text-align: center;margin-left: 20px;">Tansiyon</div></div>
+                                     </div>
+                             </div>
+                </div>
+                <div class="col-md-9">
+                             <div class="row" style="margin-top:5%;">
+                                    <div style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 250px;;margin: auto; width:95%;">
+                                                <div class="row" style="margin: auto;margin-top:8px;"><div style="margin: auto;color: #325179;font-size: larger;text-align: center;"><b>Genel Durum</b></div></div>
+                                                <div class=""style="margin: auto;margin-top:2%;width:90%;">
+                                                               <div class="progress-bar progress-bar--success-to-danger">
+                                                                        <div class="progress-bar__bar"></div>
+                                                                </div>
+                                                </div>
+                                               <div class="row" style="margin: auto;margin-top: 4%;">
+                                                        <div class="col-md-4" style="margin: auto;text-align: center;">
+                                                                <button id="badState" type="button" name="33.33"class="btn btn-primary durumBtn" style="width: 80%;margin-left: 8%;background-color: white;color: #325179;border-radius: 16px;margin: auto;height: 81px;font-size: x-large;">Kötü</button>
+                                                        </div>
+                                                       <div class="col-md-4" style="margin: auto;text-align: center;">
+                                                                <button id="midState"type="button" class="btn btn-primary durumBtn" style="width: 80%;margin-left: 8%;background-color: white;color: #325179;border-radius: 16px;margin: auto;height: 81px;font-size: x-large;">Orta</button>
+                                                        </div>
+                                                        <div class="col-md-4" style="margin: auto;text-align: center;">
+                                                                <button id="goodState"type="button" class="btn btn-primary durumBtn" style="width: 80%;margin-left: 8%;background-color: white;color: #325179;border-radius: 16px;margin: auto;height: 81px;font-size: x-large;">İyi</button>
+                                                        </div>
+                                                
+                                                
+                                                </div>
+                                     </div>
+                             </div>
+                             <div class="row" style="margin-top: 2%;">
+                                        <button type="button" id="fzkMynBtn" style="width: 25%;margin: auto;;background-color: #325179;color: white;border-radius: 16px;padding: 21px;">Fizik Muayene</button>
+                             </div>
+
+                </div>
+    </div>
+    <div class="row" style="margin: auto;margin-top: 3%;"> 
+        <div id="önceki"style="margin: auto;color: #325179;font-size: 20px;"><img src="/public/img/önceki.svg" class="" style="width: 10px;margin-right: 5px;"><b>Önceki</b></div>     
+        <div id="sonraki"style="margin: auto;color: #325179;font-size: 20px;"><b>Sonraki</b><img src="/public/img/dahaFazla.svg" class="" style="width: 10px;margin-left: 5px;"></div>     
+    </div>
+
+</div>
+
+
+
+<form id="detayliForm5" action="/hasta/detayli-muayene-6" method="post"></form>
+<form id="öncekiSayfaForm" action="/hasta/detayli-muayene-4" method="post"></form>
+<form id="fzkMynForm" action="/hasta/fizikMyn" method="post"></form>
+
+
+
+<script>
+
+
+
+    $( "#sonraki").click(function() {
+        $('#detayliForm5').submit();
+    });
+   $( "#önceki").click(function() {
+        $('#öncekiSayfaForm').submit();
+    });
+    $( "#fzkMynBtn").click(function() {
+        $('#fzkMynForm').submit();
+    });
+    
+//---------------------------------PROGRES BAR-----------------------------------------------------------------------
+     $( ".durumBtn").click(function() {
+             $(".durumBtn").css("background-color", "white");
+             $(".durumBtn").css("color", "#325179");
+             $(this).css("background-color", "blue");
+             $(this).css("color", "white");
+             if($(this).attr("id")=="badState"){position=33.33;}
+             if($(this).attr("id")=="midState"){position=66.66;}
+             if($(this).attr("id")=="goodState"){position=100;}
+
+             $(".progress-bar").find('.progress-bar__bar').css('transform','translateX('+position+'%)'); 
+             $(".progress-bar").find('.progress-bar__bar').css('-webkit-transform','translateX('+position+'%)');
+     });
+
+   // Send bar to point of click
+$(".progress-bar").on("click", function(e) {
+  var offset = $(this).offset(),
+      position = Math.floor((e.pageX - offset.left)/$(this).width()*100) + 1;
+  if(position<33.34){
+           $(".durumBtn").css("background-color", "white");
+           $(".durumBtn").css("color", "#325179");
+           $("#badState").css("background-color", "blue");
+           $("#badState").css("color", "white");
+  }
+  else if(position>=33.34 && position<66.67){
+           $(".durumBtn").css("background-color", "white");
+           $(".durumBtn").css("color", "#325179");
+           $("#midState").css("background-color", "blue");
+           $("#midState").css("color", "white");
+  }
+  else{
+           $(".durumBtn").css("background-color", "white");
+           $(".durumBtn").css("color", "#325179");
+           $("#goodState").css("background-color", "blue");
+           $("#goodState").css("color", "white");
+  }
+
+  $(this).find('.progress-bar__bar').css('transform','translateX('+position+'%)'); 
+  $(this).find('.progress-bar__bar').css('-webkit-transform','translateX('+position+'%)');
+});
+
+<%# // Send bar to random point
+$(document).ready(function(){
+  $('.progress-bar__bar').each(function(){
+		$(this).css('transform','translateX('+Math.random()*100+'%)'); 
+  	$(this).css('-webkit-transform','translateX('+Math.random()*100+'%)');
+	});
+}); %>
+ //---------------------------------PROGRES BAR-----------------------------------------------------------------------
+ //---------------------------------BKI-----------------------------------------------------------------------
+    $(".bki").on("keyup", function () {
+       var kilo = $("#kilo").val();
+       var boy = $("#boy").val();
+       
+        if(kilo > 0 && boy > 0)
+       {
+         var sonuc = kilo/(boy/100*boy/100);
+         $("#bkiSonuc").val(sonuc);
+         if(sonuc < 18.5){
+              $("#bkiDurum").val("Zayıf");
+         }
+         if(sonuc > 18.5 && sonuc < 25){
+              $("#bkiDurum").val("Sağlıklı");
+         }
+         if(sonuc > 25){
+               $("#bkiDurum").val("Şişman");
+         }
+        }
+
+
+});
+    
+</script>
+

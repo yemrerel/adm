@@ -1,0 +1,133 @@
+<%- include('hastaIzlemHeader'); -%>
+
+
+   <div class="row" style="margin-top: 1%;">
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Medeni Hali <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= MedeniHali %></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Evlenme Yaşı<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= hasta.evlenmeYasi %></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Canlı/Ölü Sayısı<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.CanliDogumSayisi %>/<%= sonGebelikSonuc.OluDogumSayisi%></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Düşük Sayısı  <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebeBildirim.DusukSayisi %></b></div>
+   </div>
+   <div class="row" style="">
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Konjenital Anomali Doğumu <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;font-size: xx-small;"><%=konj%></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Kan Grubu<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= KanGrubu %></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Eş Ad Soyad<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= hasta.EsAdSoyad %></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Eş Yaş <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= hasta.EsYas  %></b></div>
+   </div>
+     <div class="row" style="">
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Eş Telefonu<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= hasta.EsTelefon  %></b></div>
+                <div class="col-md-3" style="color: #325179;font-family: Avenir Next;">Eş Kan Grubu<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= hasta.EsKanGrubu  %></b></div>
+   </div>
+
+
+
+   <div class="row"style="margin-top:1%;">
+        <div  class="panel" style="width: 80%;">
+                        <div class="row" style="">
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Gebelik Sonucu <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%=sonGebelikSonuc.GebelikSonucu  %></b></div>
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Gebelik Sonlanma Tarihi<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.GebelikSonlanmaTarihi  %></b></div>                    
+                        </div>
+                        <div class="row" style="margin-top: 1%;">
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Doğum Yöntemi <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%=  sonGebelikSonuc.DogumYontemi  %></b></div>
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Doğan Bebek Toplamı<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.CanliDogumSayisi+sonGebelikSonuc.OluDogumSayisi  %></b></div>                    
+                        </div>
+                        <div class="row" style="margin-top: 1%;">
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Doğuma Yardım Eden <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.DogumaYardimEden  %></b></div>
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Doğum Gerçekleşme Yeri<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.DogumYer  %></b></div>                    
+                        </div>
+                        <div class="row" style="margin-top: 1%;">
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Canlı/Ölü Sayısı <b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.CanliDogumSayisi+'/'+sonGebelikSonuc.OluDogumSayisi  %></b></div>
+                            <div class="col-md-6" style="color: #325179;font-family: Avenir Next;">Prematüre<b style="margin-left: 15px;color: #325179;font-family: Avenir Next;"><%= sonGebelikSonuc.Premature  %></b></div>                    
+                        </div>
+
+
+                       
+         </div>
+   </div>
+
+
+   <div class="container" style="height: 25%;margin-top: 1%;">                          
+
+    <div class="row" style="margin-top:1%;height: 80%;background-color:white;border-radius: 15px;border-bottom-left-radius: 0;border-bottom-right-radius: 0;">
+        <div id="b1" class="" style="width: 20%;">  
+           <% for(var i=0; i < iz.length ; i++) {%>
+                   <%if (iz[i].KacinciIzlem==1) { %>
+                         <div  class="row"style="background-color: blue;color: white;padding: 2%;margin: auto; width: 92%;margin-top:2%;font-size: 0.8rem;">  
+                               İzlem 1:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                         </div>
+                   <% break } %>                          
+             <%} %>                                                      
+        </div>
+        <div id="b2" class="" style="width: 20%;">  
+           <% for(var i=0; i < iz.length ; i++) {%>
+                   <%if (iz[i].KacinciIzlem==2) { %>
+                         <div  class="row"style="background-color: blue;color: white;padding: 2%;margin: auto; width: 92%;margin-top:2%;font-size: 0.8rem;">  
+                               İzlem 2:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                         </div>
+                         <%break } %>                       
+             <%} %>                                                      
+        </div>
+        <div id="b3" class="" style="width: 20%;">  
+           <% for(var i=0; i < iz.length ; i++) {%>
+                   <%if (iz[i].KacinciIzlem==3) { %>
+                         <div  class="row"style="background-color: blue;color: white;padding: 2%;margin: auto; width: 92%;margin-top:2%;font-size: 0.8rem;">  
+                               İzlem 3:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                         </div>
+                         <%break } %>                          
+             <%} %>                                                      
+        </div>
+        <div id="b4" class="" style="width: 20%;">  
+            <%  for(var i=0; i < iz.length ; i++) {%>
+                    <%if (iz[i].KacinciIzlem==4) { %>
+                         <div  class="row"style="background-color: blue;color: white;padding: 2%;margin: auto; width: 92%;margin-top:2%;font-size: 0.8rem;">  
+                               İzlem 1:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                         </div>
+                   <%break } %>                          
+             <%} %>                                                      
+        </div>
+        <div id="b5" class="" style="width: 20%;">  
+           <% k=0
+           for(var i=0; i < iz.length ; i++) {%>
+                   <%if (iz[i].KacinciIzlem==99 && k<4) { 
+k++    %>
+                         <div  class="row"style="background-color: blue;color: white;padding: 2%;margin: auto; width: 92%;margin-top:2%;font-size: 0.8rem;">  
+                               İzlem Dışı:<p style="margin: 0;"> <%=iz[i].Tarih%> </p>
+                         </div>
+                   <% } %>                          
+             <% } %>                                                      
+        </div>
+      
+  </div>
+   <div class="row" style="background-color:blue;border-radius: 15px;border-top-left-radius: 0;border-top-right-radius: 0;">
+                <div style="width: 20%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                           0-1 Gün
+                           </div>
+                       
+                           <div style="width: 20%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                           2-5 Gün 
+                           </div>
+                         
+                           <div style="width: 20%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                         13-17 Gün
+                           </div>
+                           <div style="width: 20%;text-align: center;color: white;border-right-style: solid;font-size: 0.8rem;">  
+                                    30-42 Gün
+                           </div>
+                    
+                           <div style="width:20%;text-align: center;color: white;font-size: 0.8rem;">  
+                                 Aralık Dışı
+                           </div>
+               
+                </div>
+ </div>
+
+<div class="row" style="margin-top:1%;">
+            <div class="col-md-8">                          
+            </div>
+            <div class="col-md-4">                          
+                    <button id="yeniIzlemBtn" type="button" class="btn btn-primary" style="width: 280px;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Yeni İzlem</button>
+            </div>
+</div>
+<form id="yeniIzlemForm" action="/izlemler/Lohusaizlem/YeniIzlem" method="get"></form>
+</form>
+
+<script src="../public/js/lohusaizlem.js"></script>

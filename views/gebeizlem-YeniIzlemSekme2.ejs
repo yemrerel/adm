@@ -1,0 +1,287 @@
+<div class="row" style="margin-top:1%;height: 20%;">
+     <div class="col-md-4">
+          <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+               <div class="row testlerheaderDiv">
+               <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;font-size: small;">GEBELİKTE RİSK FAKTÖRLERİ</div>                                               
+               </div>
+          
+          </div>
+          <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:80%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+          
+               <% GebeRiskFaktor.forEach(function(element) { %>
+               <div class="row GEBELIKTE_RISK_FAKTORLERI_ROW">
+               <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                         <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+               </div> 
+               <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+               </div>
+               <%}); %>
+          </div>  
+
+     </div>
+     <div class="col-md-4">
+               <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+                    <div class="row testlerheaderDiv">
+                    <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;font-size: small;">GEBELİK/LOHUSALIK SEYRİNDE TEHLİKE İŞARETİ</div>                                               
+                    </div>
+               
+               </div>
+               <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:80%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+               
+                    <% GebeTehlikeIsaret.forEach(function(element) { %>
+                    <div class="row GEBELIK_SEYRINDE_TEHLIKE_ISARETI_ROW">
+                    <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                              <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                    </div> 
+                    <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+                    </div>
+                    <%}); %>
+               </div>  
+
+     </div>
+     <div class="col-md-4">
+          <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+               <div class="row testlerheaderDiv">
+               <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;font-size: small;">BEBEĞİN/ÇOCUĞUN BEYİN GELİŞİMİNİ ETKİLEYEBİLECEK RİSKLER</div>                                               
+               </div>
+          
+          </div>
+          <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:80%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+          
+               <% BeyinGelisimiRiskler.forEach(function(element) { %>
+               <div class="row BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER_ROW">
+               <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                         <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+               </div> 
+               <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+               </div>
+               <%}); %>
+          </div>  
+
+    </div>
+</div>
+
+
+<script>
+
+
+
+$(document).on('click', ".GEBELIKTE_RISK_FAKTORLERI_ROW", function(){
+//Your code
+var x='GEBELIKTE_RISK_FAKTORLERI'
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+     $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+     var kod= $(this).children(".cbx").children().attr("name");
+     var isim= $(this).children(".isim").html();
+   
+     GEBELIKTE_RISK_FAKTORLERI.push(kod);
+}
+else{
+     $(this).children(".cbx").children().css('background-color','red')
+     var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+   
+     GEBELIKTE_RISK_FAKTORLERI.forEach(element => {
+          if(element.kod==kod){
+               GEBELIKTE_RISK_FAKTORLERI = jQuery.grep(GEBELIKTE_RISK_FAKTORLERI, function(value) {
+                    return value != element;
+               });
+
+          }
+     });
+}
+});
+
+$(document).on('click', ".GEBELIK_SEYRINDE_TEHLIKE_ISARETI_ROW", function(){
+//Your code
+var x='GEBELIK_SEYRINDE_TEHLIKE_ISARETI'
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+     $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+     var kod= $(this).children(".cbx").children().attr("name");
+     var isim= $(this).children(".isim").html();
+   
+     GEBELIK_SEYRINDE_TEHLIKE_ISARETI.push(kod);
+}
+else{
+     $(this).children(".cbx").children().css('background-color','red')
+     var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+   
+     GEBELIK_SEYRINDE_TEHLIKE_ISARETI.forEach(element => {
+          if(element.kod==kod){
+               GEBELIK_SEYRINDE_TEHLIKE_ISARETI = jQuery.grep(GEBELIK_SEYRINDE_TEHLIKE_ISARETI, function(value) {
+                    return value != element;
+               });
+
+          }
+     });
+}
+});
+$(document).on('click', ".BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER_ROW", function(){
+//Your code
+var x='BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER'
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+     $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+     var kod= $(this).children(".cbx").children().attr("name");
+     var isim= $(this).children(".isim").html();
+   
+     BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER.push(kod);
+}
+else{
+     $(this).children(".cbx").children().css('background-color','red')
+     var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+   
+     BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER.forEach(element => {
+          if(element.kod==kod){
+               BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER = jQuery.grep(BEBEGIN_COCUGUN_BEYIN_GELISIMINI_ETKILEYEBILECEK_RISKLER, function(value) {
+                    return value != element;
+               });
+
+          }
+     });
+}
+});
+</script>
+
+
+<div class="row" style="margin-top:1%;height: 20%;">
+     <div class="col-md-4">
+          <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+               <div class="row testlerheaderDiv">
+               <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;font-size: smaller;"> BEBEĞİN/ÇOCUĞUN PSİKOLOJİK GELİŞİMİNDEKİ RİSKLERE YÖNELİK EĞİTİMLER</div>                                               
+               </div>
+          
+          </div>
+          <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:75%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+          
+               <% RisklereYonelikEgtimler.forEach(function(element) { %>
+               <div class="row BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER_ROW">
+               <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                         <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+               </div> 
+               <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+               </div>
+               <%}); %>
+          </div>  
+
+     </div>
+     <div class="col-md-4">
+               <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+                    <div class="row testlerheaderDiv">
+                    <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;font-size: small;">GEBEDE RİSK FAKTÖRLERİNE YAPILAN MÜDAHALE</div>                                               
+                    </div>
+               
+               </div>
+               <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:80%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+               
+                    <% RiskFaktorlerineYapilanMudaheleler.forEach(function(element) { %>
+                    <div class="row GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE_ROW">
+                    <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                              <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                    </div> 
+                    <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+                    </div>
+                    <%}); %>
+               </div>  
+
+     </div>
+     <div class="col-md-4">
+          <div class="container" style="background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px; border-width: thin;">
+               <div class="row testlerheaderDiv">
+               <div class="col-md-12" style="text-align: center;padding: 1px;border-bottom: solid;font-size: small;">GEBEDE SIK İZLEME ALINAN RİSK ALTINDAKİ OLGUNUN TAKİBİ</div>                                               
+               </div>
+          
+          </div>
+          <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:80%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0; border-width: thin;">
+          
+               <% RiskTakipi.forEach(function(element) { %>
+               <div class="row GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI_ROW">
+               <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 2px;border-bottom: solid; border-width: thin;">
+                         <div class="tik" style="background-color:red;height: 20px;width: 20px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+               </div> 
+               <div class="col-md-9 isim" style="font-size: 0.8rem;background-color: white;padding: 2px;text-align: center;border-bottom: solid; border-width: thin;"><%= element.ADI %></div> 
+               </div>
+               <%}); %>
+          </div>  
+
+    </div>
+</div>
+
+
+<script>
+
+
+
+
+$(document).on('click', ".BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER_ROW", function(){
+//Your code
+var x='BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER'
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+     $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+     var kod= $(this).children(".cbx").children().attr("name");
+     var isim= $(this).children(".isim").html();
+   
+     BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER.push(kod);
+}
+else{
+     $(this).children(".cbx").children().css('background-color','red')
+     var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+   
+     BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER.forEach(element => {
+          if(element.kod==kod){
+               BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER = jQuery.grep(BEBEGIN_COCUGUN_PSIKOLOJIK_GELISIMINDEKI_RISKLERE_YONELIK_EGITIMLER, function(value) {
+                    return value != element;
+               });
+
+          }
+     });
+}
+});
+
+$(document).on('click', ".GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE_ROW", function(){
+//Your code
+var x='GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE'
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+     $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+     var kod= $(this).children(".cbx").children().attr("name");
+     var isim= $(this).children(".isim").html();
+   
+     GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE.push(kod);
+}
+else{
+     $(this).children(".cbx").children().css('background-color','red')
+     var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+   
+     GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE.forEach(element => {
+          if(element.kod==kod){
+               GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE = jQuery.grep(GEBEDE_RISK_FAKTORLERINE_YAPILAN_MUDAHALE, function(value) {
+                    return value != element;
+               });
+
+          }
+     });
+}
+});
+$(document).on('click', ".GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI_ROW", function(){
+//Your code
+var x='GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI'
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+     $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+     var kod= $(this).children(".cbx").children().attr("name");
+     var isim= $(this).children(".isim").html();
+   
+     GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI.push(kod);
+}
+else{
+     $(this).children(".cbx").children().css('background-color','red')
+     var kod= $(this).children(".cbx").children().attr("name").split("?")[0];
+   
+     GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI.forEach(element => {
+          if(element.kod==kod){
+               GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI = jQuery.grep(GEBEDE_SIK_IZLEME_ALINAN_RISK_ALTINDAKI_OLGUNUN_TAKIBI, function(value) {
+                    return value != element;
+               });
+
+          }
+     });
+}
+});
+</script>

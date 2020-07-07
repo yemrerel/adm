@@ -1,0 +1,388 @@
+
+
+
+
+<form id="yetiskinFORM" action="/izlemler/Yetiskinizlem/kaydet" method="post">
+<%- include('hastaIzlemHeader'); -%>
+          
+                    
+
+                    
+<div class="container" style="height: 50%;">
+         
+         <div class="row" style="margin-top: 1%;height: 42%;">
+             <div class="col-md-2">
+                  <div class="" style="padding: 5px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;margin: auto;height: 95%;">
+                        <div class="row" style="height: 50%;"> <img src="/public/img/boy.svg" style="margin: auto;height: 95%;"></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><div style="margin: auto;color: #325179;text-align: center;"> Boy(cm)</div></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><input id="boy" name="boy" class="bki form-control" type="text" placeholder="Boy"></div>
+
+                 </div>
+            </div>
+                <div class="col-md-2">
+                  <div class="" style="padding: 5px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;margin: auto;height: 95%;">         
+                         <div class="row"style="height: 50%;"> <img src="/public/img/agirlik.svg" style="margin: auto;height: 95%;;"></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><div style="margin: auto;color: #325179;text-align: center;"> Ağırlık(gr)</div></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><input id="kilo" name="kilo" class="form-control bki" type="text" placeholder="Ağırlık(gr)"></div>
+                  </div>
+                </div>
+              <div class="col-md-2">
+                    <div class="" style="padding: 5px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;margin: auto;height: 95%;">    
+                        <div class="row"style="height: 30%;"> <img src="/public/img/BMI.svg" style="margin: auto;height: 95%;;"></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><div style="margin: auto;color: #325179;text-align: center;"> BMI</div></div>
+                        <div class="row" style="margin: auto;margin-top:1%;">
+                                <input id="bkiSonuc" name="bkiSonuc" class="form-control" type="text" placeholder="BMI"><input id="bkiDurum" name="bkiDurum" class="form-control" type="text" placeholder="Durum">
+                        </div>
+                    </div>
+              </div>
+               <div class="col-md-2">
+                    <div class="" style="padding: 5px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;margin: auto;height: 95%;">            
+                          <div class="row"style="height: 50%;"> <img src="/public/img/kansekeri.svg" style="margin: auto;height: 95%;;"></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><div style="margin: auto;color: #325179;text-align: center;">Ateş</div></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><input name="ates" class="form-control" type="text" placeholder="Bel Çevresi"></div>
+                    </div>
+            </div>
+                  <div class="col-md-2">
+                    <div class="" style="padding: 5px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;margin: auto;height: 95%;">            
+                       <div class="row"style="height: 50%;"> <img src="/public/img/solunum.svg" style="margin: auto;height: 95%;;"></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><div style="margin: auto;color: #325179;text-align: center;">Nabız</div></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><input name="nabiz" class="form-control" type="text" placeholder="Kalça Çevresi"></div>
+                    </div>
+                  </div>
+                   <div class="col-md-2">
+                    <div class="" style="padding: 5px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;margin: auto;height: 95%;">    
+                        <div class="row"style="height: 30%;"> <img src="/public/img/tansiyon.svg" style="margin: auto;height: 95%;;"></div>
+                        <div class="row" style="margin: auto;margin-top:1%;"><div style="margin: auto;color: #325179;text-align: center;"> Tansiyon</div></div>
+                        <div class="row" style="margin: auto;margin-top:1%;">
+                                <input id="tansiyonS" name="tansiyonS" class="form-control" type="text" placeholder="S"><input name="tansiyonD" id="tansiyonD" class="form-control" type="text" placeholder="D">
+                        </div>
+                    </div>
+                  </div>
+     </div>
+      <div class="row" style="margin-top: 1%;">
+               <div class="col-md-6" >      
+                     <div class="row">
+                        <div class="input-group input-group-sm col-md-12">
+                                       <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Yapılan İzlem</span>
+                                       </div>
+                                       <select id="izlemTakvim" name="izlemTakvim" class="browser-default custom-select">
+                                          <% ergenIzlemTakvimi.forEach(function(e) { 
+                                            
+                                            if(totalDay<e.SONUYGULANMATARIHI && totalDay>e.ILKUYGULANMATARIHI){%>
+                                                    <option selected value="<%= e.KODU %>"> <%= e.ADI %></option>
+                                          <%}else{%>
+                                            <option value="<%= e.KODU %>"> <%= e.ADI %></option>
+                                           <%}
+                                            }); %>
+                                        </select>
+                        </div>
+                     </div>
+                </div>             
+                <div class="col-md-6" >      
+                      <div class="row">
+                          <div class="col-md-6" >      
+                                  <div class="input-group input-group-sm">
+                                     <div class="input-group-prepend">
+                                           <span class="input-group-text " id="inputGroup-sizing-default">HB Ölçümü</span>
+                                     </div>
+                                     <input class="form-control" name="hb" type="text" aria-label="Default" aria-describedby="">
+                                 </div>
+                          </div> 
+                           <div class="col-md-6" style="">      
+                                  <div class="input-group input-group-sm">
+                                     <div class="input-group-prepend">
+                                           <span class="input-group-text " id="inputGroup-sizing-default">Hct Ölçümü</span>
+                                     </div>
+                                     <input class="form-control" name="hct" type="text" aria-label="Default" aria-describedby="">
+                                 </div>
+                          </div> 
+                     </div> 
+                </div>             
+    </div>
+      <div class="row" style="">
+                        <div class="col-md-12" >      
+                                 
+                                  <div class="row" style="margin-top:1%">
+                                         <div class="input-group input-group-sm col-md-6">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text " id="inputGroup-sizing-default">Okul Çağı Postür Muayene</span>
+                                           </div>
+                                               <select id="okulcagimyn" name="okulcagimyn" class="browser-default custom-select">
+                                                 <% OkulCagiPostur.forEach(function(element) { %>
+                                                  <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>
+                                               </select>
+                                        </div>
+                                         <div class="input-group input-group-sm col-md-6">
+                                            <div class="input-group-prepend input-group-sm">
+                                                <span class="input-group-text " id="inputGroup-sizing-default">Görme Tarama Sonucu</span>
+                                           </div>
+                                               <select id="gormetarama" name="gormetarama"class="browser-default custom-select">
+                                                 <% GormeTaramaSonucu.forEach(function(element) { %>
+                                                  <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>
+                                               </select>
+                                        </div>
+                                 </div> 
+                               
+                                <div class="row" style="margin-top:1%;margin-bottom:1%;">
+                                    <div class="col-md-6" style="">      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="sdd"id="sdd" value="1">
+                                         <label class="custom-control-label" for="sdd">Sosyal Davranışsal Değerlendirme</label>
+                                       </div>  
+                                    </div>   
+                                    <div class="col-md-6" style="">      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="heeadsss" id="heeadsss" value="1">
+                                         <label class="custom-control-label" for="heeadsss">HEEADSSS(ERGENSOR)Değerlendirme </label>
+                                       </div>  
+                                    </div>   
+                                </div>             
+                                 <div class="row" style="margin-top:1%;margin-bottom:1%;">
+                                    <div class="col-md-6" style="">      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="gelisimseld" id="gd" value="1">
+                                         <label class="custom-control-label" for="gd">Gelişimsel Değerlendirme</label>
+                                       </div>  
+                                    </div>   
+                                    <div class="col-md-6" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="hiperd" id="hd" value="1">
+                                         <label class="custom-control-label" for="hd">Hiperlipidemi Değerlendirme</label>
+                                       </div>  
+                                    </div>   
+                                </div>        
+                                 <div class="row" style="margin-top:1%;margin-bottom:1%;">
+                                    <div class="col-md-4" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="dissagligi" id="ds" value="1">
+                                         <label class="custom-control-label" for="ds">Diş Sağlığı</label>
+                                       </div>  
+                                    </div>   
+                                    <div class="col-md-4" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="isitmet" id="isitmet" value="1">
+                                         <label class="custom-control-label" for="isitmet">İşitme Taraması</label>
+                                       </div>  
+                                    </div>   
+                                    <div class="col-md-4" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="gormet" id="gt" value="1">
+                                         <label class="custom-control-label" for="gt">Görme Tarama</label>
+                                       </div>  
+                                    </div>   
+                                </div>            
+                                 <div class="row" style="margin-top:1%;margin-bottom:1%;">
+                                    <div class="col-md-4" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="bagisildama" id="bag" value="1">
+                                         <label class="custom-control-label" for="bag">Bağışıldama</label>
+                                       </div>  
+                                    </div>   
+                                    <div class="col-md-4" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="danismanlik" id="danismanlik" value="1">
+                                         <label class="custom-control-label" for="danismanlik">Danışmanlık</label>
+                                       </div>  
+                                    </div>   
+                                    <div class="col-md-4" >      
+                                       <div class="custom-control custom-checkbox custom-control-inline">
+                                         <input type="checkbox" class="custom-control-input" name="fizikmyn" id="fm" value="1">
+                                         <label class="custom-control-label" for="fm">Fizik Muayene</label>
+                                       </div>  
+                                    </div>   
+                                </div>                
+                        </div>
+       </div>
+</div>
+
+<div class="container"style="">
+  <div class="row" style="">
+               <div class="col-md-9" style="">      
+                     <div class="" style="margin-top: 1%;">
+                       <div class="" style="font-weight: bold;color: #325179;font-family: Avenir Next;text-decoration: underline;text-align: left;font-size: 0.9rem;">Açıklama</div>
+                    </div>
+                                   <div style="border-radius: 20px; padding: 14px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;">
+                                       <textarea name="aciklama" class="kutu" rows="5" placeholder=".." required=""></textarea>
+                                   </div>
+               </div>
+               <div class="col-md-3" style="margin: auto;">    
+                       <div class="row"style="margin: auto;margin-top:5%">
+                           <div class="col-md-12" style="margin: auto;color: #325179;">
+                               <div class="input-group input-group-sm">
+                                       <div class="input-group-prepend">
+                                           <span class="input-group-text " id="inputGroup-sizing-default">İzlem Tarihi</span>
+                                       </div>
+                                       <input id="izlemTarihi" class="form-control" name="izlemTarihi" type="date"  aria-label="Default">
+                               </div>
+                           </div>
+                       </div>
+                       <div class="row"style="margin: auto;margin-top:1%"><div data-toggle="modal" data-target="#islemBilgileriModal"  class="col-md-6" style="color: #325179;"><u>İşlem Bilgileri</u></div></div>                                          
+                        <div class="row" style="margin-top: 3%;">
+                                           <div class="custom-control custom-checkbox custom-control-inline" style="margin:auto;" >
+                                                   <input type="checkbox" class="custom-control-input" name="sbGonder" id="sbGonder" value="1">
+                                                   <label class="custom-control-label" for="sbGonder">İzlemi Sağlık Bakanlığına da Gönder</label>
+                                           </div>  
+                       </div>   
+                                
+                        <div class="row" style="margin-top: 1%;">  
+                                <div class="col-md-11" style="margin: auto;">      
+
+                                   <input class="btn btn-lg btn-block" id="Kaydetbtn" type="button" style="background-color: #325179; color: white;" value="Kaydet">         
+                               </div>                                 
+                        </div>            
+               </div>
+  </div>
+</div>
+         
+  
+<!-- Modal -->
+<div class="modal" id="islemBilgileriModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+  <div class="modal-dialog modal-lg">
+  
+    <!-- Modal content-->
+    <div class="modal-content" style="background-color:#f1f3f3;">
+      <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+         <div style="color: white;    font-size: x-large;">İşlem Bilgileri</div> 
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+     
+      <div class="container" style="margin-top: 1%;">
+            <form id="islemBilgiForm">  
+           <div class="row" style="margin-top: 2%;">
+                    <div class="input-group mb-3 col-md-10">
+                          <div class="input-group-prepend">
+                                 <span class="input-group-text " id="inputGroup-sizing-default">İşlem Yapan Kişinin TC </span>
+                          </div>
+                           <input class="form-control" name="islemYapanTc" type="text" aria-label="Default" aria-describedby="" value="<%=islem.Tc%>">
+                    </div>                     
+            </div>
+            <div class="row" style="margin-top: 1%;">
+                    <div class="input-group mb-3 col-md-10">
+                          <div class="input-group-prepend">
+                                 <span class="input-group-text " id="inputGroup-sizing-default">Bilgi Alınan Kişinin Adı Soyadı</span>
+                          </div>
+                           <input class="form-control" name="baAdSoyad" type="text" aria-label="Default" aria-describedby=""value="<%=hasta.Ad+" "+hasta.Soyad %>">
+                    </div>                     
+            </div>
+            <div class="row" style="margin-top: 1%;">
+                    <div class="input-group mb-3 col-md-10">
+                          <div class="input-group-prepend">
+                                 <span class="input-group-text " id="inputGroup-sizing-default">Bilgi Alınan Kişinin Telefonu</span>
+                          </div>
+                           <input class="form-control" name="baTel" type="text" aria-label="Default" aria-describedby=""value="<%=hasta.Telefon_Cep%>">
+                    </div>                     
+            </div>
+            <div class="row" style="margin-top: 1%;">
+                  <div class="input-group mb-3 col-md-6">
+                              <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">İl</span>
+                              </div>
+                              <select id="iller"  name="iller" class="browser-default custom-select">
+                                    <% iller.forEach(function(element) { %>
+                                     <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                     <%}); %>
+                              </select>
+                 </div>
+                 <div class="input-group mb-3 col-md-6">
+                           <div class="input-group-prepend">
+                                <span class="input-group-text " id="inputGroup-sizing-default">İlçe</span>
+                           </div>
+                           <select name="ilceler" id="ilceler" class="browser-default custom-select">
+                              <% ilceler.forEach(function(element) { %>
+                                <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                               <%}); %>
+                           </select>
+                 </div>
+             </div>
+             <div class="row" style="margin-top: 1%;">
+                    <div class="input-group mb-3 col-md-10">
+                                    <div class="input-group-prepend">
+                                              <span class="input-group-text " id="inputGroup-sizing-default">İşlem Yapılan Yer</span>
+                                         </div>
+                                         <select id="islemYer" name="islemYer" class="browser-default custom-select">
+                                          <% islem.islemYer.forEach(function(element) { %>
+                                           <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                           <%}); %>
+                                         </select>
+                                    </div>
+                     </div>          
+            </div>
+            <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-5" style="">
+                              <div class="custom-control custom-checkbox custom-control-inline">
+                                    <input type="checkbox" class="custom-control-input" name="disarda" id="disarda" value="1">
+                                    <label class="custom-control-label" for="disarda">Dışarda</label>
+                              </div>  
+                        </div>    
+            </div>
+            </form>
+      </div>
+
+     
+    </div>
+  </div>
+  </div>
+  
+
+
+</form>
+
+
+
+
+
+
+<script>
+
+$( ".bki" ).on("keyup", function () {
+       var kilo = $("#kilo").val();
+       var boy = $("#boy").val();
+       
+        if(kilo > 0 && boy > 0)
+       {
+         var sonuc = kilo/(boy/100*boy/100);
+         $("#bkiSonuc").val(sonuc);
+         if(sonuc < 18.5){
+              $("#bkiDurum").val("Zayıf");
+         }
+         if(sonuc > 18.5 && sonuc < 25){
+              $("#bkiDurum").val("Sağlıklı");
+         }
+         if(sonuc > 25){
+               $("#bkiDurum").val("Şişman");
+         }
+
+  }      
+});
+
+  $( "#Kaydetbtn" ).click(function() {
+      
+      
+        var input = $("<input>").attr("type", "hidden").attr("name", "hastaTC").val(<%=hasta.Id%>);
+        $('#yetiskinFORM').append(input);
+      $("#yetiskinFORM").submit();
+     
+  });
+  $(document).ready( function() {
+    var now = new Date();
+    var month = (now.getMonth() + 1);               
+    var day = now.getDate();
+    if (month < 10) 
+        month = "0" + month;
+    if (day < 10) 
+        day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    $('#izlemTarihi').val(today);
+
+});
+
+</script>
+
+
+
+

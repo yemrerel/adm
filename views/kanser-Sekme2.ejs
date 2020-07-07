@@ -1,0 +1,344 @@
+<div class="row" style=" margin-top: 1%;" >
+        <div class="col-md-2" >
+            <label style="float: left;"><input type="checkbox" value="">Kesin Kayıtlı Hastalar</label>
+        </div>
+        <div class="col-md-2" >
+            <label style="float: left;"><input type="checkbox" value="">Tüm Hastalar</label>
+        </div>
+        <div class="input-group input-group-sm col-md-4">
+            <input type="checkbox" name="cinsiyetCB" value="1" style="margin: auto;">
+                <div class="input-group-prepend " style="margin-left: 1px;">
+                        <span class="input-group-text " id="inputGroup-sizing-default">Hedef Liste</span>
+                </div>
+                <select name="cinsiyet" class="browser-default custom-select">                            
+                       <% Cinsiyet.forEach(function(element) { %>
+                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                        <%}); %>                               
+                </select>
+        </div>
+        <div class="input-group input-group-sm col-md-4">
+            <input type="checkbox" name="cinsiyetCB" value="1" style="margin: auto;">
+                <div class="input-group-prepend " style="margin-left: 1px;">
+                        <span class="input-group-text " id="inputGroup-sizing-default">Cinsiyet</span>
+                </div>
+                <select name="cinsiyet" class="browser-default custom-select">                            
+                       <% Cinsiyet.forEach(function(element) { %>
+                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                        <%}); %>                               
+                </select>
+        </div>
+</div>
+
+<div class="row" style="" >
+    <div class="col-md-3" >
+        <label style="float: left;"><input type="checkbox" value="">K.T. Kaydı Olmayan Hastalar</label>
+    </div>
+ 
+    <div class="input-group input-group-sm col-md-5">
+        <input type="checkbox" name="ktKayitliOlanCB" value="1" style="margin: auto;">
+            <div class="input-group-prepend " style="margin-left: 1px;">
+                    <span class="input-group-text " id="inputGroup-sizing-default">K.T. Kaydı Olan Hastalar</span>
+            </div>
+            <select name="ktKayitliOlan" class="browser-default custom-select">                            
+                   <% Cinsiyet.forEach(function(element) { %>
+                    <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                    <%}); %>                               
+            </select>
+    </div>
+    <div class="col-md-4" >
+        <div class="row" >
+
+                <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" value="">Adres:</label>
+                <select name="APyontemLojistigi" style="margin-top:auto;margin-bottom:auto;">
+                                                                            
+                    <option value="1"> KOLOREKTAL</option>
+            
+                    <option value="2"> MEME</option>            
+                </select>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="" >
+
+ 
+    <div class="col-md-8" >
+                <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" value="">Tarama Tarihi:</label>
+                <select name="APyontemLojistigi" style="margin-top:auto;margin-bottom:auto;">                                                                          
+                    <option value="1"> 26 Eylül 2019 Perşembe</option>
+                </select>
+                <select name="APyontemLojistigi" style="margin-top:auto;margin-bottom:auto;">                                                                          
+                    <option value="1"> Arasındakiler</option>
+                </select>
+                <select name="APyontemLojistigi" style="margin-top:auto;margin-bottom:auto;">                                                                          
+                    <option value="1"> 26 Eylül 2019 Perşembe</option>
+                </select>
+    </div>
+    <div class="col-md-4" >
+        <div class="row" >
+
+                <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" value="">Yaş:</label>
+                <select name="APyontemLojistigi" style="margin-top:auto;margin-bottom:auto;">
+                                                                            
+                    <option value="1"> KOLOREKTAL</option>
+            
+                    <option value="2"> MEME</option>            
+                </select>
+        </div>
+    </div>
+</div>
+
+<div class="row" style="" >
+    <div class="col-md-4" >
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Meme Taraması</div>
+                  <div class="row" >
+                       <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="kkmememCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">K.K. Meme M.</span>
+                                </div>
+                                <select name="kkmemem" class="browser-default custom-select">                            
+                                       <% KendiKendineMemeMuayenesi.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>               
+                  </div>
+                   <div class="row" >
+                       <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="klinikmemeCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Kilinik Meme M.</span>
+                                </div>
+                                <select name="klinikmeme" class="browser-default custom-select">                            
+                                       <% KlinikMemeMuayenesi.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                         
+                  </div>
+                   <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="mamografiCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Mamografi</span>
+                                </div>
+                                <select name="mamografi" class="browser-default custom-select">                            
+                                       <% Mamografi.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                       
+                  </div>
+                    <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="mamografiSonucuCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Mamografi Sonucu</span>
+                                </div>
+                                <select name="mamografiSonucu" class="browser-default custom-select">                            
+                                       <% MamografiSonucu.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                  </div>
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Mamografi</div>
+                   <div class="row" >
+                                <div class="col-md-5" >
+                                    <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" value="">Bildirimi Yapılanlar</label>
+                                </div>
+                                <div class="col-md-7" >
+                                    <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" value="">Bildirimi Yapılmayanlar</label>
+                                </div>
+                  </div>
+                   <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" value="" style="margin: auto;">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text " id="inputGroup-sizing-default">Mamografi Bildirim No</span>
+                              </div>
+                              <input id="kanserHastaAra" class="form-control" placeholder="" type="text" aria-label="Default" aria-describedby="">
+                        </div>
+                  </div>
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Tarama Sonuç Durumu</div>
+                  <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" value="" style="margin: auto;">
+                                <div class="input-group-prepend ">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Sonuç Durumu</span>
+                                </div>
+                                <select name="APyontemLojistigi" class="browser-default custom-select">                            
+                                            <option value="1"> KOLOREKTAL</option>                           
+                                </select>
+                        </div>
+                  </div>
+
+    </div>
+     <div class="col-md-4" >
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Serviks Taraması</div>
+                  <div class="row" >
+                       <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="hpvtipCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">HPV Tipi</span>
+                                </div>
+                                <select name="hpvtip" class="browser-default custom-select">                            
+                                       <% HPVTipleri.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>               
+                  </div>
+                   <div class="row" >
+                       <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="hpvTaramaCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">HPV Tarama Testi</span>
+                                </div>
+                                <select name="hpvTarama" class="browser-default custom-select">                            
+                                       <% HPVTaramaTesti.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                         
+                  </div>
+                   <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="papsCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Pap Semar T.</span>
+                                </div>
+                                <select name="paps" class="browser-default custom-select">                            
+                                       <% PapSmearTesti.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                       
+                  </div>
+                    <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="servikCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Servikal Sitoloji</span>
+                                </div>
+                                <select name="servik" class="browser-default custom-select">                            
+                                       <% ServikalSitoloji.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                  </div>
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Tarama Barkodu</div>
+                   <div class="row" >
+                                <div class="col-md-6" >
+                                    <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" name="hpvBarkodlu" value="">HPV Barkodlu Kayıtlar</label>
+                                </div>
+                                <div class="col-md-6" >
+                                    <label style="float: left;margin-top: auto;margin-bottom: auto;"><input type="checkbox" name="hpvBarkodsuz" value="">HPV Barkodsuz Kayıtlar</label>
+                                </div>
+                  </div>
+                   <div class="row" >
+                        <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox"  value="1" style="margin: auto;">
+                              <div class="input-group-prepend">
+                                  <span class="input-group-text " id="inputGroup-sizing-default">HPV Barkodu</span>
+                              </div>
+                              <input name="hpvBarkodu"  class="form-control" placeholder="" type="text" aria-label="Default" aria-describedby="">
+                        </div>
+                  </div>
+               
+
+    </div>
+    <div class="col-md-4" >
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Kolorektal Taraması</div>
+                  <div class="row" >
+                       <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="hpvtipCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Gaitada Gizli Kan</span>
+                                </div>
+                                <select name="gaita" class="browser-default custom-select">                            
+                                       <% GaitadaGizliKanTesti.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>               
+                  </div>
+                   <div class="row" >
+                       <div class="input-group input-group-sm col-md-12">
+                            <input type="checkbox" name="hpvTaramaCB" value="1" style="margin: auto;">
+                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Kolon Görüntüleme</span>
+                                </div>
+                                <select name="kolon" class="browser-default custom-select">                            
+                                       <% KolonGoruntulemeYontemi.forEach(function(element) { %>
+                                        <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                        <%}); %>                               
+                                </select>
+                        </div>
+                         
+                   </div>
+                
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">Form </div>
+                   <div class="row" >
+                         <div class="col-md-12" >
+                                 <label style="float: left;"><input type="checkbox" value="">Meme T. Onam Formu Verilenler</label>
+                                 <label style="float: left;"><input type="checkbox" value="">Serviks T. Onam Formu Verilenler</label>
+                                 <label style="float: left;"><input type="checkbox" value="">Kolorektal T. Onam Formu Verilenler</label>
+
+                         </div>
+                  </div>
+                  <div class="" style="font-weight: bold;margin:auto;border-radius: 10px;color: #325179;font-family: Avenir Next;text-decoration: underline;">İşlemin Yapıldığı Yer </div>
+                   <div class="row" >
+                         <div class="col-md-4" >
+                                 <label style="float: left;"><input type="checkbox" value="">Tümü</label>
+                         </div>
+                           <div class="col-md-4" >
+                                 <label style="float: left;"><input type="checkbox" value="">Kurum İçi</label>
+                         </div>
+                           <div class="col-md-4" >
+                                 <label style="float: left;"><input type="checkbox" value="">Kurum Dışı</label>
+                         </div>
+                  </div>
+                 
+
+    </div>
+</div>
+
+
+<div class="row" style="margin-top: 1%;" >
+
+        <div class=" form-group col-md-2 has-search" style="">
+            <span class="fa fa-search form-control-feedback"></span>
+            <input id="taniAra" class="form-control" type="text" placeholder="" aria-label="Default" aria-describedby="" style="box-shadow: 6px 7px 6px grey;    border-radius: 1rem;">
+        </div>
+        <div class="col-md-8" style="text-align: center;" >
+             <button id="Kaydetbtn" type="button" class="btn btn-primary" style="width: 25%;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 4px;">Kaydet</button>
+        </div>
+        <div class="col-md-2" ></div>
+
+</div>
+
+<div class="container" style=" background-color: #adb5bd;text-align: center;box-shadow: 6px 7px 6px grey;border-bottom-left-radius: 0;border-bottom-right-radius: 0;border-top-left-radius: 15px;border-top-right-radius: 15px;overflow-y: auto;overflow-x: hidden;">
+    <div class="row">
+        
+        <div class="col-md-4" style="text-align: center;padding: 1px;border-right: solid;border-bottom: solid;font-size: smaller;border-width: thin;">
+            TC No
+        </div>  
+        <div class="col-md-4" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;border-right: solid;border-width: thin;">
+            Adı-Soyadı
+        </div>
+        
+        <div class="col-md-4" style="border-top-right-radius: 15px;padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;">
+            Cinsiyet
+        </div>
+    </div>
+</div>
+<div class="container" id="hastalarTable" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 20%;border-radius: 20px;overflow-y: overlay;overflow-x: hidden;border-top-left-radius: 0;border-top-right-radius: 0;">
+
+</div>

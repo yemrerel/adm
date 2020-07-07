@@ -1,0 +1,193 @@
+            
+<div class="row" style="height: 100%;margin-top: 1%;">
+                   <div class="col-md-7" >
+                        <div class="row" style="">
+                            <div class="col-md-4" >
+                                <div class="input-group input-group-sm">
+                                     <div class="input-group-prepend">
+                                           <span class="input-group-text " id="inputGroup-sizing-default">Hemoglobin Değeri</span>
+                                     </div>
+                                     <input class="form-control" name="hemoglobinDegeri" type="number" aria-label="Default" aria-describedby=""placeholder="12.0" step="0.1" min="0" max="20">
+                                </div>
+                            </div>
+                            <div class="col-md-8" style="margin: auto;">
+                                    <div id="APKullanmamaNeden" class="input-group input-group-sm" style="">
+                                          <div class="input-group-prepend">
+                                                <span class="input-group-text " id="inputGroup-sizing-default">Önceki Doğum Durumu</span>
+                                          </div>
+                                          <select name="oncekiDogumDurum"class="browser-default custom-select" required>
+                                          <% oncekiDogumDurumu.forEach(function(element) { %>
+                                                <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                          <%}); %>
+                                          </select>
+                                    </div>
+                             </div>
+                                              
+                        </div>
+                     
+                        <div class="row" style="margin-top:1%;">                                       
+                                    <div  class="input-group input-group-sm col-md-6" style="">
+                                          <div class="input-group-prepend">
+                                                <span class="input-group-text " id="inputGroup-sizing-default">AP İşlemleri</span>
+                                          </div>
+                                           <select name="APYontemi"class="browser-default custom-select" required>
+                                                <option value="-1" selected>Belirtilmedi</option>
+                                           <% APYöntemleri.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                           <%}); %>
+                                           </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                          <div id="APKullanmamaNeden" class="input-group input-group-sm" style="">
+                                                <div class="input-group-prepend">
+                                                      <span class="input-group-text " id="inputGroup-sizing-default">AP Kullanmama Nedeni</span>
+                                                </div>
+                                                 <select name="APkullanmamaNedeni"class="browser-default custom-select" required>
+                                                      <option value="-1" selected>Belirtilmedi</option>
+                                                 <% APKullanmamaNedeni.forEach(function(element) { %>
+                                                       <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>
+                                                 </select>
+                                          </div>
+                                    </div>
+                        </div>
+                        <div class="row" style="margin-top:1%;margin-bottom:1%;">
+                            <div class="col-md-6" >
+                                  <div class="input-group input-group-sm ">
+                                       <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">AP Yöntem Lojistiği</span>
+                                       </div>
+                                       <select name="APyontemLojistigi"class="browser-default custom-select">
+                                          <option value="-1" selected>Belirtilmedi</option>
+                                           <% APYontemLojistik.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                           <%}); %>
+                                       </select>
+                                  </div>
+                            </div>
+                             <div class="col-md-6" >
+                                  <div class="input-group input-group-sm">
+                                       <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Bir Önceki Yöntem</span>
+                                       </div>
+                                       <select name="oncekiAPyontem"class="browser-default custom-select">
+                                          <option value="-1" selected>Belirtilmedi</option>
+                                          <% APOncekiYontem.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                           <%}); %>
+                                       </select>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                  <div class="input-group input-group-sm">
+                                       <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Konjenital Anomali Varlığı</span>
+                                       </div>
+                                       <select name="konanomali"class="browser-default custom-select">
+                                          <option value="-1" selected>Belirtilmedi</option>
+                                          <% konanomali.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                           <%}); %>
+                                       </select>
+                                  </div>
+                                 
+                            </div>                         
+                        </div>
+                        <div class="row" style="margin-top:1%;margin-bottom:1%;height: 38%;">
+                                  <div class="col-md-6" style="">
+                                                <div class="" style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 100%;">
+                                                            <div class="row" style="height: 100%;">
+                                                                <div class="col-md-7"> 
+                                                                        <div class="row" style=""> <div style="color: #325179;margin: auto;"><B>SON AŞI İSMİ:</B></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;text-align: center;"><%=sonAşıAdı%></div></div>
+                                                                        <div class="row" style=""> <div style="color: #325179;margin: auto;"><B>SON AŞI TARİHİ:</B></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;"> <%=sonAşıTar %></div></div>
+                                                               </div>
+                                                               <div class="col-md-5">
+                                                                     <div data-toggle="modal" data-target="#YeniAsiModal" style="height: 100%; border-style: solid;border-radius: 22px;padding-bottom: 2px;padding-top: 2px;border-color: red;">
+                                                                        <div class="row" class="asiEkleBtn" style=""> <div  style="color:red;margin: auto;font-size: small;"><b>+YENİ AŞI</b></div></div>
+                                                                        <div class="row" class="asiEkleBtn" style="height: 70%;"><img src="/public/img/homeAsilar.svg" class="" style="height: 100%;margin: auto;"> </div>
+                                                                     </div>
+                                                               </div>                                                                                                                  
+                                                            </div>
+                                                </div>
+                                 </div>
+                                  <div class="col-md-6" style="">
+                                                <div class="" style="padding: 14px;background-color: white;border-radius: 20px;box-shadow: 6px 7px 6px grey;height: 100%;">
+                                                            <div class="row" style="height: 100%;">
+                                                                <div class="col-md-7"> 
+                                                                        <div class="row" style=""> <div style="color: #325179;margin: auto;"><B>TOPLAM GEBE SAYISI:</B></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;">Örnek</div></div>
+                                                                        <div class="row" style=""> <div style="color: #325179;margin: auto;"><B>DÜŞÜK SAYISI:</B></div></div>
+                                                                        <div class="row"> <div style="color: #325179;margin: auto;">Örnek</div></div>
+                                                                      
+                                                               </div>
+                                                               <div class="col-md-5">
+                                                                     <div data-toggle="modal" data-target="#gebeBildirimModal" style="height: 100%;border-style: solid;border-radius: 22px;padding-bottom: 2px;padding-top: 2px;border-color: red;">
+                                                                        <div class="row" style=""> <div style="color:red;margin: auto;font-size: small;"><b>+GEBE BİLDİRİM</b></div></div>
+                                                                        <div class="row" style="height: 70%;"><img src="/public/img/izlemler.svg" class="" style="height: 100%;margin: auto;"> </div>
+                                                                     </div>
+                                                               </div>
+                                                            </div>
+                                                </div>
+                                 </div>
+                        </div>
+
+
+
+
+
+
+
+
+                  </div>
+                  <div class="col-md-5" >
+                           <div class="row" style="margin-top:1%;margin-bottom:1%;height: 100%;">
+                            <div class="col-md-6" >
+                                     <div class="row" style="height: 100%;">
+                                              <div class="container" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                                        <div class="row testlerheaderDiv">
+                                                          <div class="col-md-12" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;">Kadın Sağlığı İşlemleri</div>                                               
+                                                        </div>
+        
+                                              </div>
+                                               <div class="container" id="testlerTable" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:70%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">
+               
+                                                      <% KadinSaglikIslemleri.forEach(function(element) { %>
+                                                    <div class="row kadinSaglikRow">
+                                                            <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 10px;border-bottom: solid;">
+                                                                      <div class="tik" style="background-color:red;height: 25px;width: 25px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                                                            </div> 
+                                                             <div class="col-md-9 isim" style="background-color: white;padding: 10px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                                    </div>
+                                                    <%}); %>
+                                               </div>  
+                                     </div>
+                            </div>
+                             <div class="col-md-6" >
+                                  <div class="row" style="height: 100%;">
+                                              <div class="container" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                                    <div class="row testlerheaderDiv">
+                                                         <div class="col-md-12" style="background-color: white;text-align: center;padding: 10px;border-bottom: solid;">Kadın Sağlığı Risk Faktörleri</div>                                               
+                                                    </div>
+                                               </div>
+                                               <div class="container" id="testlerTable" style="width: 95%;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height:  70%;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">
+                                                       <% KadinSaglikRiskFaktorleri.forEach(function(element) { %>
+                                                    <div class="row kadinRiskFakt">
+                                                            <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 10px;border-bottom: solid;">
+                                                                      <div class="tik" style="background-color:red;height: 25px;width: 25px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                                                            </div> 
+                                                             <div class="col-md-9 isim" style="background-color: white;padding: 10px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                                    </div>
+                                                    <%}); %>
+                                               </div>  
+                                  </div>
+                            </div>
+                           </div>
+                          
+                  </div>
+</div>
+
+

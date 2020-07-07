@@ -1,0 +1,64 @@
+<%- include('hastaIzlemHeader'); -%>
+
+<% array.forEach(function(g) { %>
+<div class="row" style="margin:auto;margin-top:2%;height: 40%;">
+       <div class="col-md-6" style="margin:auto;">
+                <h5 class="card-header" style="text-align: center;">Gebelik Sonucu</h5>
+                <div class="card" style="width: 100%;height: 80%;">
+                        <div class="card-body">
+                                <div class="row" style="margin-top:1%;">
+                                        <div style="margin-left: auto; font-size: small;">Gebelik Sonlandırma Tarihi <b><%= g.GebelikSonlanmaTarihi %></b></div>
+                                </div>
+                                <div class="row"style="margin-top:1%;">
+                                        <div class="col-md-7">Gebelik Sonucu</div><div class="col-md-5"> <b><%= g.gebelikBilgileri.GebelikSonucu %></b></div>
+                                </div>
+                                <div class="row"style="margin-top:1%;">
+                                        <div class="col-md-7">Doğum Yöntemi</div><div class="col-md-5"> <b><%= g.gebelikBilgileri.DogumYontemi %></b></div>
+                                </div>
+                                <div class="row"style="margin-top:1%;">
+                                        <div class="col-md-7">Doğuma Yardım Eden</div><div class="col-md-5"> <b><%= g.gebelikBilgileri.DogumaYardimEden %></b></div>
+                                </div>
+                                <div class="row"style="margin-top:1%;">
+                                        <div class="col-md-7">Doğum Gerçekleşme Yeri</div><div class="col-md-5"> <b><%= g.gebelikBilgileri.DogumYer %></b></div>
+                                </div>
+                                <div class="row"style="margin-top:1%;">
+                                        <div class="col-md-7">Doğan Bebek Toplamı</div>
+                                        <div class="col-md-5"> <b><%= g.gebelikBilgileri.CanliDogumSayisi+g.gebelikBilgileri.OluDogumSayisi %></b></div>
+                                </div>
+                                <div class="row" style="margin-top:1%;">
+                                        <div class="col-md-6">Canlı/Ölü Sayısı</div>
+                                        <div class="col-md-6 row">
+                                                        <div class="col-md-3" style="text-align: center;border-style: groove;border-color: blue;border-radius: 15px;"><%= g.gebelikBilgileri.CanliDogumSayisi %></div> /  <div class="col-md-3" style="text-align: center;border-style: groove;border-color: blue;border-radius: 15px;"><%= g.gebelikBilgileri.OluDogumSayisi %></div>
+                                                        
+                                        </div>
+                                </div>
+                        </div>
+                </div>
+        </div>
+        <div class="col-md-6" style="margin:auto;width: 100%;">
+                          <h5 class="card-header" style="text-align: center;">Bebek Bilgileri</h5>
+
+                           <div class="card" style="height: 80%;overflow-x: hidden;">
+                                      <% g.bebekler.forEach(function(b) { %>
+                                        <div class="card-body">
+                                                <div class="row">
+                                                        <div class="col-md-3">İsim</div><div class="col-md-3"> <b><%= b.isim %></b></div> <div class="col-md-3">Soyisim</div><div class="col-md-3"> <b><%= b.soyisim %></b></div>
+                                                </div>
+                                                <div class="row">
+                                                        <div class="col-md-3">Cinsiyet</div><div class="col-md-3"> <b><%= b.cinsiyet %></b></div> 
+                                                </div>
+                                                <div class="row">
+                                                        <div class="col-md-4">Doğum Tarihi</div><div class="col-md-6"> <b><%= b.dogumTarihi %></b></div>
+                                                </div>
+                                                <div class="row">
+                                                                
+                                                </div>                       
+                                        </div>
+                                        <hr width="100%" color="#0000F8" size="4">
+                                        <%}); %>                                      
+                           </div>        
+         </div>
+</div>
+
+<hr width="100%" color="#0000F8" size="4">
+<%}); %>

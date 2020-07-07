@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<s:Envelope
+    xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+           <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                <wsse:Username><%=username %></wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+     </s:Header>
+    <s:Body>
+         <SYSSendMessage xmlns="https://sys.sagliknet.saglik.gov.tr/SYS/">
+          
+      <input>
+            &lt;SYSMessage&gt;&#xD;
+            &lt;messageGuid value="<%=messageGuid %>" /&gt;
+            &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="102" value="Hizmet/Ilaç/Malzeme Bilgisi Kayıt" /&gt;&#xD;
+            &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;&#xD;
+            &lt;author&gt;&#xD;
+            &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;&#xD;
+            &lt;/author&gt;&#xD;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;&#xD;
+                    &lt;recordData&gt;&#xD;
+                    &lt;HASTA_TAKIP_BILGISI&gt;&#xD;
+                    &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;&#xD;
+                    &lt;/HASTA_TAKIP_BILGISI&gt;&#xD;
+                        &lt;HASTA_ISLEM_BILGILERI&gt;&#xD;
+                        &lt;ISLEM_BILGISI&gt;&#xD;
+                        &lt;TARAF_BILGISI version="1" codeSystemGuid="05c03e8c-79fd-461e-8b78-99c3cfad011e" code="<%=TARAF_BILGISI.KODU %>" value="<%=TARAF_BILGISI.ADI %>" /&gt;&#xD;
+                        &lt;KLINIK_KODU version="1" codeSystemGuid="c04bee57-c5d4-443d-e040-7b0a6f146a3d" code="<%=KLINIK_KODU.KODU %>" value="<%=KLINIK_KODU.ADI %>" /&gt;&#xD;
+                        &lt;GERCEKLESME_ZAMANI value="<%=GERCEKLESME_ZAMANI %>" /&gt;&#xD;
+                        &lt;ISLEM_TURU version="1" codeSystemGuid="d03e562d-252e-451f-9a80-98d48b47c2f2" code="<%=ISLEM_TURU.KODU %>" value="<%=ISLEM_TURU.ADI %>" /&gt;&#xD;
+                        &lt;ISLEM_KODU value="<%=ISLEM_KODU %>" /&gt;&#xD;
+                        &lt;ISLEM_ADI value="<%=ISLEM_ADI %>" /&gt;&#xD;
+                        &lt;GIRISIMSEL_ISLEM_KODU value="<%=GIRISIMSEL_ISLEM_KODU %>" /&gt;&#xD;
+                        &lt;ISLEM_ZAMANI value="<%=ISLEM_ZAMANI %>" /&gt;&#xD;
+                        &lt;ADET value="<%=ADET %>" /&gt;&#xD;
+                        &lt;HASTA_TUTARI value="<%=HASTA_TUTARI %>" /&gt;&#xD;
+                        &lt;KURUM_TUTARI value="<%=KURUM_TUTARI %>" /&gt;&#xD;
+                        &lt;RANDEVU_ZAMANI value="<%=RANDEVU_ZAMANI %>" /&gt;&#xD;
+                        &lt;KULLANICI_KIMLIK_NUMARASI value="<%=KULLANICI_KIMLIK_NUMARASI %>" /&gt;&#xD;
+                        &lt;CIHAZ_NUMARASI value="<%=CIHAZ_NUMARASI %>" /&gt;&#xD;
+                        &lt;ISLEM_REFERANS_NUMARASI value="<%=ISLEM_REFERANS_NUMARASI %>" /&gt;&#xD;
+                            
+                        &lt;ISLEM_PUAN_BILGISI&gt;&#xD;
+                        &lt;HEKIM_KIMLIK_NUMARASI value="<%=HEKIM_KIMLIK_NUMARASI %>" /&gt;&#xD;
+                        &lt;ISLEM_PUANI value="<%=ISLEM_PUANI %>" /&gt;&#xD;
+                        &lt;PUAN_HAKEDIS_ZAMANI value="<%=PUAN_HAKEDIS_ZAMANI %>" /&gt;&#xD;
+                        &lt;/ISLEM_PUAN_BILGISI&gt;&#xD;
+                        &lt;/ISLEM_BILGISI&gt;&#xD;
+                           
+                        &lt;/HASTA_ISLEM_BILGILERI&gt;&#xD;
+                        &lt;/recordData&gt;&#xD;
+                        &lt;/SYSMessage&gt;&#xD;
+                    </input>
+                </SYSSendMessage>
+                </s:Body>
+        </s:Envelope>

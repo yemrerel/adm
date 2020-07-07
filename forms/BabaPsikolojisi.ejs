@@ -1,0 +1,201 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+<style>
+        .row {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+    }
+    .col-md-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+        .buyukbaslik{
+            FONT-SIZE: 11px;text-align: center;margin-top: 2%;
+        }
+        .text{
+            FONT-SIZE: 9px;text-align: left;margin-top: 1%;
+        }
+        .text2{
+            FONT-SIZE: 8px;text-align: left;
+        }
+        .main{
+            width: 85%;
+            margin: auto;
+            margin-top: 10%
+        }
+        .tbl{   
+            margin: auto;
+            border-color: black;
+        }
+        table, th, td {
+            border: 1px inset black;
+            border-collapse: collapse;
+            FONT-SIZE: 9px;
+          }
+          th, td {
+            padding: 3px;
+            text-align: left;    
+          }
+        </style>
+        
+        <div class="main">
+        
+            <div class="buyukbaslik" > <b>BABA PSİKOSOSYAL</b></div>
+            <div class="buyukbaslik" > <b>İZLEME FORMU</b></div>
+            
+            <div class="text" style="margin-top: 5%">Aile Sağlığı Birimi : <b><%= " "+ASB %></b></div>
+            <div class="text" >Aile Sağlığı Elemanı Adı Soaydı : <b><%= " "+elemanAdSoyad %></b></div>
+            <div class="text" >Baba Adayının / Babasının Adı Soyadı :<b><%= " "+babaAdSoyad %></b></div>
+            <div class="text" >Baba Adayının / Babasının T.C. Kimlik No :<b><%= " "+babaTC %></b></div>
+            <div class="text" >Gebenin / Annenin Adı Soyadı :<b><%= " "+anneAdSoyad %></b></div>
+            <div class="text" >Çocuğun Adı Soyadı :<b><%= " "+çocukAdSoyad %></b></div>
+            <div class="text" >Adresi :<b><%= " "+adres %></b></div>
+    
+    
+            <div class="text2" style="margin-top: 4%;" >() Bey, ben çocuğunuz altı yaşına gelene akdar sizinle birlikte çalışacağım. Amacım sizin ve çocuğunuzun sağlığını korumak, desteklemek.</div>
+            <div class="text2" >Çocuğunuzun sağlıklı gelişimine yardımcı olmak. Görüşmelerimiz sırasında bazı bilgileri kaydedeceğim. Bu sizinle görüştüklerimizi hatırlamama yardımcı olacak.</div>
+    
+        
+           
+    <table class="tbl" style="width:100%">
+    <tr>
+      <th style="border-top-color: white;border-left-color: white;width: 65%;">GEBELİK DÖNEMİ BABA GÖRÜŞMESİ</th>
+      <th style="width: 35%; text-align: center">0-9 Ay ( ........ haftalık )</th>
+    </tr>
+    <tr>
+      <td>S. 1. Eşinizin gebe olduğunu öğrendiğinizde neler hissettiniz?</td>
+      <td><%=s1 %></td>
+    </tr>
+    <tr>
+        <td>S.2. Sizin ruh sağlığınız kendinizin, ailenizin sağlığı açısından önemli. Son bir haftada kendinizi aşırı mutsuz, hüzünlü, çökkün hissettiniz mi? Cevap evet ise (Kaç gün süre ile?)</td>
+        <td>
+                <input type="checkbox" name="vehicle1" value="Bike" <%=s2==1?"checked":"" %> >Hayır/ 1-2 Gün<br>
+                <input type="checkbox" name="vehicle2" value="Car"<%=s2==0?"checked":"" %> >3-4 Gün ve Üzeri<br>
+        </td>
+      </tr>
+      <tr>
+        <td>S.3. Eşinizin gebelik dönemini kolay geçirmesi için ona destek olabiliyor musunuz?
+                Neler yapıyorsunuz?</td>
+                <td>
+                        <input type="checkbox" name="vehicle1" value="Bike" <%=s3==1?"checked":"" %> >Evet <%= " "+s3Text %> <br>
+                        <input type="checkbox" name="vehicle2" value="Car" <%=s3==0?"checked":"" %> >Hayır<br>
+                </td> 
+      <tr>
+        <td>S.4. Kendinizi son bir ay içinde çoğu zaman, günlük yaşamanızı kısıtlayacak kadar gergin, endişeli ya da önemsiz şeyler için kaygılanır hissettiniz mi?</td>
+        <td>
+                <input type="checkbox" name="vehicle1" value="Bike"<%=s4==1?"checked":"" %> >Evet<br>
+                <input type="checkbox" name="vehicle2" value="Car"<%=s4==0?"checked":"" %> >Hayır<br>
+        </td>  
+      </tr>
+      <tr>
+        <td>S.5. a) Sıkıntınızı paylaşma, değer verildiğinizi hissetme, bilgi alma gibi konularda eşinizden ve çevrenizden yeterli destek alabiliyor musunuz?
+                (Kimlerden?) Cevap hayır ise "b ve c" şıkını sor.</td>
+                <td>
+                        <input type="checkbox" name="vehicle1" value="Bike"<%=s5==1?"checked":"" %> >Evet <%= " "+s5Text0 %><br>
+                        <input type="checkbox" name="vehicle2" value="Car"<%=s5==0?"checked":"" %> >Hayır<br>
+                </td>  
+      </tr>
+      <tr>
+        <td style="padding-left: 20px;border-bottom-color: white;">
+                b) Kimlerden destek alabilirsiniz? <br>
+                </td>
+        <td style="padding-left: 20px;border-bottom-color: white;"> 
+          <%=s5Text1 %> 
+        </td>
+      </tr>
+      <tr>
+        <td style="padding-left: 20px;">c) Almak istediğiniz destekleri dile getiriyor musunuz?</td>
+        <td><input type="checkbox" name="vehicle1" value="Bike"<%=s5check==1?"checked":"" %>>Evet
+            <input type="checkbox" name="vehicle2" value="Car"<%=s5check==0?"checked":"" %>>Hayır</td>
+      </tr>
+      <tr>
+        <td>S.6. Gebelik sonrası kullanmayı düşündüğünüz aile pilanlama yöntemi var mı? <br>(Hangisi)"</td>
+        <td> <input type="checkbox" name="vehicle1" value="Bike"<%=s6==1?"checked":"" %> >Evet  <%= " "+s6Text %> <br>
+             <input type="checkbox" name="vehicle2" value="Car" <%=s6==0?"checked":"" %>>Hayır   <%= " "+s6Text2 %><br></td>
+      </tr>
+      <tr>
+            <td>S.7. Evinizde sigara,alkol kullanan var mı? (Kim? Ne? Ne sıklıkta?))</td>
+            <td> <input type="checkbox" name="vehicle1" value="Bike"<%=s7==1?"checked":"" %>>Var <%= " "+s7Text %><br>
+                <input type="checkbox" name="vehicle2" value="Car" <%=s7==0?"checked":"" %>>Yok<br></td>
+          </tr>
+      <tr>
+        <td style="border-color: white;" ></td>
+      </tr>
+    
+    
+    
+    
+    
+    
+    
+      <tr colspan="5">
+        <td style=" border-right-color: white;border-left-color: white;"><b>GÖZLEM</b></td>
+      </tr>
+      <tr>
+        <td>Babada / annede çocuğuyla ilişkisini olumsuz yönde etkileyebilecek ağır ruhsal bozukluk (şizofreni vb.) veya mental retardasyon belirtileri olup olmadığını gözlemleyin.</td>
+        <td>
+          <input type="checkbox" name="vehicle1" value="Bike"<%=s8==1?"checked":"" %>>Var <%= " "+s8Text %><br>
+          <input type="checkbox" name="vehicle2" value="Car" <%=s8==0?"checked":"" %>>Yok<br></td>
+    
+        </td>
+      </tr>
+    </table>
+        
+    <br>
+    
+        <table class="tbl" style="width:100%">
+                <tr>
+                  <th colspan="4" style="border-top-color: white;border-left-color: white;width: 65%;border-right-color: white ;text-align: center;">DEĞERLENDİRME TABLOSU</th>
+                  <th style="width: 35%; text-align: left;border-color: white;">AİLE SAĞLIĞI ELEMANI NOTLARI</th>
+                </tr>
+                <tr>
+                  <th>Tarih</th>
+                  <th>Normal Takip</th>
+                  <th>Sık Takip</th>
+                  <th>Hekime Yönlendirme</th>
+                  <td style="border-color: white;width: 35%; text-align: left;"></td>
+                </tr>             
+                <tr>
+                        <td></td>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                        <td style="border-color: white;width: 35%; text-align: left;"></td>
+                </tr>        
+        </table>
+        <br>
+        <table class="tbl" style="width:100%">
+                <tr>
+                        <th>Tarih</th>
+                        <th>Hekime Yönlendirme Nedeni</th>
+                        <th>Tarih</th>
+                        <th>Hekim Değerlendirmesi</th>
+                        <th>İmza</th>
+                        <th>Sonuç</th>
+                </tr>    
+                <tr>
+                  <td></td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td></td>
+                  <td></td>
+                </tr>             
+        </table>
+        <br>
+        <table class="tbl" style="width:100%">
+                <tr>
+                        <td>Hekimin Adı Soyadı</td>
+                        <td>Tarih </td>
+                        <td>imza </td>
+                       
+                </tr>                
+        </table>
+    
+    </div>

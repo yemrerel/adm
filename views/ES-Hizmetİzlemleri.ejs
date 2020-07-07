@@ -1,0 +1,104 @@
+
+
+<%- include('hastaEsHeader'); -%>
+
+
+    <div class="row" style="margin-top:2%;">
+        <div class="col-md-6" style="">
+                    <div class="row" style="">
+                          <div class="col-md-6" style="">
+                                Ağrı
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s1E" name="s1" value="1">
+                                                  <label class="custom-control-label" for="s1E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s1H" name="s1" value="0">
+                                                  <label class="custom-control-label" for="s1H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                    <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Bası Değerlendirmesi
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s2E" name="s2" value="1">
+                                                  <label class="custom-control-label" for="s2E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="S2H" name="s2" value="0">
+                                                  <label class="custom-control-label" for="S2H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                     <div class="row" style="margin-top:1%;">
+                          <div class="col-md-6" style="">
+                                Beslenme
+                         </div>
+                          <div class="col-md-6" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s3E" name="s3" value="1">
+                                                  <label class="custom-control-label" for="s3E">Yeterli</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s3H" name="s3" value="0">
+                                                  <label class="custom-control-label" for="s3H">Yetersiz</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                    <div class="row" style="margin-top: 1%;">
+                        <div class="col-md-6" style="">Hizmet Alınacak İl</div>
+                        <div class="col-md-6" style="">     
+                                  <select id="iller" class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% iller.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>
+                                  </select>
+                        </div>        
+                    </div>
+                    <div class="container" style="margin-top:2%;    border-radius: 15px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;padding: 25px;">
+                               <div style="color: red;font-size: larger;"> Evde Sağlık Hizmeti, Hizmet Sonlandırma Bilgisi sadece hastanın evde sağlık hizmeti alımının bitimini belirtmek.... </div>
+                   </div>
+                    <div class="row" style="margin-top: 2%;">
+                        <div class="col-md-6" style="">Hizmetin Sonlandırılması</div>
+                        <div class="col-md-6" style="">     
+                                  <select id="iller" class="browser-default custom-select">
+                                                 <option selected="">Seçiniz..</option>
+                                                 <% ESSonlandirma.forEach(function(element) { %>
+                                                 <option value="<%= element.KODU %>"> <%= element.ADI %></option>
+                                                 <%}); %>
+                                  </select>
+                        </div>        
+                    </div>
+        </div>
+        <div class="col-md-6" style="">
+                     <div class="" style="">
+                              <div class="" style="background-color: white;border-radius: 10px;padding: 11px;margin-bottom: -43px;height: 80px;color: #325179;font-family: Avenir Next;box-shadow: 6px 7px 6px grey;width: 140px;text-align: center;">Açıklama</div>                            
+                              </div>
+                               <div class="">
+                                         <div style="border-radius: 20px; padding: 14px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;">
+                                               <textarea style="height:280px" class="kutu" rows="5" placeholder="Örnek.." required=""></textarea>
+                                         </div>
+                               </div>
+                               <div class="row" style="margin-top: 3%;">
+                                          <div id="SBGönder" style="color: #325179;margin: auto;">İzlemi Sağlık Bakanlığına Gönder</div>
+                                                 <button id="silBtn" type="button" class="btn btn-primary" style="width: 25%;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Sil</button>
+                                                 <button id="Kaydetbtn" type="button" class="btn btn-primary" style="width: 25%;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Kaydet</button>
+                               </div>
+                    </div>
+        </div>
+    </div>
+
+
+
+
+
+         

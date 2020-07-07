@@ -1,0 +1,126 @@
+
+    <%- include('hastaIzlemHeader'); -%>
+    <form id="otizmFORM" action="/izlemler/Otizmizlem/kaydet" method="post">
+
+    <div class="container" style="margin-top:2%;    border-radius: 15px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;padding: 25px;">
+                <div style="color: red;font-size: larger;"> 12. Aydan itibaren tek kelimeden oluşan anlamlı ifade, 24. aydan itibaren 2 kelimeden oluşan cümle kurması beklenir. </div>
+    </div>
+    <div class="row" style="margin-top:2%;">
+        <div class="col-md-6" style="">
+                    <div class="row" style="">
+                          <div class="col-md-8" style="">
+                                İsmi Söylendiğinde Bakıyor Mu?
+                         </div>
+                          <div class="col-md-4" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s1E" name="ismiSoyledigindeBakiyor" value="1">
+                                                  <label class="custom-control-label" for="s1E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s1H" name="ismiSoyledigindeBakiyor" value="0">
+                                                  <label class="custom-control-label" for="s1H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                    <div class="row" style="margin-top:5%;">
+                          <div class="col-md-8" style="">
+                                Göz Teması Kuruyor mu?
+                         </div>
+                          <div class="col-md-4" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s2E" name="gozTemasi" value="1">
+                                                  <label class="custom-control-label" for="s2E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="S2H" name="gozTemasi" value="0">
+                                                  <label class="custom-control-label" for="S2H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                     <div class="row" style="margin-top:5%;">
+                          <div class="col-md-8" style="">
+                                Parmağınızla İşaret Ettiğiniz Bir Nesneye Bakıyor Mu?
+                         </div>
+                          <div class="col-md-4" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s3E" name="nesneyebakiyor" value="1">
+                                                  <label class="custom-control-label" for="s3E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s3H" name="nesneyebakiyor" value="0">
+                                                  <label class="custom-control-label" for="s3H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                     <div class="row" style="margin-top:5%;">
+                          <div class="col-md-8" style="">
+                                Tekrarlayıcı Davranışları Var Mı?
+                         </div>
+                          <div class="col-md-4" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s4E" name="tekrarlayiciDavranislar" value="1">
+                                                  <label class="custom-control-label" for="s4E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s4H" name="tekrarlayiciDavranislar" value="0">
+                                                  <label class="custom-control-label" for="s4H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+                     <div class="row" style="margin-top:5%;">
+                          <div class="col-md-8" style="">
+                                Konuşmasında Gecikme Var Mı?
+                         </div>
+                          <div class="col-md-4" style="">
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s5E" name="konusmasindaGecikmeVar" value="1">
+                                                  <label class="custom-control-label" for="s5E">Evet</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                                  <input type="radio" class="custom-control-input" id="s5H" name="konusmasindaGecikmeVar" value="0">
+                                                  <label class="custom-control-label" for="s5H">Hayır</label>
+                                    </div>
+                    
+                         </div>
+                    </div>
+        </div>
+        <div class="col-md-6" style="">
+                     <div class="" style="">
+                              <div class="" style="background-color: white;border-radius: 10px;padding: 11px;margin-bottom: -43px;height: 80px;color: #325179;font-family: Avenir Next;box-shadow: 6px 7px 6px grey;width: 140px;text-align: center;">Açıklama</div>                            
+                              </div>
+                               <div class="">
+                                         <div style="border-radius: 20px; padding: 14px;background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;">
+                                               <textarea name="aciklama"class="kutu" rows="10" placeholder="Örnek.." required=""></textarea>
+                                         </div>
+                               </div>
+                               <div class="row" style="margin-top: 3%;">
+                                          <div id="SBGönder" style="color: #325179;margin: auto;">İzlemi Sağlık Bakanlığına Gönder</div>
+                                                 <button id="Kaydetbtn" type="button" class="btn btn-primary" style="width: 25%;background-color: #325179;color: white;border-radius: 16px;margin: auto;padding: 12px;">Kaydet</button>
+                               </div>
+                    </div>
+        </div>
+    </div>
+
+
+
+
+
+</form>
+
+
+
+<script>
+   $( "#Kaydetbtn" ).click(function() {
+       
+           var input = $("<input>").attr("type", "hidden").attr("name", "hastaTC").val(<%=hasta.Id%>);
+            $('#otizmFORM').append(input);
+            $("#otizmFORM").submit();
+         
+      });
+
+</script>
+

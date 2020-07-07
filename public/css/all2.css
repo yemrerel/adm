@@ -1,0 +1,302 @@
+
+.avatar-pic {
+    width: 150px;
+    }
+
+
+.footerAlt{
+
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: red;
+    color: white;
+    text-align: center;
+
+
+}
+
+.hastaEklemeCard{
+
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-bottom:600px;
+  margin-top: 10px;
+  background-color:#6092c7 !important;
+}
+
+
+.butonRenk{
+
+background-color: #086bd6;
+border-color: #033a71;
+color:#fff;
+
+}
+
+
+.ortala{
+
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.izlemBtn {
+  border-radius: 25px;
+  background:#ffffff;
+  padding: 5%;
+ 
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.rcorners2 {
+  border-radius: 25px;
+  background:#ffffff;
+  padding: 20px; 
+  margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: inline-table;
+}
+.rcorners3 {
+  border-radius: 25px;
+  background:#ffffff;
+  padding: 2%;
+  margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+.rcorners4 {
+  border-radius: 2px;
+  background:#ffffff;
+  padding: 20px; 
+  margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 4%;
+    border-style: groove;
+    border-width: 3px;
+    border-color: blue;
+    width: -webkit-fill-available;
+
+}
+.circle {
+  margin-top: 5%;
+  margin-bottom: 10%;
+ 
+  background: blue;
+  border-radius: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+
+    -moz-border-radius: 50px;
+    -webkit-border-radius: 50px;
+    width: 100px;
+   
+}
+.circle2 {
+  
+ 
+  background: blue;
+  border-radius: 50%;
+  margin-left: auto;
+  height: 80px;
+    -moz-border-radius: 40px;
+    -webkit-border-radius: 40px;
+    width: 80px;
+    text-align: center;
+    
+}
+
+div{
+
+color:black;
+
+}
+ 
+
+@media (min-width: 1270px){
+  .container {
+      max-width: 1800px;
+  }
+
+}
+@media (min-width: 1600px){
+  .container {
+      max-width: 2000px;
+  }
+
+}
+
+
+.search-table{
+  padding: 10%;
+  margin-top: -6%;
+}
+.search-box{
+  background: #1978a0;
+  border: 1px solid #ababab;
+  padding: 3%;
+}
+.search-box input:focus{
+  box-shadow:none;
+  border:2px solid #eeeeee;
+}
+.search-list{
+  background: #fff;
+  border: 1px solid #ababab;
+  border-top: none;
+}
+.search-list h3{
+  background: #eee;
+  padding: 3%;
+  margin-bottom: 0%;
+}
+
+
+.panel {
+  border-radius: 20px;
+  padding: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1%;
+  border-color:#325179;
+  width: 96%;
+  border-style: groove;
+  border-width: 7px;
+}
+
+.aciklama{
+  width: 90%;
+  border-style: groove;
+  border-color: #12de1a;
+  border-radius: 5px;
+  border-width: 5px;
+  margin: auto;
+  width: 100%; 
+}
+
+.hastaProfilSol{
+
+  background-color: white;
+  border-radius: 18px;
+  margin-left: 1%;
+
+
+}
+
+.ui-datepicker-trigger {
+  width: 40px;
+  height: 40px;
+}
+.tabloBaslik{
+
+color: black;
+margin-left: 4%;
+background-color: white;
+padding: 9px;
+padding-right: 40px;
+border-style: groove;
+border-color: blue;
+border-width: 5px;
+
+}
+.tablo{
+background-color: white;
+    border-style: groove;
+    border-width: 5px;
+    border-color: blue;
+
+    width: 100%;
+    margin: auto;
+    padding: 6px;
+  }
+
+
+  body {
+    /*!font-family: 'Lora'; */
+   
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    padding-right: 0;
+    color: #325179;
+      background:#f1f3f3;
+     
+  }
+
+
+
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #2196F3;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .kutu{
+    width: 98%;
+        
+        height: 10%;
+    border: none;
+    }

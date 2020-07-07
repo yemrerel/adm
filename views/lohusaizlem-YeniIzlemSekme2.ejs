@@ -1,0 +1,195 @@
+<div class="row" style="margin-top: 1%;">
+  <div class="col-md-4">
+                          <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                    <div class="row ">
+                                      <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;">GEBELİK/LOHUSALIK SEYRİNDE TEHLİKE İŞARETİ</div>                                               
+                                    </div>
+
+                          </div>
+                           <div class="container" id="LohusaTable" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 150px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">
+                                              <% GebeTehlikeIsaret.forEach(function(element) { %>
+                                <div class="row gtRow">
+                                        <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 5px;border-bottom: solid;">
+                                                  <div class="tik" style="background-color:red;height: 25px;width: 25px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                                        </div> 
+                                         <div class="col-md-9 isim" style="background-color: white;padding: 5px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                </div>
+                                <%}); %>
+                           </div>  
+  </div>
+  <div class="col-md-4">
+                          <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                    <div class="row ">
+                                      <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;"> Kadın Sağlığı İşlemleri</div>                                               
+                                    </div>
+
+                          </div>
+                           <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 150px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">
+                                                  <% KadinSaglikIslemleri.forEach(function(element) { %>
+                                <div class="row ksRow">
+                                        <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 5px;border-bottom: solid;">
+                                                  <div class="tik" style="background-color:red;height: 25px;width: 25px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                                        </div> 
+                                         <div class="col-md-9 isim" style="background-color: white;padding: 5px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                </div>
+                                <%}); %>
+                           </div>  
+  </div>
+   <div class="col-md-4">
+                          <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                    <div class="row ">
+                                      <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;"> KULLANILAN AİLE PLANLAMASI</div>                                               
+                                    </div>
+
+                          </div>
+                           <div class="container"  style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 150px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;margin: 0;border-top-right-radius: 0;border-top-left-radius: 0;">
+                                                  <% APYöntemleri.forEach(function(element) { %>
+                                <div class="row apRow">
+                                        <div class="col-md-3 cbx" style="background-color: white;text-align: right;padding: 5px;border-bottom: solid;">
+                                                  <div class="tik" style="background-color:red;height: 25px;width: 25px;margin-left: 46%;" name="<%= element.KODU %>"></div>
+                                        </div> 
+                                         <div class="col-md-9 isim" style="background-color: white;padding: 5px;text-align: center;border-bottom: solid;"><%= element.ADI %></div> 
+                                </div>
+                                <%}); %>
+                           </div>  
+  </div>
+</div>
+<div class="row" style="margin-bottom: 1%;margin-top: 1%;">
+        <div class="col-md-4">
+              <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                        <div class="row ">
+                          <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;">Seçilenler</div>                                               
+                        </div>
+
+              </div>
+              <div class="container" id="secilenGT" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 130px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;border-top-right-radius: 0;border-top-left-radius: 0;">
+                        
+              </div>
+      </div>
+      <div class="col-md-4">
+                            <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                        <div class="row ">
+                                          <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;">Seçilenler</div>                                               
+                                        </div>
+
+                              </div>
+                                <div class="container" id="secilenDegerKS" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 130px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;border-top-right-radius: 0;border-top-left-radius: 0;">
+                                      
+                                </div>
+    </div>
+    <div class="col-md-4">
+                            <div class="container" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey; overflow-x: hidden;margin: 0;border-top-right-radius: 20px;border-top-left-radius: 20px;">
+                                        <div class="row ">
+                                          <div class="col-md-12" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;">Seçilenler</div>                                               
+                                        </div>
+
+                              </div>
+                                <div class="container" id="secilenAP" style="background-color: white;text-align: center;box-shadow: 6px 7px 6px grey;height: 130px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;border-top-right-radius: 0;border-top-left-radius: 0;">
+                                      
+                                </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<script>
+ 
+    $(document).on('click', ".gtRow", function(){
+
+    if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+        $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+        var isim= $(this).children(".isim").html();
+        var kod= $(this).children(".cbx").children().attr("name");
+        var html= '<div  class="row secilenGT ">';
+        html+= '<div class="col-md-1 entegKodu" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;display:none;"></div>'; 
+        html+= '<div class="col-md-12 testAdı" style="background-color: white;padding: 5px;text-align: center;border-bottom: solid;border-width: thin;">'+isim+'</div> </div>';
+
+        $("#secilenGT").append(html);
+        var t={isim:isim,kod:kod};
+        secilenGT.push(t);
+    }
+    else{
+        $(this).children(".cbx").children().css('background-color','red')
+        var isim= $(this).children(".isim").html();
+
+        var str=":contains("+isim+")" ;
+        $(".secilenGT").remove(str);
+        secilenGT.forEach(element => {
+        if(element.isim==isim){
+          secilenGT = jQuery.grep(secilenGT, function(value) {
+        return value != element;
+    });
+
+    }
+    });
+
+    }
+    });
+
+    $(document).on('click', ".ksRow", function(){
+
+        if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+              $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+              var isim= $(this).children(".isim").html();
+              var kod= $(this).children(".cbx").children().attr("name");
+              var html= '<div  class="row secilenDegerKS ">';
+              html+= '<div class="col-md-1 entegKodu" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;display:none;"></div>'; 
+              html+= '<div class="col-md-12 testAdı" style="background-color: white;padding: 5px;text-align: center;border-bottom: solid;border-width: thin;">'+isim+'</div> </div>';
+
+              $("#secilenDegerKS").append(html);
+              var t={isim:isim,kod:kod};
+              secilenDegerKS.push(t);
+
+        }
+        else{
+              $(this).children(".cbx").children().css('background-color','red')
+              var isim= $(this).children(".isim").html();
+
+              var str=":contains("+isim+")" ;
+              $(".secilenDegerKS").remove(str);
+              secilenDegerKS.forEach(element => {
+                    if(element.isim==isim){
+                      secilenDegerKS = jQuery.grep(secilenDegerKS, function(value) {
+                            return value != element;
+                        });
+                    }
+              });
+       }
+  });
+  $(document).on('click', ".apRow", function(){
+
+if($(this).children(".cbx").children().css('background-color')=="rgb(255, 0, 0)"){//kırmızı mı
+      $(this).children(".cbx").children().css('background-color','rgb(0, 255, 0)');//yeşil
+      var isim= $(this).children(".isim").html();
+      var kod= $(this).children(".cbx").children().attr("name");
+      var html= '<div  class="row secilenAP ">';
+      html+= '<div class="col-md-1 entegKodu" style="background-color: white;text-align: center;padding: 5px;border-bottom: solid;display:none;"></div>'; 
+      html+= '<div class="col-md-12 testAdı" style="background-color: white;padding: 5px;text-align: center;border-bottom: solid;border-width: thin;">'+isim+'</div> </div>';
+
+      $("#secilenAP").append(html);
+      var t={isim:isim,kod:kod};
+      secilenAP.push(t);
+
+}
+else{
+      $(this).children(".cbx").children().css('background-color','red')
+      var isim= $(this).children(".isim").html();
+
+      var str=":contains("+isim+")" ;
+      $(".secilenAP").remove(str);
+      secilenAP.forEach(element => {
+            if(element.isim==isim){
+              secilenAP = jQuery.grep(secilenAP, function(value) {
+                    return value != element;
+                });
+            }
+      });
+}
+});
+</script>

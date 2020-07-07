@@ -1,0 +1,55 @@
+<html lang="tr">
+<head>
+
+
+
+
+
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet"href="/public/css/all2.css" rel="stylesheet">
+<link rel="stylesheet"href="/public/css/all.css" rel="stylesheet">
+<link rel="stylesheet"href="/public/fontawesome/css/all.css" rel="stylesheet">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+
+  <!-- Custom styles for this template -->
+</head>
+<body>
+<div id="main" class="container">
+
+<%- include('header'); -%>
+<%-body%>
+</div>
+
+
+
+
+
+  </body> 
+  <script src="/public/js/jquery.min.js"></script>
+
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script src='/public/js/datepicker-tr.js' type='text/javascript'></script>
+
+  <script href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.js"></script>
+  
+  <script src="/public/js/bootstrap.min.js"></script>
+  
+  
+    <script src="/public/js/login.js"></script>
+    <script src="/public/js/hastaEklemeSayfası.js"></script> 
+
+  
+  <%- script%>
+  <script>
+
+    $( ".logout" ).click(function() {
+      
+    
+                window.location.href = '/login/logout';
+       
+     });
+</script>
+</html>
+
+

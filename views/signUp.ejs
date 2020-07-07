@@ -1,0 +1,221 @@
+<link rel="stylesheet" href="/public/css/bootstrap.css">
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<style>
+	/* Coded with love by Mutiullah Samim */
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #f1f3f3;
+		}
+		.user_card {
+			height: 710px;
+    		width: 800px;
+			margin-top: auto;
+			margin-bottom: auto;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+
+		}
+		.brand_logo_container {
+			position: absolute;
+			height: 170px;
+			width: 170px;
+			top: -75px;
+			border-radius: 50%;
+			background: #60bc68;
+			padding: 10px;
+			text-align: center;
+		}
+		.brand_logo {
+			height: 150px;
+			width: 150px;
+			border-radius: 50%;
+			border: 2px solid white;
+		}
+		.form_container {
+			margin-top: 100px;
+		}
+		.login_btn {
+			width: 100%;
+			background: #c0392b !important;
+			color: white !important;
+		}
+		.login_btn:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.login_container {
+			padding: 0 2rem;
+		}
+		.input-group-text {
+            width: 140px;
+			background: #495057 !important;
+			color: white !important;
+			border: 0 !important;
+			border-radius: 0.25rem 0 0 0.25rem !important;
+		}
+		.input_user,
+		.input_pass:focus {
+			box-shadow: none !important;
+			outline: 0px !important;
+		}
+		.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+			background-color: #c0392b !important;
+		}
+        .login-or {
+    position: relative;
+    font-size: 18px;
+    color: #aaa;
+    margin-top: 10px;
+            margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .span-or {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -2px;
+    margin-left: -25px;
+    background-color: #fff;
+    width: 50px;
+    text-align: center;
+  }
+  .hr-or {
+    background-color: #cdcdcd;
+    height: 1px;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+  h3 {
+    text-align: center;
+    line-height: 300%;
+  }
+</style>
+
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<div class="brand_logo_container">
+						<img src="/public/img/ephesuslogo.svg" class="brand_logo" alt="Logo">
+					</div>
+				</div>
+
+
+                 <h5 style="TEXT-ALIGN: left;margin-top: 80px;">Kayıt Olmak İçin Aşağıdaki Bilgileri Doldurun.</h5>
+                 <a class="pull-right" href="/login"><h5>Zaten Kayıtlı mısınız?</h5> </a>
+
+      <div class="row">
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <a href="#" class="btn btn-lg btn-primary btn-block">Facebook</a>
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6">
+          <a href="#" class="btn btn-lg btn-info btn-block">Google</a>
+        </div>
+      </div>
+      <div class="login-or">
+        <hr class="hr-or">
+        <span class="span-or">yada</span>
+      </div>
+
+      <form role="form">
+   
+        <div class="form-group row" style="margin-top:2%;">
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">Kullanıcı Adı</span>
+                         </div>
+                         <input class="form-control" name="username" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">Şifre</span>
+                         </div>
+                         <input class="form-control" name="pass" type="password" aria-label="Default" aria-describedby="">
+                </div>
+                
+        </div>          
+        <div class="form-group row" style="margin-top:2%;">
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">Adı</span>
+                         </div>
+                         <input class="form-control" name="ad" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">Soyadı</span>
+                         </div>
+                         <input class="form-control" name="soyad" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                
+        </div>       
+        <div class="form-group row" style="margin-top:2%;">
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">TC NO</span>
+                         </div>
+                         <input class="form-control" name="tc" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">Aile Hekimi Kod</span>
+                         </div>
+                         <input class="form-control" name="soyad" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                
+        </div>     
+        <div class="form-group row" style="margin-top:2%;">
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">İl</span>
+                         </div>
+                         <input class="form-control" name="tc" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">İlçe</span>
+                         </div>
+                         <input class="form-control" name="soyad" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                
+        </div> 
+        <div class="form-group row" style="margin-top:2%;">
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">Dip. Tescil No</span>
+                         </div>
+                         <input class="form-control" name="dipNo" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                <div class="input-group mb-3 col-md-6">
+                         <div class="input-group-prepend">
+                               <span class="input-group-text " id="inputGroup-sizing-default">İhtisas NO</span>
+                         </div>
+                         <input class="form-control" name="ihtisasNo" type="text" aria-label="Default" aria-describedby="">
+                </div>
+                
+        </div>                  
+			    		<input class="btn btn-lg btn-success btn-block" type="submit" value="Kayıt Ol">
+      </form>
+    
+			</div>
+		</div>
+	</div>
+  <script src="/public/js/jquery.min.js"></script>
+
+  <script href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.js"></script>
+  
+  <script src="/public/js/bootstrap.min.js"></script>
+  
+  
+    <script src="/public/js/login.js"></script>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<s:Envelope
+    xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+           <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                <wsse:Username><%=username %></wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+     </s:Header>
+    <s:Body>
+         <SYSSendMessage xmlns="https://sys.sagliknet.saglik.gov.tr/SYS/">       
+      <input>
+            &lt;SYSMessage&gt;
+            &lt;messageGuid value="<%=messageGuid %>" /&gt;
+            &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="103" value="Muayene Bilgisi Kayıt" /&gt;
+            &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+            &lt;author&gt;
+            &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+            &lt;/author&gt;
+            &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+            &lt;recordData&gt;
+            &lt;HASTA_TAKIP_BILGISI&gt;
+            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+            &lt;/HASTA_TAKIP_BILGISI&gt;
+                        <% if(HASTA_RECETE_BILGILERI!=-1){ %>
+                            &lt;HASTA_RECETE_BILGILERI&gt;
+                            
+                            &lt;RECETE_BILGISI&gt;
+                            &lt;RECETE_TARIHI value="<%=RECETE_TARIHI %>" /&gt;
+                            &lt;RECETE_NUMARASI value="<%=RECETE_NUMARASI %>" /&gt;
+                            &lt;RECETE_TURU version="1" codeSystemGuid="c2fbe9bb-f6b3-4cb5-8670-47890ed7ed4b" code="<%=RECETE_TURU.KODU %>" value="<%=RECETE_TURU.ADI %>" /&gt;
+                            &lt;HEKIM_KIMLIK_NUMARASI value="<%=HEKIM_KIMLIK_NUMARASI %>" /&gt;
+                                        <% for(var i=0; i < ILAC_BILGISI.length; i++) {%>
+
+                                            &lt;ILAC_BILGISI&gt;
+                                            &lt;ILAC_BARKODU value="<%=ILAC_BILGISI[i].ILAC_BARKODU %>" /&gt;
+                                            &lt;ILAC_ADI value="<%=ILAC_BILGISI[i].ILAC_ADI %>" /&gt;
+                                            &lt;KUTU_ADETI value="<%=ILAC_BILGISI[i].KUTU_ADETI %>" /&gt;
+                                            &lt;ILAC_KULLANIM_SEKLI version="1" codeSystemGuid="32d57611-4928-46da-afac-624aaaa388d8" code="<%=ILAC_BILGISI[i].ILAC_KULLANIM_SEKLI.KODU %>" value="<%=ILAC_BILGISI[i].ILAC_KULLANIM_SEKLI.ADI %>" /&gt;
+                                            &lt;ILAC_KULLANIM_SAYISI value="<%=ILAC_BILGISI[i].ILAC_KULLANIM_SAYISI %>" /&gt;
+                                            &lt;ILAC_KULLANIM_DOZU value="<%=ILAC_BILGISI[i].ILAC_KULLANIM_DOZU %>" /&gt;
+                                            &lt;ILAC_KULLANIM_PERIYODU value="<%=ILAC_BILGISI[i].ILAC_KULLANIM_PERIYODU %>" /&gt;
+                                            &lt;ILAC_KULLANIM_PERIYODU_BIRIMI version="1" codeSystemGuid="64408499-b82a-4e64-805e-e821aa0c64c9" code="<%=ILAC_BILGISI[i].ILAC_KULLANIM_PERIYODU_BIRIMI.KODU %>" value="<%=ILAC_BILGISI[i].ILAC_KULLANIM_PERIYODU_BIRIMI.ADI %>" /&gt;
+                                            &lt;ILAC_ACIKLAMA value="<%=ILAC_BILGISI[i].ILAC_ACIKLAMA %>" /&gt;
+                                            &lt;/ILAC_BILGISI&gt;
+                                <% }%>
+                                &lt;/RECETE_BILGISI&gt;
+                                &lt;/HASTA_RECETE_BILGILERI&gt;
+                        <%} %>
+                        <%if(HASTA_RAPOR_BILGILERI!=-1){ %>
+                            &lt;HASTA_RAPOR_BILGILERI&gt;
+                                <% for(var i=0; i < RAPOR_BILGISI_count; i++) {%>
+                                    &lt;RAPOR_BILGISI&gt;
+                                    &lt;RAPOR_TARIHI value="<%=RAPOR_TARIHI %>" /&gt;
+                                    &lt;RAPOR_NUMARASI value="<%=RAPOR_NUMARASI %>" /&gt;
+                                    &lt;RAPOR_TURU version="1" codeSystemGuid="3fb672ac-0675-44ef-9f91-86856dc79370" code="<%=RAPOR_TURU.KODU %>" value="<%=RAPOR_TURU.ADI %>" /&gt;
+                                    &lt;RAPOR_BASLANGIC_TARIHI value="<%=RAPOR_BASLANGIC_TARIHI %>" /&gt;
+                                    &lt;RAPOR_BITIS_TARIHI value="<%=RAPOR_BITIS_TARIHI %>" /&gt;
+                                    &lt;RAPOR_TAKIP_NUMARASI value="<%=RAPOR_TAKIP_NUMARASI %>" /&gt;
+                                    &lt;RAPOR_PDF_BILGISI value="<%=RAPOR_PDF_BILGISI %>" /&gt;
+                                    &lt;RAPOR_HEKIM_BILGISI&gt;
+                                    &lt;HEKIM_KIMLIK_NUMARASI value="<%=HEKIM_KIMLIK_NUMARASI %>" /&gt;
+                                    &lt;/RAPOR_HEKIM_BILGISI&gt;
+                                    &lt;/RAPOR_BILGISI&gt;
+                            <% }%>
+                            &lt;/HASTA_RAPOR_BILGILERI&gt;
+                        <%} %>
+                        <%if(MUAYENE_BILGILERI!=-1){ %>&gt;
+                            &lt;MUAYENE_BILGILERI&gt;
+                                <%if(CHECK_UP_BILGISI!=-1){ %>
+                                    &lt;CHECK_UP_BILGISI version="1" codeSystemGuid="c9d56fee-d143-4602-ad7b-ba131ef92ad9" code="<%=CHECK_UP_BILGISI.KODU %>" value="<%=CHECK_UP_BILGISI.ADI %>" /&gt;
+                            <%} %>
+                            <%if(PAKETE_AIT_ISLEM_ZAMANI!=-1){ %>
+                                &lt;PAKETE_AIT_ISLEM_ZAMANI value="<%=PAKETE_AIT_ISLEM_ZAMANI %>" /&gt;
+                            <%} %>
+                            <%if(MUAYENE_BASLANGIC_TARIHI!=-1){ %>
+                                &lt;MUAYENE_BASLANGIC_TARIHI value="<%=MUAYENE_BASLANGIC_TARIHI %>" /&gt;
+                            <%} %>
+                            <%if(MUAYENE_BITIS_TARIHI!=-1){ %>
+                                &lt;MUAYENE_BITIS_TARIHI value="<%=MUAYENE_BITIS_TARIHI %>" /&gt;
+                            <%} %>
+                            <%if(EPIKRIZ_BILGISI!=-1){ %>
+                                &lt;EPIKRIZ_BILGISI&gt;
+                                &lt;EPIKRIZ_BILGISI_BASLIK value="<%=EPIKRIZ_BILGISI_BASLIK %>" /&gt;
+                                    &lt;EPIKRIZ_BILGISI_ACIKLAMA value="<%=EPIKRIZ_BILGISI_ACIKLAMA %>" /&gt;
+                                    &lt;/EPIKRIZ_BILGISI&gt;
+                            <%} %>
+                            <% for(var i=0; i < TANI_BILGISI.length; i++) {%>
+                                &lt;TANI_BILGISI&gt;
+                                &lt;TANI_TURU version="1" codeSystemGuid="55894edb-1a8c-4f7f-a447-0119e61c14f1" code="1" value="ANA TANI" /&gt;
+                                &lt;ICD10 version="1" codeSystemGuid="c3eaabad-8c4c-56ee-e043-14031b0a5530" code="<%=TANI_BILGISI[i].KODU %>" value="<%=TANI_BILGISI[i].ADI %>" /&gt;
+                                &lt;/TANI_BILGISI&gt;
+                            <% }%>
+                            <%if(BOY_KILO_BILGILERI!=-1){ %>
+                                &lt;BOY_KILO_BILGILERI&gt;
+                                &lt;BOY value="<%=BOY %>" /&gt;
+                                &lt;KILO value="<%=KILO %>" /&gt;
+                                &lt;/BOY_KILO_BILGILERI>
+                            <%} %>
+                                &lt;/MUAYENE_BILGILERI&gt;
+                        <%} %>
+                        &lt;/recordData&gt;
+                        &lt;/SYSMessage&gt;
+                    </input>
+                </SYSSendMessage>
+                </s:Body>
+        </s:Envelope>

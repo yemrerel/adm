@@ -1,0 +1,84 @@
+/*!
+ * Start Bootstrap - Business Casual v5.0.3 (https://startbootstrap.com/template-overviews/business-casual)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-business-casual/blob/master/LICENSE)
+ */
+
+
+
+
+.image_outer_container{
+  margin-top: auto;
+  margin-bottom: auto;
+  border-radius: 50%;
+  position: relative;
+}
+
+.image_inner_container{
+  border-radius: 50%;
+  padding: 5px;
+ background: #833ab4; 
+ background: -webkit-linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4); 
+ background: linear-gradient(to bottom, #fcb045, #fd1d1d, #833ab4);
+}
+.image_inner_container img{
+  max-width: 99%;
+  border-radius: 50%;
+  border: 5px solid white;
+}
+
+.image_outer_container .green_icon{
+  background-color: #4cd137;
+  position: absolute;
+  right: 30px;
+  bottom: 10px;
+  height: 30px;
+  width: 30px;
+  border:5px solid white;
+  border-radius: 50%;
+}
+
+
+.tab {overflow: hidden; border: 1px solid #ccc; 
+  background-color: #f1f1f1;}
+  
+  .tabcontent {display: none; padding: 6px 12px; border: 1px solid #ccc;
+      border-top: none;}
+      
+  .tab button {background-color: inherit;  border: none;
+      outline: none; cursor: pointer; padding: 14px 16px; 
+      transition: 0.3s;}
+      
+  .tab button:hover {background-color: #ddd;}
+  
+  .tab .active {background-color: #ccc;}
+  
+  .tabcontent {display: none; padding: 6px 12px;
+  
+  border: 1px solid #ccc; border-top: none;}
+ 
+
+
+  .has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+
+
+.ui-menu-item-wrapper{
+
+font-size: 2rem;
+
+
+}

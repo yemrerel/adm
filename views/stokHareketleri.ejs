@@ -1,0 +1,868 @@
+<style>.ui-autocomplete {
+    z-index:2147483647;
+  }
+  .ui-autocomplete-input{
+      font-size: smaller;
+  }
+
+  </style>
+<div class="container">     
+    <div class="row" style="margin-top:1%">          
+        <div class="input-group input-group-sm col-md-4">
+                <div class="input-group-prepend " style="margin-left: 1px;">
+                        <span class="input-group-text " id="inputGroup-sizing-default">Stok</span>
+                </div>
+                <select name="stoklar" id="stoklar" class="browser-default custom-select"> 
+                      <% stoklar.forEach(function(e) { %>
+                        <option value="<%=e.ID %>"> <%=e.Ad %></option>
+                        <%}); %>                     
+                </select>
+        </div>
+         <div class="col-md-8" style="margin:auto">
+               İşlem Tarihi <input id="stokBasTar" name="stokBasTar" type="date">ile <input id="stokBitTar" name="stokBitTar" type="date"> arasındakiler
+         </div>
+       
+    </div>
+    
+</div>
+
+<div class="container">     
+    <div class="row" style="margin-top:1%;">   
+                <div class="col-md-6" style="margin:auto;text-align: center ;">
+                    <div class="row" style="margin-top:1%">   
+                        <div class="" style="text-align: center; margin: auto;"><b> <u>STOK GİRİŞLERİ</u> </b></div>
+                    </div>
+                    <div class="row">   
+                            <div class="container" style="margin-top: 1%; background-color: #adb5bd;text-align: center;border-bottom-left-radius: 0;border-bottom-right-radius: 0;border-top-left-radius: 15px;border-top-right-radius: 15px;overflow-y: auto;overflow-x: hidden;width: 98%;">
+                                <div class="row">
+                                    
+                                    <div class="col-md-2" style="text-align: center;padding: 1px;border-right: solid;border-bottom: solid;font-size: smaller;border-width: thin;">
+                                        Tarih
+                                    </div>  
+                                    <div class="col-md-1" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;border-right: solid;border-width: thin;">
+                                        Miktar
+                                    </div>
+                                    <div class="col-md-2" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-right: solid;border-width: thin;">
+                                        Miad
+                                    </div>
+                                    <div class="col-md-3" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-right: solid;border-width: thin;">
+                                        Temin Türü
+                                    </div>                  
+                                    <div class="col-md-4" style="border-top-right-radius: 15px;padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;">
+                                        Açıklama
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container" id="stoklarGirisTable" style="background-color: white; text-align: center;box-shadow: 6px 7px 6px grey;height: 13rem;border-radius: 20px;overflow-y: overlay;overflow-x: hidden;border-top-left-radius: 0;border-top-right-radius: 0;width: 98%;">
+                                
+                            </div>
+
+                            <div class="container">          
+                                <div class="row" style="margin-top:2%;">
+                                        <div class="col-md-4">
+                                                        <button id="yeniGirisBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Yeni</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                                        <button id="sgduzenleBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Düzenle</button>
+                                    </div>
+                                        <div class="col-md-4">
+                                                    <button id="silGirisBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Sil</button>
+                                    </div>                                      
+                                </div>
+                            </div>
+                        </div>
+            </div>
+           <div class="col-md-6" style="margin:auto;text-align: center ;">
+                <div class="row" style="margin-top:1%">   
+                    <div class="" style="text-align: center; margin: auto;"><b> <u>STOK ÇIKIŞLARI</u> </b></div>
+                </div>
+                <div class="row">   
+                        <div class="container" style="margin-top: 1%; background-color: #adb5bd;text-align: center;border-bottom-left-radius: 0;border-bottom-right-radius: 0;border-top-left-radius: 15px;border-top-right-radius: 15px;overflow-y: auto;overflow-x: hidden;width: 98%;">
+                            <div class="row">                              
+                                <div class="col-md-2" style="text-align: center;padding: 1px;border-right: solid;border-bottom: solid;font-size: smaller;border-width: thin;">
+                                    Tarih
+                                </div>  
+                                <div class="col-md-1" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;border-right: solid;border-width: thin;">
+                                    Miktar
+                                </div>
+                                <div class="col-md-2" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-right: solid;border-width: thin;">
+                                    Miad
+                                </div>
+                                <div class="col-md-3" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-right: solid;border-width: thin;">
+                                    Hasta Adı
+                                </div>                  
+                                <div class="col-md-4" style="border-top-right-radius: 15px;padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;">
+                                    Çıkış Türü
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container" id="stoklarCikisTable" style="background-color: white; text-align: center;box-shadow: 6px 7px 6px grey;height: 13rem;border-radius: 20px;overflow-y: overlay;overflow-x: hidden;border-top-left-radius: 0;border-top-right-radius: 0;width: 98%;">
+                           
+
+                        </div>
+
+                        <div class="container" >          
+                                <div class="row" style="margin-top:2%;">
+                                        <div class="col-md-4">
+                                                        <button id="yeniCikisBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Yeni</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                                        <button id="cikisduzenleBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Düzenle</button>
+                                        </div>
+                                        <div class="col-md-4">
+                                                    <button id="cikissilBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Sil</button>
+                                        </div>                                      
+                                </div>
+                        </div>
+                </div>
+            </div>
+    </div>
+    
+</div>
+
+
+
+<div class="container">   
+    <div class="row" style="margin-top:1%">   
+        <div class="" style="text-align: center; margin: auto;"><b> <u>MİAD ANALİZİ</u> </b></div>
+   </div>  
+    <div class="row">   
+                <div class="container" style="background-color: #adb5bd;text-align: center;border-bottom-left-radius: 0;border-bottom-right-radius: 0;border-top-left-radius: 15px;border-top-right-radius: 15px;overflow-y: auto;overflow-x: hidden;width: 98%;">
+                    <div class="row">
+                        
+                        <div class="col-md-3" style="text-align: center;padding: 1px;border-right: solid;border-bottom: solid;font-size: smaller;border-width: thin;">
+                            Miad
+                        </div>  
+                        <div class="col-md-3" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;border-right: solid;border-width: thin;">
+                            Toplam Stok Girişi
+                        </div>
+                        <div class="col-md-3" style="padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-right: solid;border-width: thin;">
+                            Toplam Stok Çıkışı
+                        </div>                                
+                        <div class="col-md-3" style="border-top-right-radius: 15px;padding: 1px;text-align: center;border-bottom: solid;font-size: smaller;border-width: thin;">
+                            Miad Mevcudu
+                        </div>
+                    </div>
+                </div>
+                <div class="container" id="hastalarTable" style="background-color: white; text-align: center;box-shadow: 6px 7px 6px grey;height: 12rem;border-radius: 20px;overflow-y: overlay;overflow-x: hidden;border-top-left-radius: 0;border-top-right-radius: 0;width: 98%;">
+                   
+
+                </div>
+
+                <div class="container">          
+                    <div class="row" style="margin-top:1%;">
+                            <div class="col-md-4">
+                                            <button id="yeniBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Raporlar</button>
+                            </div>
+                            <div class="col-md-4">
+                                            <button id="duzenleBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Sil</button>
+                        </div>
+                            <div class="col-md-4">
+                                        <button id="silBtn" type="button" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;font-size: 1rem;padding: 3px;">Kaydet</button>
+                        </div>                                      
+                    </div>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+
+
+
+<script>
+    var secilenStok,stokBasTar,stokBitTar
+$(document).ready( function() {
+    var now = new Date();
+    var month = (now.getMonth() + 1);               
+    var day = now.getDate();
+    if (month < 10) 
+        month = "0" + month;
+    if (day < 10) 
+        day = "0" + day;
+    var today = now.getFullYear() + '-' + month + '-' + day;
+    $('#stokBasTar').val(today);
+    $('#stokBitTar').val(today);
+    $('#girisMiad').val(today);
+    $('#girisTar').val(today);
+    $('#cikisTar').val(today);
+    $('#cikisMiad').val(today);
+
+    secilenStok=$( "#stoklar option:selected" ).val();
+    stokBasTar =$('#stokBasTar').val();
+    stokBitTar = $('#stokBitTar').val();
+
+    getStokHareketleri()
+});
+
+
+$('#stoklar').change(function() {
+    getStokHareketleri()
+});
+$('#stokBasTar').change(function() {
+    getStokHareketleri()
+});
+$('#stokBitTar').change(function() {
+    getStokHareketleri()
+});
+
+function getStokHareketleri(){
+    secilenStok=$( "#stoklar option:selected" ).val();
+    stokBasTar =$('#stokBasTar').val();
+    stokBitTar = $('#stokBitTar').val();
+    $.ajax({
+               type: "post",
+               url: '/ayarlar/stokKartlariniGetir',
+               data:{secilenStok:secilenStok,stokBasTar:stokBasTar,stokBitTar:stokBitTar},
+               success: function(d)
+               {
+                   console.log(d)
+                  $("#stoklarGirisTable").empty()
+                  for (let index = 0; index < d.stokGirisleri.length; index++) {
+                      html=`<div  class="row stokGirisRow" id="sgRow${d.stokGirisleri[index].Id}" >
+                                    <div class="col-md-2  sg1" style="text-align: center;padding: 5px;border-right: solid;border-bottom: solid;border-width: thin;font-size: smaller;">${d.stokGirisleri[index].Tarih}</div>  
+                                    <div class="col-md-1  sg2" style="text-align: center;padding: 5px;border-right: solid;border-bottom: solid;border-width: thin;font-size: smaller;">${d.stokGirisleri[index].Miktar}</div>  
+                                    <div class="col-md-2 sg3" style="padding: 5px;text-align: center;border-bottom: solid;border-right: solid;border-width: thin;font-size: smaller;">${d.stokGirisleri[index].Miad}</div>
+                                    <div class="col-md-3 sg4" id="kaynak${d.stokGirisleri[index].CikisKaynagi.KODU}" style="padding: 5px;text-align: center;border-bottom: solid;border-right: solid;border-width: thin;font-size: smaller;">${d.stokGirisleri[index].CikisKaynagi.ADI}</div>                    
+                                    <div class="col-md-4 sg5"  style="padding: 5px;text-align: center;border-bottom: solid;border-width: thin;font-size: smaller;">${d.stokGirisleri[index].Aciklama}</div>
+                                </div>`
+                                $("#stoklarGirisTable").append(html)
+                  }
+                  $("#stoklarCikisTable").empty()
+
+                  for (let index = 0; index < d.stokCikislari.length; index++) {
+                      html=`<div  class="row stokCikisRow" id="scRow${d.stokCikislari[index].Id}" >
+                                    <div class="col-md-2  sc1" style="text-align: center;padding: 5px;border-right: solid;border-bottom: solid;border-width: thin;font-size: smaller;">${d.stokCikislari[index].Tarih}</div>  
+                                    <div class="col-md-1  sc2" style="text-align: center;padding: 5px;border-right: solid;border-bottom: solid;border-width: thin;font-size: smaller;">${d.stokCikislari[index].Miktar}</div>  
+                                    <div class="col-md-2 sc3" style="padding: 5px;text-align: center;border-bottom: solid;border-right: solid;border-width: thin;font-size: smaller;">${d.stokCikislari[index].Miad}</div>
+                                    <div class="col-md-3 sc4" style="padding: 5px;text-align: center;border-bottom: solid;border-right: solid;border-width: thin;font-size: smaller;">${d.stokCikislari[index].hasta.Ad+' '+d.stokCikislari[index].hasta.Soyad}</div>                    
+                                    <div class="col-md-4 sc5" id="kaynak${d.stokCikislari[index].CikisKaynagi.KODU}" style="padding: 5px;text-align: center;border-bottom: solid;border-width: thin;font-size: smaller;">${d.stokCikislari[index].CikisKaynagi.ADI}</div>
+                                </div>`
+                                $("#stoklarCikisTable").append(html)
+                  }
+
+               }
+    });
+}
+
+    //sTOK GİRİŞ
+
+   secilenStokGiris=null
+   secilenGirisDiv=null
+   $( document ).ready(function() {
+   $("#stoklarGirisTable").on("click", ".stokGirisRow" , function(){
+       if(secilenStokGiris!=$(this).attr('id')){
+           $( ".stokGirisRow" ).css('background-color','white')   
+           $(this).css('background-color','yellow')   
+           secilenStokGiris=$(this).attr('id').substring(5)
+           secilenGirisDiv=$(this)
+       }
+       else{
+           $( ".stokGirisRow" ).css('background-color','white')   
+           secilenStokGiris=null
+           secilenGirisDiv=null
+       }
+   });
+   
+   $( "#stokGirisEkleForm" ).on( "submit", function( event ) {
+     event.preventDefault();
+      $.ajax({
+           type: "post",
+           url: '/ayarlar/stokGirisEkle',
+           data:$( this ).serialize(),
+           success: function(data)
+           {
+               if(data.id>0) {
+                 alert('Stok eklenmiştir.')
+                 $( "#stokGirisEkleModal" ).modal('toggle')
+
+                   girisKarekod=$('#girisKarekod').val()
+                   girisStokKarti=$('#girisStokKarti').val()
+                   girisMiad=$('#girisMiad').val()
+                   girisBarkod=$('#girisBarkod').val()
+                   girisMiktari=$('#girisMiktari').val()
+                   girisTar=$('#girisTar').val()
+                   girisTemin=$('#girisTemin').val()
+                   girisAciklama=$('#girisAciklama').val()
+                                 
+                   html=` <div  class="row stokGirisRow" id="sgRow${data.Id}" >
+                                    <div class="col-md-2  sg1" style="text-align: center;padding: 5px;border-right: solid;border-bottom: solid;border-width: thin;font-size: smaller;">${girisTar} </div>  
+                                    <div class="col-md-1  sg2" style="text-align: center;padding: 5px;border-right: solid;border-bottom: solid;border-width: thin;font-size: smaller;">${girisMiktari}</div>  
+                                    <div class="col-md-2 sg3" style="padding: 5px;text-align: center;border-bottom: solid;border-right: solid;border-width: thin;font-size: smaller;">${girisMiad}</div>
+                                    <div class="col-md-3 sg4" style="padding: 5px;text-align: center;border-bottom: solid;border-right: solid;border-width: thin;font-size: smaller;">${girisTemin}</div>                    
+                                    <div class="col-md-4 sg5" style="padding: 5px;text-align: center;border-bottom: solid;border-width: thin;font-size: smaller;">${girisAciklama}</div>
+                           </div>`
+                           $('#stoklarGirisTable').append(html)
+               }                       
+           }
+       });
+   });
+   });
+   
+   $( "#silGirisBtn" ).click(function() {
+       console.log(secilenStokGiris)
+       if(secilenStokGiris!=null){
+           $.ajax({
+               type: "post",
+               url: '/ayarlar/stokGirisSil',
+               data:{id:secilenStokGiris},
+               success: function(data)
+               {
+                   if(data) {
+                       satır='#sgRow'+secilenStokGiris
+                       $(satır).remove()
+                       alert('Stok Silindi. ')
+                   }                       
+               }
+           });
+       }
+       else{
+          alert('Lütfen önce stok seçiniz.')
+       }
+     
+   });
+   
+   $( "#yeniGirisBtn" ).click(function() {
+           $( "#stokGirisEkleModal" ).modal('toggle')
+   });
+   
+   
+   $( "#sgduzenleBtn" ).click(function() {
+       console.log(secilenStokGiris)
+       if(secilenStokGiris!=null){
+                   $( "#gUpMiad" ).val(secilenGirisDiv.children('.sg1').text())
+                   $( "#gUpMiktari" ).val(secilenGirisDiv.children('.sg2').text())
+                   $( "#gUpTar" ).val(secilenGirisDiv.children('.sg3').text())
+                   $( "#gUpAciklama" ).val(secilenGirisDiv.children('.sg5').text())
+
+                   $( "#gUpTemin" ).val(secilenGirisDiv.children('.sg4').attr('id').substring(6))
+                    console.log(secilenGirisDiv.children('.sg4').attr('id').substring(6))
+                   $( "#girisUpdateModal" ).modal('toggle')  
+       }
+       else{
+          alert('Lütfen önce stok seçiniz.')
+       }        
+         
+    });
+    $( "#girisUpdateForm" ).on( "submit", function( event ) {
+     event.preventDefault();
+ 
+            $( this ).children('.secilenStokGiris').remove()
+             $( this ).append($("<input>").attr("type", "hidden").attr("name", "secilenStokGiris").attr("class", "secilenStokGiris").val(secilenStokGiris));
+
+      $.ajax({
+           type: "post",
+           url: '/ayarlar/stokGirisUpdate',
+           data:$( this ).serialize(),
+           success: function(data)
+           {
+                 alert('Stok Düzenlenmiştir.')
+                 $( "#girisUpdateModal" ).modal('toggle')
+                 getStokHareketleri()
+
+           
+           }
+       });
+   });
+   //stokUpdate
+   
+
+ //sTOK Çıkış
+
+ secilenStokCikis=null
+   secilenCikisDiv=null
+   $( document ).ready(function() {
+   $("#stoklarCikisTable").on("click", ".stokCikisRow" , function(){
+       if(secilenStokCikis!=$(this).attr('id')){
+           $( ".stokCikisRow" ).css('background-color','white')   
+           $(this).css('background-color','yellow')   
+           secilenStokCikis=$(this).attr('id').substring(5)
+           secilenCikisDiv=$(this)
+       }
+       else{
+           $( ".stokCikisRow" ).css('background-color','white')   
+           secilenStokCikis=null
+           secilenCikisDiv=null
+       }
+   });
+   
+   $( "#stokCikisEkleForm" ).on( "submit", function( event ) {
+     event.preventDefault();
+      $.ajax({
+           type: "post",
+           url: '/ayarlar/stokCikisEkle',
+           data:$( this ).serialize(),
+           success: function(data)
+           {
+               
+                 alert('Stok Çıkış eklenmiştir.')
+                 $( "#stokCikisEkleModal" ).modal('toggle')
+                getStokHareketleri()
+                  
+                                    
+           }
+       });
+   });
+   });
+   
+   $( "#cikissilBtn" ).click(function() {
+       console.log(secilenStokCikis)
+       if(secilenStokCikis!=null){
+           $.ajax({
+               type: "post",
+               url: '/ayarlar/stokCikisSil',
+               data:{id:secilenStokCikis},
+               success: function(data)
+               {
+                   if(data) {
+                       satır='#scRow'+secilenStokCikis
+                       $(satır).remove()
+                       alert('Stok Silindi. ')
+                   }                       
+               }
+           });
+       }
+       else{
+          alert('Lütfen önce stok seçiniz.')
+       }
+     
+   });
+   
+   $( "#yeniCikisBtn" ).click(function() {
+           $( "#stokCikisEkleModal" ).modal('toggle')
+   });
+   
+   
+   $( "#cikisduzenleBtn" ).click(function() {
+       if(secilenStokCikis!=null){
+                   $( "#cUpMiad" ).val(secilenCikisDiv.children('.sc1').text())
+                   $( "#cUpMiktari" ).val(secilenCikisDiv.children('.sc2').text())
+                   $( "#cUpTar" ).val(secilenCikisDiv.children('.sc3').text())
+                   $( "#cUpTemin" ).val(secilenCikisDiv.children('.sc5').attr('id').substring(6))
+                   $( "#cikisUpdateModal" ).modal('toggle')  
+       }
+       else{
+          alert('Lütfen önce stok seçiniz.')
+       }        
+         
+    });
+    $( "#cikisUpdateForm" ).on( "submit", function( event ) {
+     event.preventDefault();
+            $( this ).children('.secilenStokCikis').remove()
+             $( this ).append($("<input>").attr("type", "hidden").attr("name", "secilenStokCikis").attr("class", "secilenStokCikis").val(secilenStokCikis));
+      $.ajax({
+           type: "post",
+           url: '/ayarlar/stokCikisUpdate',
+           data:$( this ).serialize(),
+           success: function(data)
+           {
+                 alert('Stok Çıkışı Düzenlenmiştir.')
+                 $( "#cikisUpdateModal" ).modal('toggle')
+                 getStokHareketleri()
+
+           
+           }
+       });
+   });
+
+var availableTags = [];
+
+
+$( "#hastaAra" ).on("keyup", function () {
+      this.value = this.value.toLocaleUpperCase('tr-TR')
+    if(2<$( "#hastaAra" ).val().length)
+    {
+
+      var input=  $( "#hastaAra").val();
+      $.ajax({
+      url: '/hastaFilter',
+      method: 'post',
+      data: { input: input }
+      }).done(function(res) {
+        hastalar=res.hastalar;
+        for (let index = 0; index < hastalar.length; index++) {
+          availableTags[index]=(hastalar[index].Id+' '+hastalar[index].Ad+' '+hastalar[index].Soyad);
+        }
+
+      });
+    }
+})
+$( "#hastaAra" ).autocomplete({
+    
+  source: availableTags,
+  minLength: 3,
+  select: function (e, ui) {
+    var hasta=ui.item.value;
+    $( "#hastaAra").val(hasta);
+    console.log(hasta)
+    
+
+  }
+
+
+
+});
+   </script>
+
+
+
+<!-- Modal -->
+<div class="modal" id="girisUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+   
+     <!-- Modal content-->
+         <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                  <div style="color: white;    font-size: x-large;">Stok Girişi Düzenle</div> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                     <div class="container" style="margin-top: 1%;">
+                        <form id="girisUpdateForm"> 
+                           
+                            <div class="row">
+                                    
+                                    <div class="col-md-6" style="margin: auto;color: #325179;">
+                                        <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text " id="inputGroup-sizing-default">Miad</span>
+                                                </div>
+                                                <input id="gUpMiad" class="form-control" name="girisMiad" type="date" aria-label="Default">
+                                        </div>
+                                    </div>
+                                    <div class="input-group input-group-sm col-md-6"  >
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Giriş Miktarı</span>
+                                        </div>
+                                        <input id="gUpMiktari" class="form-control" name="girisMiktari" type="number" aria-label="Default">
+                                    </div>
+                           </div>                                                          
+                             
+                            <div class="row" style="margin-top: 1%;">
+                                 <div class="input-group input-group-sm col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Giriş Tarihi</span>
+                                        </div>
+                                        <input id="gUpTar" class="form-control" name="girisTar" type="date" aria-label="Default">
+                                </div>
+                            </div>  
+                            <div class="row" style="margin-top: 1%;">
+                                        <div class="input-group input-group-sm col-md-12">
+                                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                                        <span class="input-group-text " id="inputGroup-sizing-default">Temin Türü</span>
+                                                </div>
+                                                <select name="duzenleTemin" id="gUpTemin" class="browser-default custom-select"> 
+                                                    <% TeminTur.forEach(function(e) { %>
+                                                        <option value="<%=e.KODU %>"> <%=e.ADI %></option>
+                                                        <%}); %> 
+                                                </select>
+                                        </div>
+                           </div>
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Açıklama</span>
+                                    </div>
+                                    <input id="gUpAciklama" class="form-control" name="girisAciklama" type="text" aria-label="Default" required>
+                                </div>
+                            </div>    
+                           <div class="row" style="margin-top:2%;">                                                     
+                                <div class="col-md-12">
+                                            <button  type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                                </div>                                      
+                          </div>                   
+                        </form>
+                           
+                     </div>
+              </div>
+         </div>
+     </div>
+  </div>
+
+
+<!-- Modal -->
+<div class="modal" id="stokGirisEkleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+   
+     <!-- Modal content-->
+         <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                  <div style="color: white;    font-size: x-large;">Stok Girişi</div> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                     <div class="container" style="margin-top: 1%;">
+                        <form id="stokGirisEkleForm"> 
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Karekod</span>
+                                    </div>
+                                    <input id="girisKarekod" class="form-control" name="girisKarekod" type="text" aria-label="Default" required>
+                                </div>
+                            </div>     
+                            <div class="row" style="margin-top: 1%;">
+                                  <div class="col-md-6">EAN-13:<div id="ean"> </div></div>
+                                  <div class="col-md-6">S.K.T.:<div id="skt"> </div></div>
+                            </div>     
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-sm ">
+                                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                                        <span class="input-group-text " id="inputGroup-sizing-default">Stok Kartı</span>
+                                                </div>
+                                                <select name="girisStokKarti" id="girisStokKarti" class="browser-default custom-select"> 
+                                                    <% stoklar.forEach(function(e) { %>
+                                                    <option value="<%=e.ID %>"> <%=e.Ad %></option>
+                                                    <%}); %>                     
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="margin: auto;color: #325179;">
+                                        <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text " id="inputGroup-sizing-default">Miad</span>
+                                                </div>
+                                                <input id="girisMiad" class="form-control" name="girisMiad" type="date" aria-label="Default">
+                                        </div>
+                                    </div>
+                           </div>
+                           <div class="row" style="margin-top: 1%;"> <div class="col-md-12">NOT: Karekodu Okutursanuz, stok kartı ve miad otomatik olarak seçilecektir. </div>   </div> </div>
+                           <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Barkod</span>
+                                    </div>
+                                    <input id="girisBarkod" class="form-control" name="girisBarkod" type="text" aria-label="Default" required>
+                                </div>
+                            </div>                                           
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Giriş Miktarı</span>
+                                    </div>
+                                    <input id="girisMiktari" class="form-control" name="girisMiktari" type="number" aria-label="Default">
+                                </div>
+                            </div>     
+                            <div class="row" style="margin-top: 1%;">
+                                 <div class="input-group input-group-sm col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Giriş Tarihi</span>
+                                        </div>
+                                        <input id="girisTar" class="form-control" name="girisTar" type="date" aria-label="Default">
+                                </div>
+                            </div>  
+                            <div class="row" style="margin-top: 1%;">
+                                        <div class="input-group input-group-sm col-md-12">
+                                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                                        <span class="input-group-text " id="inputGroup-sizing-default">Temin Türü</span>
+                                                </div>
+                                                <select name="girisTemin" id="girisTemin" class="browser-default custom-select"> 
+                                                    <% TeminTur.forEach(function(e) { %>
+                                                        <option value="<%=e.KODU %>"> <%=e.ADI %></option>
+                                                        <%}); %> 
+                                                </select>
+                                        </div>
+                           </div>
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Açıklama</span>
+                                    </div>
+                                    <input id="girisAciklama" class="form-control" name="girisAciklama" type="text" aria-label="Default" required>
+                                </div>
+                            </div>    
+                           <div class="row" style="margin-top:2%;">                                                     
+                                <div class="col-md-12">
+                                            <button type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                                </div>                                      
+                          </div>                   
+                        </form>
+                           
+                     </div>
+              </div>
+         </div>
+     </div>
+  </div>
+
+
+  <!-- Modal -->
+<div class="modal" id="stokCikisEkleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+   
+     <!-- Modal content-->
+         <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                  <div style="color: white;    font-size: x-large;">Stok Çıkış Ekle</div> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                     <div class="container" style="margin-top: 1%;">
+                        <form id="stokCikisEkleForm"> 
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Karekod</span>
+                                    </div>
+                                    <input id="cikisKarekod" class="form-control" name="cikisKarekod" type="text" aria-label="Default" required>
+                                </div>
+                            </div>     
+                            <div class="row" style="margin-top: 1%;">
+                                  <div class="col-md-6">EAN-13:<div id="ean"> </div></div>
+                                  <div class="col-md-6">S.K.T.:<div id="skt"> </div></div>
+                            </div>     
+                            <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="input-group input-group-sm ">
+                                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                                        <span class="input-group-text " id="inputGroup-sizing-default">Stok Kartı</span>
+                                                </div>
+                                                <select name="cikisStokKarti" id="cikisStokKarti" class="browser-default custom-select"> 
+                                                    <% stoklar.forEach(function(e) { %>
+                                                    <option value="<%=e.ID %>"> <%=e.Ad %></option>
+                                                    <%}); %>                     
+                                                </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="margin: auto;color: #325179;">
+                                        <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text " id="inputGroup-sizing-default">Miad</span>
+                                                </div>
+                                                <input id="cikisMiad" class="form-control" name="cikisMiad" type="date" aria-label="Default">
+                                        </div>
+                                    </div>
+                           </div>
+                           <div class="row" style="margin-top: 1%;"> <div class="col-md-12">NOT: Karekodu Okutursanuz, stok kartı ve miad otomatik olarak seçilecektir. </div>   </div> </div>
+                           <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Barkod</span>
+                                    </div>
+                                    <input id="cikisBarkod" class="form-control" name="cikisBarkod" type="text" aria-label="Default" required>
+                                </div>
+                            </div>                                           
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Çıkış Miktarı</span>
+                                    </div>
+                                    <input id="cikisMiktari" class="form-control" name="cikisMiktari" type="number" aria-label="Default">
+                                </div>
+                            </div>     
+                            <div class="row" style="margin-top: 1%;">
+                                 <div class="input-group input-group-sm col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Çıkış Tarihi</span>
+                                        </div>
+                                        <input id="cikisTar" class="form-control" name="cikisTar" type="date" aria-label="Default">
+                                </div>
+                            </div>  
+                            <div class="row" style="margin-top: 1%;">
+                                        <div class="input-group input-group-sm col-md-12">
+                                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                                        <span class="input-group-text " id="inputGroup-sizing-default">Çıkış Türü</span>
+                                                </div>
+                                                <select name="cikisTemin" id="cikisTemin" class="browser-default custom-select"> 
+                                                    <% TeminTur.forEach(function(e) { %>
+                                                        <option value="<%=e.KODU %>"> <%=e.ADI %></option>
+                                                        <%}); %> 
+                                                </select>
+                                        </div>
+                           </div>
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="input-group input-group-sm col-md-12"  >
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text " id="inputGroup-sizing-default">Açıklama</span>
+                                    </div>
+                                    <input id="cikisAciklama" class="form-control" name="cikisAciklama" type="text" aria-label="Default" required>
+                                </div>
+                            </div>    
+                            <div class="row" style="margin-top:1%;">   
+                                <div class="input-group input-group-sm col-md-12">
+                                  <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Hasta Adı</span>
+                                          </div>
+                                          <input id="hastaAra" name="hastaCikis" class="form-control" placeholder="hasta" type="text" aria-label="Default" aria-describedby="">
+                                        </div>
+                            </div>
+                            
+                           <div class="row" style="margin-top:2%;">                                                     
+                                <div class="col-md-12">
+                                            <button type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                                </div>                                      
+                          </div>                   
+                        </form>
+                           
+                     </div>
+              </div>
+         </div>
+     </div>
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal" id="cikisUpdateModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+   
+     <!-- Modal content-->
+         <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                  <div style="color: white;    font-size: x-large;">Stok Çıkışı Düzenle</div> 
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+                     <div class="container" style="margin-top: 1%;">
+                        <form id="cikisUpdateForm"> 
+                           
+                            <div class="row">
+                                    
+                                    <div class="col-md-6" style="margin: auto;color: #325179;">
+                                        <div class="input-group input-group-sm">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text " id="inputGroup-sizing-default">Miad</span>
+                                                </div>
+                                                <input id="cUpMiad" class="form-control" name="cUpMiad" type="date" aria-label="Default">
+                                        </div>
+                                    </div>
+                                    <div class="input-group input-group-sm col-md-6"  >
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Çıkış Miktarı</span>
+                                        </div>
+                                        <input id="cUpMiktari" class="form-control" name="cUpMiktari" type="number" aria-label="Default">
+                                    </div>
+                           </div>                                                          
+                             
+                            <div class="row" style="margin-top: 1%;">
+                                 <div class="input-group input-group-sm col-md-12">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text " id="inputGroup-sizing-default">Çıkış Tarihi</span>
+                                        </div>
+                                        <input id="cUpTar" class="form-control" name="cUpTar" type="date" aria-label="Default">
+                                </div>
+                            </div>  
+                            <div class="row" style="margin-top: 1%;">
+                                        <div class="input-group input-group-sm col-md-12">
+                                                <div class="input-group-prepend " style="margin-left: 1px;">
+                                                        <span class="input-group-text " id="inputGroup-sizing-default">Çıkış Tarihi</span>
+                                                </div>
+                                                <select name="cUpTemin" id="cUpTemin" class="browser-default custom-select"> 
+                                                    <% TeminTur.forEach(function(e) { %>
+                                                        <option value="<%=e.KODU %>"> <%=e.ADI %></option>
+                                                        <%}); %> 
+                                                </select>
+                                        </div>
+                           </div>
+                           
+                           <div class="row" style="margin-top:2%;">                                                     
+                                <div class="col-md-12">
+                                            <button  type="submit" class="btn btn-block btn-lg" style="background-color: #325179;color: white;border-radius: 8px;">Kaydet</button>
+                                </div>                                      
+                          </div>                   
+                        </form>
+                           
+                     </div>
+              </div>
+         </div>
+     </div>
+  </div>

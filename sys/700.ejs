@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                 <wsse:Username><%=username %></wsse:Username>
+                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+             </wsse:UsernameToken>
+            </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <SYSSendMessage>
+            <input>
+            &lt;SYSMessage&gt;
+                    &lt;messageGuid value="918e32b3-04eb-4444-b721-e979fcee8c60" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="700" value="SGK ISLEM BILDIR" /&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                        &lt;SGK_ISLEM_BILDIR&gt;
+                            &lt;BILDIRILECEK_ISLEM&gt;
+                                &lt;ISLEM_REFERANS_NUMARASI value="<%=ISLEM_REFERANS_NUMARASI %>" /&gt;
+                                    &lt;SGK_TAKIP_NUMARASI value="<%=SGK_TAKIP_NUMARASI %>" /&gt;
+                                    &lt;SGK_HIZMET_REFERANS_NUMARASI value="<%=SGK_HIZMET_REFERANS_NUMARASI %>" /&gt;
+                                    &lt;SGK_BILDIRIM value="<%=SGK_BILDIRIM %>" /&gt;
+                                    &lt;/BILDIRILECEK_ISLEM&gt;
+                            &lt;/SGK_ISLEM_BILDIR&gt;
+                        &lt;HASTA_TAKIP_BILGISI&gt;
+                            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;
+                        &lt;/recordData&gt;
+                    &lt;/SYSMessage&gt;
+            </input>
+        </SYSSendMessage>
+    </soap:Body>
+</s:Envelope>

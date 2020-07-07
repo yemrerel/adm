@@ -1,0 +1,32 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ats="ats.saglik.gov.tr" xmlns:stok="http://schemas.datacontract.org/2004/07/Stok.EntegrasyonServisi.Model.Model.Request" xmlns:kul="ats.saglik.gov.tr/KullaniciBilgisi" xmlns:sor="ats.saglik.gov.tr/SorguBilgisi">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ats:AsiKullanilabilirlikSorgusu>
+         <!--Optional:-->
+         <ats:asiKullanilabilirlikSorgusuGirdi>
+            <stok:KullaniciBilgisi>
+               <kul:KullaniciAdi><%=KullaniciAdi %></kul:KullaniciAdi>
+               <kul:Parola><%=Parola %></kul:Parola>
+            </stok:KullaniciBilgisi>
+            <stok:SorguBilgisi>
+               <sor:AsiKodu><%=AsiKodu %></sor:AsiKodu>
+               <!--Optional:-->
+           
+               <sor:DogumTarihi><%=DogumTarihi %></sor:DogumTarihi>
+               <sor:DozBilgisi><%=DozBilgisi %></sor:DozBilgisi>
+               <sor:GeziciHizmetMi><%=GeziciHizmetMi %></sor:GeziciHizmetMi>
+               <sor:HekimKimlikNo><%=HekimKimlikNo %></sor:HekimKimlikNo>
+               <sor:KirilimBilgisi><%=KirilimBilgisi %></sor:KirilimBilgisi>
+               <sor:OnlineProtokolNo><%=OnlineProtokolNo %></sor:OnlineProtokolNo>
+               <sor:SonKullanmaTarihi><%=SonKullanmaTarihi %></sor:SonKullanmaTarihi>
+               <sor:StokBarkod><%=StokBarkod %></sor:StokBarkod>
+               <sor:StokPartiNo><%=StokPartiNo %></sor:StokPartiNo>
+               <sor:StokSeriNo><%=StokSeriNo %></sor:StokSeriNo>
+               <!--Optional:-->
+               <sor:UygulanacakKisiId><%=UygulanacakKisiId %></sor:UygulanacakKisiId>
+               <sor:UygulanacakKisiTipi><%=UygulanacakKisiTipi %></sor:UygulanacakKisiTipi>
+            </stok:SorguBilgisi>
+         </ats:asiKullanilabilirlikSorgusuGirdi>
+      </ats:AsiKullanilabilirlikSorgusu>
+   </soapenv:Body>
+</soapenv:Envelope>

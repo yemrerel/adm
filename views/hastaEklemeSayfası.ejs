@@ -1,0 +1,839 @@
+<style>
+          .profile-userpic img {
+            float: none;
+            margin: 0 auto;
+            height: 140px;
+            -webkit-border-radius: 50% !important;
+            -moz-border-radius: 50% !important;
+            border-radius: 50% !important;
+          }
+          
+          
+          </style>
+          <form id="yeniHastaForm"method="post" action="/hasta/hastaEkleme">
+          <div class="container">
+          
+          
+          <div class="row" style="margin-top:1%;">
+                                          <div class="col-md-3" style="height:30px;">
+                                                  <div class="container" style="height: 650px;padding: 28px;background-color: white;text-align: center;border-radius: 20px;">
+                                                            <div class="row" style="margin-top:1%;">
+                                                                      <div class="col-md-12" style="height:30px;">
+                                                                                   <div class="input-group input-group-sm ">
+                                                                                        <div class="input-group-prepend">
+                                                                                            <span class="input-group-text float-right" id="inputGroup-sizing-default">TC NO</span>
+                                                                                        </div>
+                                                                                        <input id="tcInput" minlength="11" maxlength="11" name="tc" type="number" class="form-control float-right" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                                                                   </div>
+                                                                      </div>  
+                                                                   
+                                                             </div>
+                                                              <div class="row" style="margin-top:6%;">
+                                                                    
+                                                                      <div class="col-md-12" style="height:25px;">
+                                                                                <input id="mernisBtn" type="BUTTON" value="Sorgula" class=" btn btn-block" style="margin:auto;background-color:#325179;color:white;">
+                                                                      </div>  
+                                                             </div>
+                                                              <div class="row"  style="    margin-top: 22px;">
+                                                                      <div class="profile-userpic" style="margin:auto;">
+                                                                    <img src="/public/img/defaultProfilePic.svg" class="img-responsive" alt="">
+                                                              </div>     
+                                                              </div>
+                                                              <div class="row" style="margin-top:3%;">
+                                                                      <div class="input-group input-group-sm mb-3">
+                                                                           <div class="input-group-prepend">
+                                                                                    <span class="input-group-text" id="inputGroup-sizing-default">İsim</span>
+                                                                           </div>
+                                                                           <input id="hastaIsim"class="form-control" minlength="3" maxlength="20" onkeyup="this.value = this.value.toUpperCase();" onkeypress="return /[a-z ]/i.test(event.key)" name="isim" type="text" aria-label="Default" aria-describedby=""required>
+                                                                      </div>        
+                                                              </div>  
+                                                              <div class="row" style="">
+                                                                       <div class="input-group input-group-sm mb-3">
+                                                                                <div class="input-group-prepend">
+                                                                                         <span class="input-group-text" id="inputGroup-sizing-default"minlength="3" maxlength="20" onkeyup="this.value = this.value.toUpperCase();" onkeypress="return /[a-z]/i.test(event.key)">Soyisim</span>
+                                                                                </div>
+                                                                                <input id="soyisim" class="form-control" name="soyisim" type="text" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                                                       </div>
+                                                               </div>
+                                                               <div class="row" style="">    
+                                                                   <div class="input-group input-group-sm mb-3">
+                                                                          <div class="input-group-prepend">
+                                                                               <span class="input-group-text " id="inputGroup-sizing-default">Cinsiyet</span>
+                                                                          </div>
+                                                                           <select id="cinsiyet" name="cinsiyet"class="browser-default custom-select" required>
+                                                                              <% Cinsiyet.forEach(function(element) { %>
+                                                                                <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                                               <%}); %>
+                                                                           </select>
+                                                                   </div>
+                                                               </div>
+                                                               <div class="row" style="">
+                                                                   <div class="input-group input-group-sm mb-3"style="margin-top:1%;">
+                                                                           <div class="input-group-prepend">
+                                                                                 <span class="input-group-text " id="inputGroup-sizing-default">Hasta Tipi</span>
+                                                                           </div>
+                                                                           <select id="HastaTipi"name="HastaTipi" class="browser-default custom-select"required>
+                                                                                     <% HastaTipi.forEach(function(element) { %>
+                                                                                   
+                                                                                      <option value="<%= element.KODU %>"> <%= element.ADI  %></option>
+                                                                                      <%}); %>
+                                                                           </select>
+                                                                  </div>                                                              
+                                                               </div>
+                                                               <div class="row" style="margin-top:3%;">
+                                                                      <div class="col-md-6">
+                                                                            <label class="" for="misafir">Misafir</label>
+                                                                            <input type="checkbox" class="" id="misafir" name="misafir"value="1"  style="margin-left: 10%;">
+                                                                      </div>
+                                                                     <div class="col-md-6 ">
+                                                                            <label class="" for="engelli">Engelli</label>
+                                                                            <input type="checkbox" class="" id="engelli" name="engelli" value="1"style="margin-left: 10%;">
+                                                                     </div>
+                                                                     
+                                                               </div>
+                                                               <div class="row" style="margin-top:3%;">
+                                                                       <div class="col-md-6 ">
+                                                                                 <label class="" for="calisiyor">Çalışıyor</label>
+                                                                                 <input type="checkbox" class="" id="calisiyor" name="calisiyor"value="1"style="margin-left: 10%;">
+                                                                       </div>
+                                                                     
+                                                                     <div class="col-md-6 ">
+                                                                            <label class="" for="obezite">Obezite</label>
+                                                                            <input type="checkbox" class="" id="obezite" name="obezite"value="1"data-toggle="modal" data-target="#calisiyorPanel"style="margin-left: 10%;">
+                                                                     </div>
+                                                               </div>
+                                                              <div class="row" style="margin-top:3%;">
+                                                                      <div class="col-md-6">
+                                                                            <label class="" for="gebe">Gebe</label>
+                                                                            <input type="checkbox" class="" id="gebe" name="gebLoh" value="gebe" data-toggle="modal" data-target="#yabancıPanel" style="margin-left: 10%;">
+                                                                      </div>
+                                                                     <div class="col-md-6 ">
+                                                                            <label class="" for="lohusa">Lohusa</label>
+                                                                            <input type="checkbox" class="" id="lohusa" name="gebLoh"value="lohusa"data-toggle="modal" data-target="#calisiyorPanel"style="margin-left: 10%;">
+                                                                     </div>
+                                                               </div>
+                                                               <div class="row" style="margin-top:3%;">
+                                                                      <div class="col-md-6">
+                                                                            <label class="" for="kanser">Kanser</label>
+                                                                            <input type="checkbox" class="" id="kanser" name="kanser" value="1" data-toggle="modal" data-target="#yabancıPanel" style="margin-left: 10%;">
+                                                                      </div>                                           
+                                                               </div>
+                                                  </div>
+                                          </div>  
+                                          <div class="col-md-9" style="height:30px;">
+                                                
+                                                  <div class="container" style="height: 650px;padding: 10px;background-color: white;text-align: center;border-radius: 20px;">
+                                                      <div class=" row"style="margin-bottom: 1%;">
+                                                          <div class="custom-control custom-checkbox custom-control-inline" style="margin: auto;">
+                                                                <input type="checkbox" name="evdeSaglikAliyor" class="custom-control-input" id="defaultInline12" value="evdeSaglık">
+                                                                <label class="custom-control-label" for="defaultInline12">Evde Sağlık Hizmeti Alıyor</label>
+                                                          </div>
+                                                          <div class="custom-control custom-checkbox custom-control-inline"style="margin: auto;">
+                                                                <input type="checkbox" name="hastaKabuldeOncelikliKisi"class="custom-control-input" id="defaultInline13" value="hastaKabulOncelikli">
+                                                                <label class="custom-control-label" for="defaultInline13">Hasta Kabulde Öncelikli Kişi</label>
+                                                          </div>
+                                                          <div class="custom-control custom-checkbox custom-control-inline"style="margin: auto;">
+                                                                  <input type="checkbox" name="geziciSaglikHizmetiAliyor"class="custom-control-input" id="defaultInline14" value="geziciSaglık">
+                                                                  <label class="custom-control-label" for="defaultInline14">Gezici Sağlık Hizmeti Alıyor</label>
+                                                          </div>
+                                                      </div>
+                                                       <div class="row">
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                   <div class="input-group-prepend">
+                                                                        <span class="input-group-text " id="inputGroup-sizing-default">Anne Adı</span>
+                                                                   </div>
+                                                                  <input  id="anneAd" minlength="3" maxlength="20" onkeypress="return /[a-z ]/i.test(event.key)" class="form-control" name="anneAd" type="text" aria-label="Default" aria-describedby=""required>
+                                                              </div>
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                   <div class="input-group-prepend">
+                                                                        <span class="input-group-text" id="inputGroup-sizing-default">Baba Adı</span>
+                                                                   </div>
+                                                                   <input id="babaAd" minlength="3" maxlength="20" onkeypress="return /[a-z ]/i.test(event.key)" class="form-control" name="babaAd" type="text" aria-label="Default" aria-describedby="inputGroup-sizing-default" required>
+                                                              </div>
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                       <div class="input-group-prepend">
+                                                                             <span class="input-group-text " id="inputGroup-sizing-default">Doğum Yeri</span>
+                                                                       </div>
+                                                                       <input id="dogumYeri" class="form-control" name="dogumYeri" type="text" aria-label="Default" aria-describedby=""required>
+                                                              </div> 
+                                                       </div>       
+                                                       <div class="row">
+                                                             <div class="col-md-4">                 
+                                                                 <div class="input-group mb-3">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text " id="inputGroup-sizing-default">Doğum Tarihi</span>
+                                                                  </div>
+                                                                  <input id="dogumTarihi" class=" form-control" type="date" name="dogumTarihi" aria-label="Default" aria-describedby=""required>
+                                                                </div>
+                                                             </div>
+                                                             <div class="col-md-4">                 
+                                                                      <div class="input-group mb-3">
+                                                                       <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Beyan Doğum Tarihi</span>
+                                                                       </div>
+                                                                       <input id="beyanDogumTarihi" class=" form-control" type="date" name="bdt" aria-label="Default" aria-describedby="">
+                                                                     </div>
+                                                            </div>
+                                                             <div class="col-md-4">
+                                                                <div class="input-group mb-3">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text " id="inputGroup-sizing-default">Doğum Sırası</span>
+                                                                  </div>
+                                                                  <input id="dogumSirasi" class=" form-control" type="number" name="dogumSirasi" aria-label="Default" aria-describedby="">
+                                                               </div>
+                                                             </div>
+                                                            
+                                                       </div>
+                                                       <div class="row">
+                                                                 <div class="col-md-4">
+                                                                           <div class="input-group mb-3"style="margin-top:1%;">
+                                                                               <div class="input-group-prepend">
+                                                                                    <span class="input-group-text " id="inputGroup-sizing-default">Sosyal Güvence Durumu</span>
+                                                                               </div>
+                                                                               <select name="sosyalGuvence"class="browser-default custom-select" >
+                                                                                     <% SosyalGüvenceDurumu.forEach(function(element) { %>
+                                                                                      <option value="<%= element.KODU %>"> <%= element.ADI  %></option>
+                                                                                  <%}); %>
+                                                                               </select>
+                                                                           </div>
+                                                                 </div>
+                                                                 <div class="col-md-4">
+                                                                           <div class="input-group mb-3"style="margin-top:1%;">
+                                                                               <div class="input-group-prepend">
+                                                                                     <span class="input-group-text " id="inputGroup-sizing-default">Medeni Hali</span>
+                                                                               </div>
+                                                                               <select id="medeniHali"name="medeniHali" class="browser-default custom-select"required>
+                                                                                         <% MedeniHali.forEach(function(element) { %>
+                                                                                       
+                                                                                          <option value="<%= element.KODU%>"> <%= element.ADI  %></option>
+                                                                                          <%}); %>
+                                                                               </select>
+                                                                           </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                           <div class="input-group mb-3"style="margin-top:1%;">
+                                                                                <div class="input-group-prepend">
+                                                                                     <span class="input-group-text " id="inputGroup-sizing-default">Kan Grubu</span>
+                                                                                </div>
+                                                                                 <select name="kanGrubu"class="browser-default custom-select" >
+                                                                                  <% KanGrubu.forEach(function(element) { %>
+                                                                                       <option value="<%= element.KODU %>"> <%= element.ADI  %></option>
+                                                                                       <%}); %>
+                                                                                 </select>
+                                                                          </div>
+                                                                    </div>
+                                                                
+                                                       </div>
+                                                      <div class="row" >                                                  
+                                                           <div class="col-md-4">
+                                                                  <div class="input-group mb-3"style="margin-top:1%;">
+                                                                       <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Öğrenim durumu</span>
+                                                                       </div>
+                                                                       <select name="ogrenimDurumu"class="browser-default custom-select " >
+                                                                             <% OgrenimDurumu.forEach(function(element) { %>
+                                                                              <option value="<%= element.KODU %>"> <%= element.ADI  %></option>
+                                                                              <%}); %>
+                                                                       </select>
+                                                                   </div>
+                                                           </div>
+                                                            
+                                                      </div>                                         
+                                                      <div class="row" >
+                                                            <div class="input-group mb-3 col-md-4">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">İl</span>
+                                                               </div>
+                                                               <select id="iller"name="il"class="browser-default custom-select" required>
+                                                                          <% İller.forEach(function(element) { %>
+                                                                            <option value="<%= element.KODU%>"> <%= element.ADI  %></option>
+                                                                            <%}); %>
+                                                              </select>
+                                                           </div>
+                                                           <div class="input-group mb-3 col-md-4">
+                                                           <div class="input-group-prepend">
+                                                                  <span class="input-group-text ">İlçe</span>
+                                                          </div>
+                                                                  <select name="ilce" id="ilceler" class="browser-default custom-select" required>
+                                                                       </select>
+                                                          </div>
+                                                          <div class="input-group mb-3 col-md-4">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text " id="inputGroup-sizing-default">Köy</span>
+                                                                  </div>
+                                                                  <select name="koy" id="koyler"name="koyler"class="browser-default custom-select">
+                                                                         
+                                                                 </select>
+                                                          </div>
+                                                      </div>
+                                                      <div class="row" >
+                                                            
+                                                           <div class="input-group mb-3 col-md-4">
+                                                           <div class="input-group-prepend">
+                                                                  <span class="input-group-text ">Mahalle</span>
+                                                          </div>
+                                                                  <select name="mahalle" id="mahalleler" class="browser-default custom-select">
+                                                                       </select>
+                                                          </div>
+                                                          <div class="input-group mb-3 col-md-4">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text " id="inputGroup-sizing-default">İç Kapı No</span>
+                                                                  </div>
+                                                                 <input class="form-control" name="ickapi" type="number" aria-label="Default" aria-describedby="">
+                                                             </div>
+                                                          <div class="input-group mb-3 col-md-4">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text" id="inputGroup-sizing-default">Dış Kapı No</span>
+                                                                  </div>
+                                                                  <input class="form-control" name="diskapi" type="text" aria-label="Default" aria-describedby="inputGroup-sizing-default" >
+                                                          </div>
+                                                      </div>
+                                                     
+                                                      <div class="row">
+                                                          <div class="input-group mb-3 col-md-8">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">Açık Adres</span>
+                                                               </div>
+                                                              <input class="form-control" name="acikAdres" type="text" aria-label="Default" aria-describedby="" required>
+                                                          </div>   
+                                                          <div class="input-group mb-3 col-md-4">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text" id="inputGroup-sizing-default">E-posta</span>
+                                                                  </div>
+                                                                  <input class="form-control" name="mail" type="email" aria-label="Default" aria-describedby="inputGroup-sizing-default" >
+                                                          </div>              
+                                                      </div>  
+                                                      <div class="row">
+                                                        <div class="input-group mb-3 col-md-4">
+                                                             <div class="input-group-prepend">
+                                                                  <span class="input-group-text " id="inputGroup-sizing-default">Ev Tel</span>
+                                                             </div>
+                                                            <input id="evtel" class="form-control" name="evtel" type="number" aria-label="Default" aria-describedby="">
+                                                        </div>
+                                                        <div class="input-group mb-3 col-md-4">
+                                                                  <div class="input-group-prepend">
+                                                                       <span class="input-group-text" id="inputGroup-sizing-default">Cep Tel</span>
+                                                                  </div>
+                                                                  <input id="ceptel" class="form-control" name="ceptel" type="number" aria-label="Default" aria-describedby="inputGroup-sizing-default" >
+                                                         </div>
+                                                         <div class="input-group mb-3 col-md-4">
+                                                                 <div class="input-group-prepend">
+                                                                      <span class="input-group-text" id="inputGroup-sizing-default">İş Tel</span>
+                                                                 </div>
+                                                                 <input id="istel" class="form-control" name="istel" type="number" aria-label="Default" aria-describedby="inputGroup-sizing-default" >
+                                                        </div>                                                  
+                                                      </div>                                              
+         
+                                                      <div class="row" >
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                   <div class="input-group-prepend">
+                                                                     <span class="input-group-text " id="inputGroup-sizing-default">AH Ad Soyad</span>
+                                                                   </div>
+                                                                   <input class="form-control" class="" name="ahAdSoyad" type="text" aria-label="Default" aria-describedby="">
+                                                              </div>
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                  <div class="input-group-prepend">
+                                                                         <span class="input-group-text" id="inputGroup-sizing-default">AH Birimi</span>
+                                                                  </div>
+                                                                  <input class="form-control" name="ahBirimi" type="text"  aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                                              </div>
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text" id="inputGroup-sizing-default">İlçe</span>
+                                                                      </div>
+                                                                      <input class="form-control" name="AHilce" type="text"  aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                                                               </div>
+                                                      </div> 
+                                                      <div class="row" >
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                 <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">AH Kay. Tar.</span>
+                                                                 </div>
+                                                                 <input class=" form-control" type="date" class="" name="ahKaytar" aria-label="Default" aria-describedby="">
+                                                              </div>
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                      <div class="input-group-prepend">
+                                                                          <span class="input-group-text " id="inputGroup-sizing-default">Değiştirebilme Tarihi</span>
+                                                                      </div>
+                                                                      <input class=" form-control" type="date" class="" name="degistr" aria-label="Default" aria-describedby="">
+                                                              </div>
+                                                              <div class="input-group mb-3 col-md-4">
+                                                                      <div class="input-group-prepend">
+                                                                            <span class="input-group-text " id="inputGroup-sizing-default">Aile Hekimi Lokasyon</span>
+                                                                      </div>
+                                                                      <input class="form-control" class="" name="ahLokasyon" type="text" aria-label="Default" aria-describedby="">
+                                                              </div>
+                                                      </div>                                                 
+                                                  </div>
+                                                   <div class="container" style="">            
+                                                      <div class=" row"style="margin: 1%;">
+                                                                  <input type="BUTTON" value="Yazıcı Önizleme" class=" btn"style="margin:auto;background-color:#325179;color:white;">
+                                                                  <input type="BUTTON" value="Kesin Kayıt Dilekçesi" class=" btn"style="margin:auto;background-color:#325179;color:white;">
+                                                                  <input type="submit" value="Kesin Kayıt Talebi" class=" btn"style="margin:auto;background-color:#325179;color:white;">
+                                                      </div>
+                                                  </div>
+                                          </div>  
+          </div>
+          </div>
+           <!-- Modal -->
+    <div class="modal" id="calisiyorModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+          <div class="modal-dialog modal-lg">
+          
+            <!-- Modal content-->
+            <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                 <div style="color: white;    font-size: x-large;">Çalışma Bilgileri</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+             
+              <div class="container" style="margin-top: 3%;">
+                   <div class="row" style="margin-top:1%;">
+                            <div class="input-group mb-3">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">Meslek</span>
+                                                               </div>
+                                                               <select name="meslek"class="browser-default custom-select">
+                                                                          <% Meslekler.forEach(function(element) { %>
+                                                                        <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                                            <%}); %>
+                                                              </select>
+                            </div>                                          
+                   </div>
+                    <div class="row" style="margin-top:3%;">
+                                                                      <div class="input-group mb-3">
+                                                                           <div class="input-group-prepend">
+                                                                                    <span class="input-group-text" id="inputGroup-sizing-default">Gelir Durumu</span>
+                                                                           </div>
+                                                                           <input name="gelirDurumu"class="form-control" maxlength="20" type="text" aria-label="Default" aria-describedby="">
+                                                                      </div>        
+                    </div>  
+                     <div class="row" style="margin-top:1%;">
+                            <div class="input-group mb-3">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">İş Durumu</span>
+                                                               </div>
+                                                               <select name="isDurumu"class="browser-default custom-select">
+                                                                          <% IsDurumu.forEach(function(element) { %>
+                                                                        <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                                            <%}); %>
+                                                              </select>
+                            </div>                                          
+                     </div>
+              </div>
+              <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                        <button type="button" class="" data-toggle="modal" data-target="#calisiyorModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;">Temizle</button>
+                                        <button type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;"data-dismiss="modal">Kaydet</button>
+              </div>
+            </div>
+            
+          </div>
+          </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal" id="yabanciModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                 <div style="color: white;    font-size: x-large;">Uyruk Bilgileri</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+              <div class="container" style="margin-top: 3%;">
+                   <div class="row" style="margin-top:1%;">
+                            <div class="input-group mb-3">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">Uyruk</span>
+                                                               </div>
+                                                               <select name="uyruk"class="browser-default custom-select">
+                                                                          <% UlkeKodlari.forEach(function(element) { %>
+                                                                        <option value="<%= element.MERNISKODU  %>"> <%= element.ADI  %></option>
+                                                                            <%}); %>
+                                                              </select>
+                            </div>                                          
+                   </div>
+                   <div class="row" style="margin-top:1%;">
+                            <div class="input-group mb-3">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">Geldiği Ülke</span>
+                                                               </div>
+                                                               <select name="geldigiUlke"class="browser-default custom-select">
+                                                                          <% UlkeKodlari.forEach(function(element) { %>
+                                                                        <option value="<%= element.MERNISKODU  %>"> <%= element.ADI  %></option>
+                                                                            <%}); %>
+                                                              </select>
+                            </div>                                          
+                   </div>
+                    <div class="row" style="margin-top:2%;">
+                                                                      <div class="input-group mb-3">
+                                                                           <div class="input-group-prepend">
+                                                                                    <span class="input-group-text" id="inputGroup-sizing-default">Pasaport No</span>
+                                                                           </div>
+                                                                           <input name="passNo"class="form-control" maxlength="20" type="text" aria-label="Default" aria-describedby="">
+                                                                      </div>        
+                    </div>  
+                     <div class="row" style="margin-top:2%;">
+                                                                      <div class="input-group mb-3">
+                                                                           <div class="input-group-prepend">
+                                                                                    <span class="input-group-text" id="inputGroup-sizing-default">YUPASS No</span>
+                                                                           </div>
+                                                                           <input name="yupass"class="form-control" maxlength="20" type="text" aria-label="Default" aria-describedby="">
+                                                                      </div>        
+                    </div>  
+          
+                     <div class="row" style="margin-top:1%;">
+                            <div class="input-group mb-3">
+                                                               <div class="input-group-prepend">
+                                                                    <span class="input-group-text " id="inputGroup-sizing-default">Hasta Türü</span>
+                                                               </div>
+                                                               <select name="yabanciHastaTuru"class="browser-default custom-select">
+                                                                          <% YabancıHastaTürü.forEach(function(element) { %>
+                                                                        <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                                            <%}); %>
+                                                              </select>
+                            </div>                                          
+                    </div>
+              </div>
+              <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                        <button  type="button" class="" data-toggle="modal" data-target="#yabanciModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;">Temizle</button>
+                                        <button type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;"data-dismiss="modal">Kaydet</button>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          <!-- Modal -->
+          <div class="modal" id="engelliModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <!-- Modal content-->
+            <div class="modal-content" style="background-color:#f1f3f3;">
+              <div class="modal-header" style="background-color: #325179;color: white;text-align:center;">
+                 <div style="color: white;    font-size: x-large;">Engel Bilgileri</div> 
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+              <div class="container" style="margin-top: 3%;">
+                        <div class="row"> 
+                                 
+                                <div class="input-group mb-3 col-md-8"style="margin: auto;">
+                                             <div class="input-group-prepend">
+                                                <span class="input-group-text " id="inputGroup-sizing-default">Özürlülük Durumu</span>
+                                             </div>
+                                              <select name="ozurlulukDurumu" class="browser-default custom-select">
+                                                 <% OzurlulukDurumu.forEach(function(element) { %>
+          
+                                                            <tr>
+                                                          <option value="<%= element.KODU  %>"> <%= element.ADI  %></option>
+                                                      <%}); %>                                                                
+                                              </select>
+                                </div>
+                         </div>
+              </div>
+              <div class="modal-footer" style="display: block;text-align: center;margin-top: 2%;">
+                                        <button  type="button" class="" data-toggle="modal" data-target="#engelliModal" style="width: 25%;margin-left: 5%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;">Temizle</button>
+                                        <button type="button" class="btn btn-primary" style="width: 25%;margin-left: 8%;background-color: #325179;color: white;border-radius: 16px;padding: 21px;"data-dismiss="modal">Kaydet</button>
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+       
+          </form>
+
+<script>
+
+
+var mernis=false;
+    var ilceKodu;
+    var mahKodu;
+    var koyKodu;
+    $('#HastaTipi').on('change', function(){
+      
+       if($(this).val() == 2){
+          $('#yabanciModal').modal();
+         
+       }
+    });
+    $('#calisiyor').on('change', function(e){
+       if(e.target.checked){
+         $('#calisiyorModal').modal();
+       }
+    });
+
+    $('#engelli').on('change', function(e){
+       if(e.target.checked){
+         $('#engelliModal').modal();
+       }
+    });
+    
+
+ 
+    var clearForm = function() {
+            $(':input','#yeniHastaForm')
+           .not(':button, :submit, :reset, :hidden')
+           .val('')
+           .prop('checked', false)
+           .prop('selected', false);
+           $('#kimlikOnay').remove()
+           
+    };
+
+
+    $( "#mernisBtn").click(function() {
+     var tc=  $( "#tcInput").val();
+     if(checkTcNum(tc)){
+         
+          var callbacks = $.Callbacks();
+          callbacks.add( clearForm );
+          callbacks.fire();
+          $( "#tcInput").val(tc);
+         
+
+            
+            $.ajax({
+            url: '/mernisTcSorgula',
+            method: 'post',
+            data: { tc: tc }
+            }).done(function(res) {
+
+               if(res.temelBilgiler!=0){
+                    $('#HastaTipi option[value="'+res.hastaTipi+'"] ').attr('selected',true).change();
+                    if(res.temelBilgiler.KisiBilgisi.TemelBilgisi.Ad!=undefined){
+                         var inp = $("<input>").attr("type", "hidden").attr("name", "kimlikOnay").attr("id", "kimlikOnay").val(1);
+                         $('#yeniHastaForm').append(inp);
+                    }
+
+                    tb=res.temelBilgiler;
+                    ab=res.AdresBilgisi;
+
+                    $( "#hastaIsim").val(tb.KisiBilgisi.TemelBilgisi.Ad);
+                    $( "#soyisim").val(tb.KisiBilgisi.TemelBilgisi.Soyad);
+                    $( "#anneAd").val(tb.KisiBilgisi.TemelBilgisi.AnneAd);
+                    $( "#babaAd").val(tb.KisiBilgisi.TemelBilgisi.BabaAd);
+                    $( "#dogumYeri").val(tb.KisiBilgisi.TemelBilgisi.DogumYer);
+                    DT=tb.KisiBilgisi.TemelBilgisi.DogumTarih;
+                    if(DT.Ay.toString().length ==1){ DT.Ay ='0'+DT.Ay;}
+                    if(DT.Gun.toString().length ==1){ DT.Gun ='0'+DT.Gun;}
+                    birth=DT.Yil+'-'+DT.Ay+'-'+DT.Gun;
+                    $('#dogumTarihi').val(birth);
+                    if(yeniDogan(birth)) $('#HastaTipi option[value="4"] ').attr('selected',true).change();
+                    $('#cinsiyet option[value="'+tb.KisiBilgisi.TemelBilgisi.Cinsiyet.Kod+'"] ').attr('selected',true).change();
+                    $('#medeniHali option[value="'+tb.KisiBilgisi.DurumBilgisi.MedeniHal.Kod+'"] ').attr('selected',true).change();
+                    $('#iller option[value="'+ab.IlIlceMerkezAdresi.IlKodu+'"] ').attr('selected',true).change();
+                    ilceleriYukle(ab.IlIlceMerkezAdresi.IlKodu)
+                    ilceKodu=ab.IlIlceMerkezAdresi.IlceKodu;
+                    $('#ilceler option[value="'+ab.IlIlceMerkezAdresi.IlceKodu+'"] ').attr('selected',true).change();
+                    koyleriYukle(ab.IlIlceMerkezAdresi.IlceKodu)
+               
+               
+                    $('input[name="acikAdres"]').val(ab.AcikAdres);
+                    $('input[name="diskapi"]').val(ab.IlIlceMerkezAdresi.DisKapiNo);
+                    $('input[name="ickapi"]').val(ab.IlIlceMerkezAdresi.IcKapiNo);
+               }
+               else alert('Mernise kayıtlı böyle bir kimlik numarası yok!')
+
+               
+          
+          });
+          //ussden hastanın aile hekim bilgilerini çekme
+          // $.ajax({
+          //        url: '/USS/GetHastaHekimBirimBilgisi',
+          //        method: 'post',
+          //        data: { tc: $( "#tcInput").val() }
+          //      }).done(function(res) {
+          //           hastaHekim=res.hekimBilgileri.sonuc
+          //           $( "#ahAdSoyad").val(hastaHekim.hekimAdSoyad);
+          //          // $( "#ahBirimi").val(hastaHekim.birimBilgileri.adi);
+          //           $( "#ahKaytar").val(hastaHekim.birimeAtanmaTarihi);
+          //           $( "#ahLokasyon").val(hastaHekim.birimBilgileri.kodu);
+          //           $( "#AHilce").val(hastaHekim.birimBilgileri.adresi);
+
+          // });
+          $.ajax({
+                 url: '/USS/GetHastaIletisimBilgileri',
+                 method: 'post',
+                 data: { tc: $( "#tcInput").val() }
+               }).done(function(res) {
+                    hib=res.hastaIletisimBilgileri.sonuc
+                    hib={
+                          "mhrs": [
+                                    {
+                                       "telefonTipi": 1,
+                                       "telefonNumarasi": "123123123"
+                                    },
+                                    {
+                                       "telefonTipi": 3,
+                                        "telefonNumarasi": "123123123"
+                                    }
+                                    ],
+                         "enabiz": [
+                                    {
+                                          "telefonTipi": 3,
+                                        "telefonNumarasi": "123123123"
+                                    }
+                                    ]
+                         }
+                    telefonlar=hib.mhrs.concat(hib.enabiz)
+                    telefonlar.forEach(e => {
+                         if(e.telefonTipi==1){
+                              $( "#ceptel").val(e.telefonNumarasi);
+                         }
+                         if(e.telefonTipi==2){
+                              $( "#evtel").val(e.telefonNumarasi);
+                         }
+                         if(e.telefonTipi==3){
+                              $( "#istel").val(e.telefonNumarasi);
+                         }
+                    });
+          });
+          
+           //********************************************
+     }
+    });
+   
+
+  $('#iller').on('change', function() {
+     ilceleriYukle($('#iller').val())
+  });
+  $('#ilceler').change(function() { 
+     koyleriYukle($('#ilceler').val())
+  });
+  $('#koyler').on('change', function() {
+     mahalleleriYukle($('#koyler').val())
+  });   
+  //------------------------------Functions--------------------------------------------------
+     function ilceleriYukle(ilkodu) {if(ilkodu!=undefined){
+                    $('#ilceler').empty();
+                    $.ajax({
+                          url: '/ilceleriGetir',
+                          method: 'get',
+                          data: { ilkodu: ilkodu }
+                    }).done(function(res) {
+                           var ilceArray=res.ilceler;
+                           for (var i = 0; i <= ilceArray.length; i++) {
+                                if(ilceKodu!=undefined){
+                                    if(ilceKodu== ilceArray[i].KODU){
+                                           $('#ilceler').append('<option selected value="' + ilceArray[i].KODU + '">' + ilceArray[i].ADI + '</option>');
+                                     }
+                                    else{
+                                           $('#ilceler').append('<option value="' + ilceArray[i].KODU + '">' + ilceArray[i].ADI + '</option>');
+                                    }
+                                }
+                               else{
+                                  $('#ilceler').append('<option value="' + ilceArray[i].KODU + '">' + ilceArray[i].ADI + '</option>');
+                                }
+                            }
+                    });
+                 $('#koyler').empty();
+                  $('#mahalleler').empty();
+               }
+        
+     };
+     function koyleriYukle(ilcekodu) {if(ilcekodu!=undefined){
+           $('#koyler').empty();
+           $.ajax({
+            url: '/koyleriGetir',
+            method: 'get',
+            data: { ilcekodu: ilcekodu }
+                }).done(function(res) {
+                  var koyArray=res.koyler;
+                  for (var i = 0; i <= koyArray.length; i++) {                  
+                    $('#koyler').append('<option value="' + koyArray[i].KODU + '">' + koyArray[i].ADI + '</option>');
+                  }
+                });
+            $('#mahalleler').empty();        
+          }
+     };
+     function mahalleleriYukle(koykodu) {if(koykodu!=undefined){
+            $('#mahalleler').empty();
+             $.ajax({
+                 url: '/mahalleGetir',
+                 method: 'get',
+                 data: { koykodu: koykodu }
+                 }).done(function(res) {
+                   var mahArray=res.mahalleler;
+                   for (var i = 0; i <= mahArray.length; i++) {
+                    if(mahKodu!=undefined){
+                    if(mahKodu== mahArray[i].KODU){
+                         $('#mahalleler').append('<option selected value="' + mahArray[i].KODU + '">' + mahArray[i].ADI + '</option>');
+                    }
+                    else{
+                         $('#mahalleler').append('<option value="' + mahArray[i].KODU + '">' + mahArray[i].ADI + '</option>');
+                    }
+                  }
+                  else{
+                    $('#mahalleler').append('<option value="' + mahArray[i].KODU + '">' + mahArray[i].ADI + '</option>');
+                  }
+                 }
+            });   
+          }
+     };
+
+
+     function yeniDogan(DogumTarihi){
+
+var birthdate =new Date(DogumTarihi);
+var now = new Date();
+var dayDif=now.getDate()-birthdate.getDate();
+var yearDif=now.getFullYear()-birthdate.getFullYear();
+var monthDif=now.getMonth()-birthdate.getMonth();
+
+if(yearDif<3)return true
+else return false
+
+}
+
+  //------------------------------Functions--------------------------------------------------
+
+  //------------------------------VALIDATIONS--------------------------------------------------
+    //TC VALİDATİON
+    var writingColor="yellow";
+    var trueColor="#b5d8e5";
+    var wrongColor="pink"
+    $(document).ready(function(){
+      $("#tcInput").keydown(function(){
+        $("#tcInput").css("background-color", writingColor);
+      });
+      $("#tcInput").keyup(function(){
+          var tc= $("#tcInput").val();
+        if(checkTcNum(tc)){
+             $("#tcInput").css("background-color",trueColor );
+    
+    
+        }
+        else{
+             $("#tcInput").css("background-color",wrongColor) ;
+        }
+      });
+    });
+    
+    
+    
+    var checkTcNum = function(value) {
+      value = value.toString();
+      var isEleven = /^[0-9]{11}$/.test(value);
+      var totalX = 0;
+      for (var i = 0; i < 10; i++) {
+        totalX += Number(value.substr(i, 1));
+      }
+      var isRuleX = totalX % 10 == value.substr(10,1);
+      var totalY1 = 0;
+      var totalY2 = 0;
+      for (var i = 0; i < 10; i+=2) {
+        totalY1 += Number(value.substr(i, 1));
+      }
+      for (var i = 1; i < 10; i+=2) {
+        totalY2 += Number(value.substr(i, 1));
+      }
+      var isRuleY = ((totalY1 * 7) - totalY2) % 10 == value.substr(9,0);
+      return isEleven && isRuleX && isRuleY;
+    };
+    //TEXT VALİDATİON
+    
+    
+ 
+    
+    //------------------------------VALIDATIONS--------------------------------------------------
+</script>

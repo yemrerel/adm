@@ -1,0 +1,135 @@
+<style>
+.container {
+    width: 95%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.row {
+    display: -ms-flexbox;
+display: -webkit-box;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+.col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+    max-width: 25%;
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+body {
+    font-size: 12px; 
+
+}
+
+</style>
+
+
+
+
+<div class="container">
+
+<div class="row" style="margin-top:3%;"><b>REÇETE </b></div>
+
+<div class="row" style="margin-top:1%;border-style: solid; padding: 8px;border-width: thin;">
+
+       
+        <div class="" style="margin-left: 80%;">
+
+
+Tarih: <%= " "+tarih %>
+
+        </div>
+
+</div>
+<div class="row" style="border-style: solid; padding: 8px;border-top-style: unset;border-width: thin;">
+
+        <div class="col-md-6" style="">
+                <div class="row"> Hasta Adı Soyadı:<%= " "+hastaAdSoyad %></div>
+                <div class="row">  TC Kimlik No:<%= " "+hastaTC %></div>
+                <div class="row"> Doğum Tarihi:<%= " "+dogumTarih %></div>
+                <div class="row"> SG. Kurumu:<%= " "+sgKurumu %></div>
+        </div>
+        <div class="col-md-6" style="">
+                <div class="row"> Protokol No :</div>
+                <div class="row"> Takip No :</div>
+                <div class="row"> Reçete Tarihi:<%= " "+tarih %></div>
+                <div class="row"> Reçete Türü:<%= " "+receteTur %></div>
+        </div>
+
+</div>
+<div class="row" style="border-left-style: solid;padding: 8px;border-width: thin;border-right-style: solid;border-bottom-style: unset;"> <b> Hasta Tanıları :</b></div>
+
+     <% tanılar.forEach(function(element) { %>
+<div class="row" style="    border-left-style: solid;border-right-style: solid;border-width: thin;">  <%= element.kod %><div style="margin-left: 10%;"> <%= element.ad %></div> </div> 
+ <%}); %>
+
+
+
+<div class="row" style="border-style: solid; padding: 8px;border-width: thin;">
+        <div class="" style="margin-left:2%;"><b>RP</b></div><div class="" style="margin:auto;"><b>İLAÇLAR</b></div>
+</div>
+
+
+<div class="row" style="border-style: solid; padding: 8px;border-top-style: unset;border-width: thin;">
+
+        <div class="col-md-3" style="">
+                <b>Adı</b>
+              
+        </div>
+        <div class="col-md-3" style="">
+           <b> Kullanım Şekli</b>
+            
+        </div>
+         <div class="col-md-3" style="">
+            <b>  Doz</b>
+               
+        </div>
+         <div class="col-md-3" style="">
+           <b> Miktar </b>
+         
+        </div>
+
+</div>
+    <% ilaçlar.forEach(function(element) { %>
+<div class="row" style=" border-left-style: solid;border-right-style: solid;border-width: thin;">
+
+        <div class="col-md-3" style="">
+<%= element.ad %>              
+        </div>
+        <div class="col-md-3" style="">
+<%= element.kullanimsekli %>              
+        </div>
+         <div class="col-md-3" style="">
+<%= element.birimi %>              
+        </div>
+         <div class="col-md-3" style="">
+<%= element.miktar %>              
+        </div>
+
+</div> 
+ <%}); %>
+<div class="row" style=" border-bottom-style: solid;border-width: thin;"></div>
+
+
+</div>
+
+

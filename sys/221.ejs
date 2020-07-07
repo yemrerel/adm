@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<s:Envelope
+    xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <s:Header>
+        <wsse:Security>
+           <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                <wsse:Username><%=username %></wsse:Username>
+                <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+     </s:Header>
+    <s:Body>
+         <SYSSendMessage xmlns="https://sys.sagliknet.saglik.gov.tr/SYS/">
+          
+      <input>
+            &lt;SYSMessage&gt;&#xD;
+            &lt;messageGuid value="<%=messageGuid %>" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="221" value="Gebe Izlem Veri Seti" /&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                                &lt;HASTA_TAKIP_BILGISI&gt;&#xD;
+                                &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;&#xD;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;&#xD;
+                                &lt;GEBE_IZLEM&gt;
+                                <%if(GESTASYONEL_DIYABET_TARAMASI!=-1){ %>
+                                    <% for(var i=0; i < GESTASYONEL_DIYABET_TARAMASI.length; i++) {%>
+                                        &lt;GESTASYONEL_DIYABET_TARAMASI version="1" codeSystemGuid="eac44682-3583-47f3-8066-7310aac49a21" code="<%=GESTASYONEL_DIYABET_TARAMASI[i].KODU%>" value="<%=GESTASYONEL_DIYABET_TARAMASI[i].ADI%>" /&gt;
+                                   <% }%>
+                                <%} %>
+                                <%if(IDRARDA_PROTEIN!=-1){ %>
+                                            &lt;IDRARDA_PROTEIN version="1" codeSystemGuid="f3d218b5-1a31-4e67-a5f2-72f2d412a802" code="<%=IDRARDA_PROTEIN.KODU %>" value="<%=IDRARDA_PROTEIN.ADI %>" /&gt;
+                                <%} %>
+                                <%if(HEMOGLOBIN!=-1){ %>
+                                      &lt;HEMOGLOBIN value="<%=HEMOGLOBIN%>" /&gt;
+                                <%} %>
+                                &lt;IZLEM_ISLEM_TURU version="1" codeSystemGuid="5fff8778-89a4-4045-b33e-a7ffe0de0179" code="<%=IZLEM_ISLEM_TURU.KODU%>" value="<%=IZLEM_ISLEM_TURU.ADI%>" /&gt;
+                                
+                                &lt;KACINCI_GEBE_IZLEM version="1" codeSystemGuid="a280b762-8804-4049-b587-7c471ff2cbee" code="<%=KACINCI_GEBE_IZLEM.KODU%>" value="<%=KACINCI_GEBE_IZLEM.ADI%>" /&gt;
+                                
+                                &lt;DEMIR_LOJISTIGI_VE_DESTEGI version="1" codeSystemGuid="83c966d5-1054-451c-87c6-19a0e11b287b" code="<%=DEMIR_LOJISTIGI_VE_DESTEGI.KODU %>" value="<%=DEMIR_LOJISTIGI_VE_DESTEGI.ADI %>" /&gt;
+                                
+                                &lt;D_VITAMINI_LOJISTIGI_VE_DESTEGI version="1" codeSystemGuid="672986f8-5e0d-43a6-b417-37bdc59cd09b" code="<%=D_VITAMINI_LOJISTIGI_VE_DESTEGI.KODU %>" value="<%=D_VITAMINI_LOJISTIGI_VE_DESTEGI.ADI %>" /&gt;
+                                
+                                <%if(KONJENITAL_ANOMALI_VARLIGI!=-1){ %>
+                                &lt;KONJENITAL_ANOMALI_VARLIGI version="1" codeSystemGuid="484b2fc2-d1a2-4675-872e-c2c56e72d921" code="<%=KONJENITAL_ANOMALI_VARLIGI.KODU %>" value="<%=KONJENITAL_ANOMALI_VARLIGI.ADI %>" /&gt;
+                                <% }%>
+                                
+                                <%if(FETUS_KALP_SESI!=-1){ %>
+                                <% for(var i=0; i < FETUS_KALP_SESI.length; i++) {%>
+                                            &lt;FETUS_KALP_SESI_BILGISI&gt;
+                                            &lt;FETUS_KALP_SESI value="<%=FETUS_KALP_SESI[i]%>" /&gt;
+                                            &lt;/FETUS_KALP_SESI_BILGISI&gt;
+                                <% }%>
+                                <%} %>
+                                
+                                
+                                &lt;BOY_KILO_BILGILERI&gt;
+                                <%if(BOY!=-1){ %>
+                                  &lt;BOY value="<%=BOY %>" /&gt;
+                                <%} %>
+                                <%if(KILO!=-1){ %>
+                                &lt;KILO value="<%=KILO %>" /&gt;
+                                <%} %>
+                                &lt;/BOY_KILO_BILGILERI&gt;
+                                &lt;/GEBE_IZLEM&gt;
+
+                                &lt;/recordData&gt;&#xD;
+                                &lt;/SYSMessage&gt;&#xD;
+                            </input>
+                        </SYSSendMessage>
+                        </s:Body>
+                </s:Envelope>

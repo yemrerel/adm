@@ -1,0 +1,52 @@
+<s:Envelope
+    xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:a="http://www.w3.org/2005/08/addressing">
+    <s:Header>
+        <a:Action s:mustUnderstand="1">#executeXMLQuery</a:Action>
+        <a:MessageID>urn:uuid:b46f0f6c-7d29-461d-b860-d48234b6fcc1</a:MessageID>
+        <a:ReplyTo>
+            <a:Address>http://www.w3.org/2005/08/addressing/anonymous</a:Address>
+        </a:ReplyTo>
+        <a:To s:mustUnderstand="1">https://kds.sagliknet.saglik.gov.tr/analytics/saw.dll?SoapImpl=xmlViewService</a:To>
+    </s:Header>
+    <s:Body
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+        <executeXMLQuery
+            xmlns="urn://oracle.bi.webservices/v6">
+            <report>
+                <reportPath>/shared/USS AHBS LİSTE RAPORLARI/<%=performansGenel1 %></reportPath>
+                <reportXml/>
+            </report>
+            <outputFormat>SAWRowsetSchemaAndData</outputFormat>
+            <executionOptions>
+                <async>true</async>
+                <maxRowsPerPage>100000</maxRowsPerPage>
+                <refresh>true</refresh>
+                <presentationInfo>true</presentationInfo>
+                <type xsi:nil="true"/>
+            </executionOptions>
+            <reportParams>
+                <filterExpressions>&lt;sawx:expr xsi:type="sawx:comparison" op="equal"
+                    xmlns:saw="com.siebel.analytics.web/report/v1.1"
+                    xmlns:sawx="com.siebel.analytics.web/expression/v1.1"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt; &lt;sawx:expr xsi:type="sawx:sqlExpression"&gt;"<%=performansGenel2 %>"."Zaman Ay Kodu"&lt;/sawx:expr&gt; &lt;sawx:expr xsi:type="xsd:double"&gt;<%=donem %>&lt;/sawx:expr&gt;&lt;/sawx:expr&gt;
+                </filterExpressions>
+                <filterExpressions>&lt;sawx:expr xsi:type="sawx:comparison" op="equal"
+                    xmlns:saw="com.siebel.analytics.web/report/v1.1"
+                    xmlns:sawx="com.siebel.analytics.web/expression/v1.1"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt; &lt;sawx:expr xsi:type="sawx:sqlExpression"&gt;"<%=performansGenel2 %>"."Birim Kodu"&lt;/sawx:expr&gt; &lt;sawx:expr xsi:type="xsd:double"&gt;<%=birim %>&lt;/sawx:expr&gt;&lt;/sawx:expr&gt;
+                </filterExpressions>
+                <filterExpressions>&lt;sawx:expr xsi:type="sawx:comparison" op="equal"
+                    xmlns:saw="com.siebel.analytics.web/report/v1.1"
+                    xmlns:sawx="com.siebel.analytics.web/expression/v1.1"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt; &lt;sawx:expr xsi:type="sawx:sqlExpression"&gt;"<%=performansGenel2 %>"."<%=str %>"&lt;/sawx:expr&gt; &lt;sawx:expr xsi:type="xsd:double"&gt;<%=name %>&lt;/sawx:expr&gt;&lt;/sawx:expr&gt;
+                </filterExpressions>
+            </reportParams>
+            <sessionID><%=sessionId %></sessionID>
+        </executeXMLQuery>
+    </s:Body>
+</s:Envelope>

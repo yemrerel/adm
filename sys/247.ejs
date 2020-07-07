@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                 <wsse:Username><%=username %></wsse:Username>
+                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+             </wsse:UsernameToken>
+            </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <SYSSendMessage>
+            <input>
+            &lt;SYSMessage&gt;
+                    &lt;messageGuid value="918e32b3-04eb-4444-b721-e979fcee8c60" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="247" value="Toplum Tabanli Kanser Tarama Veri Seti"/&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                        &lt;TOPLUM_TABANLI_KANSER_TARAMA&gt;
+                                <%if(GAITADA_GIZLI_KAN_TESTI!=undefined){ %>
+                                    &lt;GAITADA_GIZLI_KAN_TESTI version="1" codeSystemGuid="a6a592bd-2653-4410-b03e-7b8cd712d3bb" code="<%=GAITADA_GIZLI_KAN_TESTI.KODU %>" value="<%=GAITADA_GIZLI_KAN_TESTI.ADI %>" /&gt;
+                            <% }%>
+                            <%if(HPV_TARAMA_TESTI!=undefined){ %>
+                                &lt;HPV_TARAMA_TESTI version="1" codeSystemGuid="a1edee3c-cdb4-4b36-810e-ae461b6faeeb" code="<%=HPV_TARAMA_TESTI.KODU %>" value="<%=HPV_TARAMA_TESTI.ADI %>" /&gt;
+                            <% }%>
+                                <%if(KENDI_KENDINE_MEME_MUAYENESI!=undefined){ %>
+                                    &lt;KENDI_KENDINE_MEME_MUAYENESI version="1" codeSystemGuid="ca7e0d3b-777c-4637-8094-1e17d4eca5f0" code="<%=KENDI_KENDINE_MEME_MUAYENESI.KODU %>" value="<%=KENDI_KENDINE_MEME_MUAYENESI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(KLINIK_MEME_MUAYENESI!=undefined){ %>
+                                    &lt;KLINIK_MEME_MUAYENESI version="1" codeSystemGuid="46ff4cc1-3a97-4cb5-a188-b60ad5ef948c" code="<%=KLINIK_MEME_MUAYENESI.KODU %>" value="<%=KLINIK_MEME_MUAYENESI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(KOLONOSKOPI!=undefined){ %>
+                                    &lt;KOLONOSKOPI version="1" codeSystemGuid="d7dfe101-8df8-95d6-e040-7c0a04163ae7" code="<%=KOLONOSKOPI.KODU %>" value="<%=KOLONOSKOPI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(KOLONOSKOPININ_SURESI!=undefined){ %>
+                                    &lt;KOLONOSKOPININ_SURESI version="1" codeSystemGuid="5a9738a0-2ba6-4985-8dbc-409e04b5d456" code="<%=KOLONOSKOPININ_SURESI.KODU %>" value="<%=KOLONOSKOPININ_SURESI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(KOLON_GORUNTULEME_YONTEMI!=undefined){ %>
+                                    &lt;KOLON_GORUNTULEME_YONTEMI version="1" codeSystemGuid="72ee89f5-de3d-4b1a-b806-d73ea34acbd0" code="<%=KOLON_GORUNTULEME_YONTEMI.KODU %>" value="<%=KOLON_GORUNTULEME_YONTEMI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(KOLPOSKOPI!=undefined){ %>
+                                    &lt;KOLPOSKOPI version="1" codeSystemGuid="d7dff7a7-7d30-4ffb-e040-7c0a04165e5f" code="<%=KOLPOSKOPI.KODU %>" value="<%=KOLPOSKOPI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(MAMOGRAFI!=undefined){ %>
+                                    &lt;MAMOGRAFI version="1" codeSystemGuid="6d1c6d74-d446-4d53-a056-5e75b19cad0f" code="<%=MAMOGRAFI.KODU %>" value="<%=MAMOGRAFI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(MAMOGRAFI_SONUCU!=undefined){ %>
+                                    &lt;MAMOGRAFI_SONUCU version="1" codeSystemGuid="397e2da4-e9be-4822-bd26-dbc82530c783" code="<%=MAMOGRAFI_SONUCU.KODU %>" value="<%=MAMOGRAFI_SONUCU.ADI %>" /&gt;
+                                <% }%>
+                                <%if(PAP_SMEAR_TESTI!=undefined){ %>
+                                    &lt;PAP_SMEAR_TESTI version="1" codeSystemGuid="99db2341-c9e7-42a1-bed9-bb04e0388395" code="<%=PAP_SMEAR_TESTI.KODU %>" value="<%=PAP_SMEAR_TESTI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(SIGMOIDOSKOPI!=undefined){ %>
+                                    &lt;SIGMOIDOSKOPI version="1" codeSystemGuid="5630141c-0ba4-49ea-89a1-8ec62a6aa88a" code="<%=SIGMOIDOSKOPI.KODU %>" value="<%=SIGMOIDOSKOPI.ADI %>" /&gt;
+                                <% }%>
+                                <%if(HPV_TIPI_BILGISI!=undefined){ %>
+                                    &lt;HPV_TIPI_BILGISI&gt;
+                                &lt;HPV_TIPI version="1" codeSystemGuid="fe6835a3-5ee1-4d18-bb50-1f0cc336136a" code="<%=HPV_TIPI.KODU %>" value="<%=HPV_TIPI.ADI %>" /&gt;
+                                    &lt;/HPV_TIPI_BILGISI&gt;
+                            <% }%>
+                            <%if(KOLONOSKOPI_KALITE_KRITERLERI_BILGISI!=undefined){ %>
+                                &lt;KOLONOSKOPI_KALITE_KRITERLERI_BILGISI&gt;
+                                &lt;KOLONOSKOPI_KALITE_KRITERLERI version="1" codeSystemGuid="e30b2b54-e402-4ca7-b8de-9db1c75abe01" code="<%=KOLONOSKOPI_KALITE_KRITERLERI.KODU %>" value="<%=KOLONOSKOPI_KALITE_KRITERLERI.ADI %>" /&gt;
+                                    &lt;/KOLONOSKOPI_KALITE_KRITERLERI_BILGISI&gt;
+                            <% }%>
+                            <%if(KOLOREKTAL_BIYOPSI_SONUCU_BILGISI!=undefined){ %>
+                                &lt;KOLOREKTAL_BIYOPSI_SONUCU_BILGISI&gt;
+                                &lt;KOLOREKTAL_BIYOPSI_SONUCU version="1" codeSystemGuid="d7dfe924-93f5-5f95-e040-7c0a041645d7" code="<%=KOLOREKTAL_BIYOPSI_SONUCU.KODU %>" value="<%=KOLOREKTAL_BIYOPSI_SONUCU.ADI %>" /&gt;
+                                    &lt;/KOLOREKTAL_BIYOPSI_SONUCU_BILGISI&gt;
+                            <% }%>
+                            <%if(MEME_BIYOPSI_BILGISI!=undefined){ %>
+                                &lt;MEME_BIYOPSI_BILGISI&gt;
+                                &lt;MEMEDEN_BIYOPSI_ALIMI version="1" codeSystemGuid="1f2f89f4-daf3-467c-8c11-cfacae8cbafd" code="<%=MEMEDEN_BIYOPSI_ALIMI.KODU %>" value="<%=MEMEDEN_BIYOPSI_ALIMI.ADI %>" /&gt;
+                                    &lt;MEME_BIYOPSI_SONUCU version="1" codeSystemGuid="7c69e4a6-8ddb-4db5-9f53-541d66ebfe51" code="<%=MEME_BIYOPSI_SONUCU.KODU %>" value="<%=MEME_BIYOPSI_SONUCU.ADI %>" /&gt;
+                                    &lt;/MEME_BIYOPSI_BILGISI&gt;
+                            <% }%>
+                            <%if(SERVIKAL_BIYOPSI_SONUCU_BILGISI!=undefined){ %>
+                                &lt;SERVIKAL_BIYOPSI_SONUCU_BILGISI&gt;
+                                &lt;SERVIKAL_BIYOPSI_SONUCU version="1" codeSystemGuid="f1d82016-486d-492e-afd2-630c85363634" code="<%=SERVIKAL_BIYOPSI_SONUCU.KODU %>" value="<%=SERVIKAL_BIYOPSI_SONUCU.ADI %>" /&gt;
+                                    &lt;/SERVIKAL_BIYOPSI_SONUCU_BILGISI&gt;
+                            <% }%>
+                            <%if(SERVIKAL_SITOLOJI_SONUCU_BILGISI!=undefined){ %>
+                                &lt;SERVIKAL_SITOLOJI_SONUCU_BILGISI&gt;
+                                &lt;SERVIKAL_SITOLOJI_SONUCU version="1" codeSystemGuid="197c1232-2886-47de-9a38-0d5401fe6510" code="<%=SERVIKAL_SITOLOJI_SONUCU.KODU %>" value="<%=SERVIKAL_SITOLOJI_SONUCU.ADI %>" /&gt;
+                                    &lt;/SERVIKAL_SITOLOJI_SONUCU_BILGISI&gt;
+                            <% }%>
+                          
+                            &lt;TARAMA_BILGISI&gt;
+                                &lt;TARAMA_TIPI version="1" codeSystemGuid="a332c5df-5662-4fe0-bb03-62d5d30567a4" code="<%=TARAMA_TIPI.KODU %>" value="<%=TARAMA_TIPI.ADI %>" /&gt;
+                                    &lt;TARAMA_TARIHI value="<%=TARAMA_TARIHI %>" /&gt;
+                                    &lt;TARAMA_SONUCLANMA_TARIHI value="<%=TARAMA_SONUCLANMA_TARIHI %>" /&gt;
+                                    &lt;/TARAMA_BILGISI&gt;
+                           
+                            &lt;/TOPLUM_TABANLI_KANSER_TARAMA&gt;
+                        &lt;HASTA_TAKIP_BILGISI&gt;
+                            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;
+                        &lt;/recordData&gt;
+                    &lt;/SYSMessage&gt;
+            </input>
+        </SYSSendMessage>
+    </soap:Body>
+</s:Envelope>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soap:Envelope
+    xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+    xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd">
+    <soap:Header>
+        <wsse:Security>
+            <wsse:UsernameToken wsu:Id="SecurityToken-C740D028-8F1D-C45F-E0407C0A04162BDD">
+                 <wsse:Username><%=username %></wsse:Username>
+                 <wsse:Password Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText"><%=Password %></wsse:Password>
+             </wsse:UsernameToken>
+            </wsse:Security>
+    </soap:Header>
+    <soap:Body>
+        <SYSSendMessage>
+            <input>
+            &lt;SYSMessage&gt;
+                    &lt;messageGuid value="918e32b3-04eb-4444-b721-e979fcee8c60" /&gt;
+                    &lt;messageType version="1" codeSystemGuid="0a9ba485-e7e0-4abb-9c86-0a14fd364bb8" code="265" value="Hasta Özlük Bilgileri"/&gt;
+                    &lt;documentGenerationTime value="<%=documentGenerationTime %>" /&gt;
+                        &lt;author&gt;
+                        &lt;healthcareProvider version="1" codeSystemGuid="c3eade04-4f91-5dab-e043-14031b0ac9f9" code="<%=healthcareProviderCode %>" value="<%=healthcareProviderValue %>" /&gt;
+                            &lt;/author&gt;
+                    &lt;firmaKodu value="<%=firmaKodu %>" /&gt;
+                        &lt;recordData&gt;
+                        &lt;HASTA_OZLUK_BILGILERI&gt;
+                                <%if(KAN_GRUBU!=undefined){ %>
+                                    &lt;KAN_GRUBU version="1" codeSystemGuid="a3d6e943-5d85-4c75-ac72-709115974fb7" code="<%=KAN_GRUBU.KODU %>" value="<%=KAN_GRUBU.ADI %>" /&gt;
+                                <% }%> 
+                                <%if(MESLEK!=undefined){ %>
+                                    &lt;MESLEK version="1" codeSystemGuid="c3eaf407-b302-5fdd-e043-14031b0a2484" code="<%=MESLEK.KODU %>" value="<%=MESLEK.ADI %>" /&gt;
+                                <% }%> 
+                                <%if(IS_DURUMU!=undefined){ %>
+                                    &lt;IS_DURUMU version="1" codeSystemGuid="c5a44219-28d5-4963-984c-93f56e51cfbd" code="<%=IS_DURUMU.KODU %>" value="<%=IS_DURUMU.ADI %>" /&gt;
+                                <% }%> 
+                                <%if(OGRENIM_DURUMU!=undefined){ %>
+                                    &lt;OGRENIM_DURUMU version="1" codeSystemGuid="3cdc2ba0-03de-46f4-8ace-684c94712349" code="<%=OGRENIM_DURUMU.KODU %>" value="<%=OGRENIM_DURUMU.ADI %>" /&gt;
+                                <% }%> 
+                                <%if(ENGELLILIK_DURUMU!=undefined){ %>
+                                    &lt;ENGELLILIK_DURUMU version="1" codeSystemGuid="199cf767-f649-4c99-8b14-8c988515093f" code="<%=ENGELLILIK_DURUMU.KODU %>" value="<%=ENGELLILIK_DURUMU.ADI %>" /&gt;
+                            <% }%> 
+                            <%if(EVLENME_YASI!=undefined){ %>
+                                &lt;EVLENME_YASI value="<%=EVLENME_YASI %>" /&gt;
+                            <% }%> 
+                            <%if(BOY_KILO_BILGILERI!=undefined){ %>
+                                &lt;BOY_KILO_BILGILERI&gt;
+                                &lt;BOY value="<%=BOY %>" /&gt;
+                                    &lt;KILO value="<%=KILO %>" /&gt;
+                                    &lt;/BOY_KILO_BILGILERI&gt;
+                            <% }%> 
+                            <%if(ALERJI_BILGISI!=undefined){ %>
+                                &lt;ALERJI_BILGISI&gt;
+                                &lt;ALERJILER version="1" codeSystemGuid="c3eaabad-8c4c-56ee-e043-14031b0a5530" code="<%=ALERJILER.KODU %>" value="<%=ALERJILER.ADI %>" /&gt;
+                                    &lt;/ALERJI_BILGISI&gt;
+                            <% }%> 
+                            <%if(SIGARA_MADDE_KULLANIMI!=undefined){ %>
+                                &lt;SIGARA_MADDE_KULLANIMI&gt;
+                                &lt;ALKOL_KULLANIMI version="1" codeSystemGuid="7e3e39e1-d1d8-481f-b898-174c5efa06e7" code="<%=ALKOL_KULLANIMI.KODU %>" value="<%=ALKOL_KULLANIMI.ADI %>" /&gt;
+                                    &lt;MADDE_KULLANIMI version="1" codeSystemGuid="21fcc6c7-1bd2-4f3f-86c2-7a0ef0002d87" code="<%=MADDE_KULLANIMI.KODU %>" value="<%=MADDE_KULLANIMI.ADI %>" /&gt;
+                                    &lt;SIGARA_KULLANIMI version="1" codeSystemGuid="567e3679-be54-4307-abbf-c499a25fe69e" code="<%=SIGARA_KULLANIMI.KODU %>" value="<%=SIGARA_KULLANIMI.ADI %>" /&gt;
+                                    &lt;SIGARA_ADEDI value="<%=SIGARA_ADEDI %>" /&gt;
+                                    &lt;/SIGARA_MADDE_KULLANIMI&gt;
+                            <% }%> 
+                            <%if(ILETISIM_BILGILERI!=undefined){ %>
+                                &lt;ILETISIM_BILGILERI&gt;
+                                &lt;TELEFON_NUMARASI value="<%=TELEFON_NUMARASI %>" /&gt;
+                                    &lt;EPOSTA_ADRESI value="<%=EPOSTA_ADRESI %>" /&gt;
+                                    &lt;DETAYLI_ADRES_BILGISI&gt;
+                                    &lt;ACIK_ADRES value="<%=ACIK_ADRES %>" /&gt;
+                                        &lt;ADRES_KODU value="<%=ADRES_KODU %>" /&gt;
+                                        &lt;ADRES_KODU_SEVIYESI version="1" codeSystemGuid="aa0e83ba-e9db-4817-80da-577fd6a17373" code="<%=ADRES_KODU_SEVIYESI.KODU %>" value="<%=ADRES_KODU_SEVIYESI.ADI %>" /&gt;
+                                        &lt;ADRES_TIPI version="1" codeSystemGuid="35f4968a-3e72-41ce-9ae4-f4d22f90ea2e" code="<%=ADRES_TIPI.KODU %>" value="<%=ADRES_TIPI.ADI %>" /&gt;
+                                        &lt;TELEFON_NUMARASI value="<%=TELEFON_NUMARASI %>" /&gt;
+                                        &lt;TELEFON_TIPI version="1" codeSystemGuid="e387c902-9062-4406-85ef-63e085754f9e" code="<%=TELEFON_TIPI.KODU %>" value="<%=TELEFON_TIPI.ADI %>" /&gt;
+                                        &lt;/DETAYLI_ADRES_BILGISI&gt;
+                           
+                                &lt;/ILETISIM_BILGILERI&gt;
+                            <% }%> 
+                            &lt;/HASTA_OZLUK_BILGILERI&gt;
+                        &lt;HASTA_TAKIP_BILGISI&gt;
+                            &lt;SYSTakipNo value="<%=SYSTakipNo %>" /&gt;
+                                &lt;/HASTA_TAKIP_BILGISI&gt;
+                        &lt;/recordData&gt;
+                    &lt;/SYSMessage&gt;
+            </input>
+        </SYSSendMessage>
+    </soap:Body>
+</s:Envelope>
