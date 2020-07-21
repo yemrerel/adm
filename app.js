@@ -32,5 +32,4 @@ require('./routes/RouteManager')(app);
 
 
 app.listen(8000);
-//asd
 
