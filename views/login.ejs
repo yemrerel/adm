@@ -36,10 +36,9 @@
 			text-align: center;
 		}
 		.brand_logo {
-			height: 150px;
-			width: 150px;
-			border-radius: 50%;
-			border: 2px solid white;
+			height: 100px;
+			width: 300px;
+			border: 2px solid ;
 		}
 		.form_container {
 			margin-top: 100px;
@@ -105,8 +104,8 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
-					<div class="brand_logo_container">
-						<img src="/public/img/ephesuslogo.svg" class="brand_logo" alt="Logo">
+					<div class="">
+						<img src="/public/img/logo.png" class="brand_logo" alt="Logo">
 					</div>
 				</div>
 
@@ -117,7 +116,7 @@
         <hr class="hr-or">
       </div>
 
-      <form role="form" action="/login" method="POST">
+      <form id="loginForm" role="form" method="POST">
         <div class="form-group">
 			<div class="input-group ">
 				<div class="input-group-prepend">
@@ -141,12 +140,13 @@
 			    	    		<input name="remember" type="checkbox" value="Remember Me"> Beni Hatırla
 			    	    	</label>
 			    	    </div>
-			    		<input class="btn btn-lg btn-block" type="submit" style="background-color: #325179; color: white;" value="Login">
+			    		<input id="loginBtn" class="btn btn-lg btn-block" type="button" style="background-color: #325179; color: white;" value="Login">
       </form>
     
 			</div>
 		</div>
 	</div>
+	
   <script src="/public/js/jquery.min.js"></script>
 
   <script href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/esm/popper.js"></script>

@@ -1,29 +1,32 @@
 <!--ilk satır boşluk-->
 
-<link href="public/css/home.css" rel="stylesheet">
 <style>
 .izlemResimleri{
-
  width: 80%;
  height: 80%;
  margin: auto;
-
-
-
 }
+.izlemBtn{
+        cursor: pointer;
+        box-shadow: 6px 6px 6px grey
+}
+
+.izlemBtn:hover { padding: 0%;}
+.guncelleDiv:hover  { opacity: 0.6;cursor: pointer;}
+.plusDiv:hover{cursor: pointer; opacity: 0.6;}
 </style>
 
 
 <div class="row" style=" height: 5%;margin-top: 1%;">
-           <div class="col-md-11 form-group has-search" style="width: 85%;" >
+           <div class="col-md-11 form-group has-search" style="width: 85%; margin-bottom: 0;" >
                                 <span class="fa fa-search form-control-feedback"></span>
                                 <input id="myInput" class="form-control"  name="isim" type="text" placeholder="Hasta Ara" aria-label="Default" aria-describedby="" style="width: 100%;
                                 height: 100%;box-shadow: 6px 7px 6px grey;    border-radius: 1rem;font-size: 1.5rem;">
           </div>
           <div class="col-md-1" style="width: 15%;">
-                                <div class="form-group has-search" style="width: 100%;height:100%px; background-color: #fff;border: 1px solid #ced4da;box-shadow: 6px 7px 6px grey;    border-radius: 1rem;text-align: center;">                                                              
-                                         <img id="plus" src="/public/img/plus.svg" onerror="this.onerror=null; this.src='image.png'"style="width: 98%;
-                                         height: 98%;margin: auto;">                                               
+                                <div class="form-group has-search" style="margin-bottom: 0;width: 100%;height:100%; background-color: #fff;border: 1px solid #ced4da;box-shadow: 6px 7px 6px grey;  border-radius: 1rem;text-align: center;">                                                              
+                                         <img id="plus" class="plusDiv" src="/public/img/plus.svg" onerror="this.onerror=null; this.src='image.png'"style="
+                                         height: 100%;margin: auto;">                                               
                                 </div>      
          </div>       
                                 
@@ -31,7 +34,7 @@
 <div class="row" style=" height: 2%;"></div>
 
  
-<div class="row" style="margin-left: auto;margin-right: auto;height: 20%;">
+<div class="row" style="margin-left: auto;margin-right: auto;height: 18%;">
         <div class="col-md-3">  
                 <div id="kadınİzlem" class="row izlemBtn" style="background-color:#5380c1;height:98% ;">
                          <div class="container" >
@@ -75,7 +78,7 @@
 </div>
 
 
-<div class="row" style="margin-left: auto;margin-right: auto;height: 14%;margin-top: 1%;">
+<div class="row" style="margin-left: auto;margin-right: auto;height: 16%;margin-top: 1%;">
         <div style="flex: 0 0 20%;max-width: 16.66%;position: relative;width: 100%;padding-right: 15px;padding-left: 15px;">  
                 <div id="otizmizlem" class="row izlemBtn" style="background-color:#00996c;height:98% ;">
                         <div class="container" >
@@ -146,13 +149,13 @@
                  <div style="border-radius: 20px;padding: 12px;background-color: white;width: 100%;text-align: center;box-shadow: 6px 7px 6px grey;height: 320px;">
                        <div class="row" style="">
                                 <div class="col-md-3"> 
-                                        <div style="margin: auto;color: #325179;"><img src="/public/img/donem.svg" class="donem" style="height: 25px;margin-right: 12px;"><b class="donem">DÖNEM</b></div>
+                                        <div class="guncelleDiv" style="margin: auto;color: #325179;"><img src="/public/img/donem.svg" class="donem" style="height: 25px;margin-right: 12px;"><b class="donem">DÖNEM</b></div>
                                 </div>              
                                  <div class="col-md-3"> 
                                         <div style="margin: auto;color: #325179;"><input value="<%=user.SonGuncellemeTarih.substr(0,4)+'/'+user.SonGuncellemeTarih.substr(4,2) %>" name="startDate" id="startDate" class="date-picker" style="text-align: center;"  /></div>
                                 </div>  
                                 <div class="col-md-3"> 
-                                        <div style="margin: auto;color: #325179;"><img  src="/public/img/sonGuncelleme.svg" class="guncelleBtn" style="height: 25px;margin-right: 12px;"><b class="guncelleBtn">GÜNCELLE</b></div>
+                                        <div class="guncelleDiv" style="margin: auto;color: #325179;"><img  src="/public/img/sonGuncelleme.svg" class="guncelleBtn" style="height: 80%;margin-right: 12px;cursor: pointer;"><b class="guncelleBtn" style="cursor: pointer;">GÜNCELLE</b></div>
                                 </div>              
                                  <div class="col-md-3"> 
                                         <div style="margin: auto;color: #325179;text-decoration: underline;display: none;" id="YeniHastalar">Yeni Eklenen Hastalar</div>
@@ -163,19 +166,19 @@
                                         <div class="container" style="background-color: #E6F5FB;text-align: center;height: 210px;border-radius: 20px;overflow-y: auto;overflow-x: hidden;width: 96%;">
                                                                 <div class="row" style="margin-top:1%;"> 
                                                                         <div  class="col-md-1" style=""> </div>
-                                                                        <div  id="bebekizlemBtn" class="col-md-3" style="">
+                                                                        <div  id="bebekizlemBtn" class="col-md-3 guncelleDiv" style="">
                                                                                 <div class="row" style="margin-top:1%;"><img src="/public/img/izlemler.svg" class="" style="height: 64px;margin:auto;"> </div>
                                                                                 <div class="row" style="margin-top:1%;margin: auto;">  <div style="margin: auto;color: #325179;">Bebek İzlem</div></div>
                                                                         </div>
-                                                                        <div  id="cocukizlemBtn" class="col-md-3" style="">
+                                                                        <div  id="cocukizlemBtn" class="col-md-3 guncelleDiv" style="">
                                                                                 <div class="row" style="margin-top:1%;"><img src="/public/img/izlemler.svg" class="" style="height: 64px;margin:auto;"> </div>
                                                                                 <div class="row" style="margin-top:1%;margin: auto;">  <div style="margin: auto;color: #325179;">Çocuk İzlem</div></div>
                                                                         </div>
-                                                                        <div  id="gebeizlemBtn" class="col-md-3" style="">
+                                                                        <div  id="gebeizlemBtn" class="col-md-3 guncelleDiv" style="">
                                                                                 <div class="row" style="margin-top:1%;"><img src="/public/img/izlemler.svg" class="" style="height: 64px;margin:auto;"> </div>
                                                                                 <div class="row" style="margin-top:1%;margin: auto;">  <div style="margin: auto;color: #325179;">Gebe İzlem</div></div>
                                                                         </div>
-                                                                         <div id="asiBtn" class="col-md-2" style="">
+                                                                         <div id="asiBtn" class="col-md-2 guncelleDiv" style="">
                                                                                 <div class="row" style="margin-top:1%;"><img src="/public/img/homeAsilar.svg" class="" style="height: 64px;margin:auto;"> </div>
                                                                                 <div class="row" style="margin-top:1%;margin: auto;">  <div style="margin: auto;color: #325179;">Aşılar</div></div>
                                                                         </div>
@@ -336,13 +339,16 @@ $(function() {
                 $("#bebekSayi").text(res.istatistikler[0].BebekSayisi) 
 
                 $("#bebekGY").text(res.istatistikler[0].BebekIzlemGereken+'/'+res.istatistikler[0].BebekIzlemYapilan) 
-                $("#bebekB").text('%'+(res.istatistikler[0].BebekIzlemYapilan*100)/res.istatistikler[0].BebekIzlemGereken) 
+                a=Number((res.istatistikler[0].BebekIzlemYapilan*100)/res.istatistikler[0].BebekIzlemGereken).toFixed(1)
+                $("#bebekB").text('%'+a) 
 
                 $("#cocukGY").text(res.istatistikler[0].CocukIzlemGereken+'/'+res.istatistikler[0].CocukIzlemYapilan) 
-                $("#cocukB").text('%'+(res.istatistikler[0].CocukIzlemYapilan*100)/res.istatistikler[0].CocukIzlemGereken) 
+                a=Number((res.istatistikler[0].CocukIzlemYapilan*100)/res.istatistikler[0].CocukIzlemGereken).toFixed(1)
+                $("#cocukB").text('%'+a) 
 
                 $("#gebeGY").text(res.istatistikler[0].GebeIzlemGereken+'/'+res.istatistikler[0].GebeIzlemYapilan) 
-                $("#gebeB").text('%'+(res.istatistikler[0].GebeIzlemYapilan*100)/res.istatistikler[0].GebeIzlemGereken) 
+                a=Number((res.istatistikler[0].GebeIzlemYapilan*100)/res.istatistikler[0].GebeIzlemGereken).toFixed(1)
+                $("#gebeB").text('%'+a) 
                 if(res.bebekizlemRapor.length!=undefined){
                         $( ".bebekistatistikTable" ).empty()
                         for (let index = 0; index < res.bebekizlemRapor.length; index++) {
@@ -446,6 +452,7 @@ $(function() {
             changeYear: true,
             showButtonPanel: true,
             dateFormat: 'yy/mm',
+            maxDate: '0',
             onClose: function(dateText, inst) { 
                 $(this).datepicker('setDate', new Date(inst.selectedYear, inst.selectedMonth, 1));
             }

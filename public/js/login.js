@@ -22,8 +22,6 @@ $(()=>{
 
 $( "#logo" ).click(function() {
     window.location.replace("/home");
-
-
 });
 
 
@@ -35,4 +33,20 @@ $( "#ayarlarBtn" ).click(function() {
 $( ".istekBtn" ).click(function() {
     $( "#istekForm").submit();
 
+});
+
+$( "#loginBtn" ).click(function() {
+    $.ajax({
+        type: "POST",
+        url: '/login',
+        data: $('#loginForm').serialize(), // serializes the form's elements.
+        success: function(data)
+        {
+            if(data.result) window.location='/'
+            else alert(data.msg)                              
+        }
+    });
+
+
+    window.location.replace("/home");
 });
